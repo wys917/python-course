@@ -1,0 +1,634 @@
+{
+  "2026下-python-第1章作业/judgment/1": {
+    "answer": "F（错误）。",
+    "explanation": "高级语言既可编译执行，也可解释执行，或结合两者，并非只能使用解释器。"
+  },
+  "2026下-python-第1章作业/judgment/2": {
+    "answer": "F（错误）。",
+    "explanation": "多个 Python 版本可以共存，运行程序时需选择对应解释器。"
+  },
+  "2026下-python-第1章作业/judgment/3": {
+    "answer": "T（正确）。",
+    "explanation": "Python 跨平台、开源、免费，变量名在运行时绑定到对象。"
+  },
+  "2026下-python-第1章作业/judgment/4": {
+    "answer": "T（正确）。",
+    "explanation": "标准库 math 提供平方根、三角函数、向上取整等数学功能，使用前先导入。"
+  },
+  "2026下-python-第1章作业/judgment/5": {
+    "answer": "T（正确）。",
+    "explanation": "input() 返回字符串，去掉行末换行；数值输入需要 int() 或 float() 转换。"
+  },
+  "2026下-python-第1章作业/judgment/6": {
+    "answer": "T（正确）。",
+    "explanation": "print() 将参数转换成文本并输出，默认以空格分隔、换行结束。"
+  },
+  "2026下-python-第1章作业/judgment/7": {
+    "answer": "F（错误）。",
+    "explanation": "else 是关键字，不能作为变量名。"
+  },
+  "2026下-python-第1章作业/judgment/8": {
+    "answer": "F（错误）。",
+    "explanation": "x=7 将 x 从整数对象 3 重新绑定到整数对象 7，对象身份随之改变。"
+  },
+  "2026下-python-第1章作业/judgment/9": {
+    "answer": "T（正确）。",
+    "explanation": "ASCII 字符 A 的编码值与 Unicode 码点均为十进制 65。"
+  },
+  "2026下-python-第1章作业/judgment/10": {
+    "answer": "F（错误）。",
+    "explanation": "split() 得到列表 ['3','5']，int() 不能一次转换整个列表。应写 m,n=map(int,input().split())。"
+  },
+  "2026下-python-第1章作业/judgment/11": {
+    "answer": "F（错误）。",
+    "explanation": "print=3 遮蔽了内置函数名称，随后 print(5) 相当于调用整数，引发 TypeError。"
+  },
+  "2026下-python-第1章作业/choice/1": {
+    "answer": "C。",
+    "explanation": "1 字节等于 8 个二进制位，即 1 B = 8 bit。"
+  },
+  "2026下-python-第1章作业/choice/2": {
+    "answer": "A。",
+    "explanation": "Python 源代码脚本通常使用 .py 扩展名。"
+  },
+  "2026下-python-第1章作业/choice/3": {
+    "answer": "B。",
+    "explanation": "print() 输出，input() 输入。"
+  },
+  "2026下-python-第1章作业/choice/4": {
+    "answer": "B。",
+    "explanation": "10 = 8+2，二进制为 1010。"
+  },
+  "2026下-python-第1章作业/choice/5": {
+    "answer": "D。",
+    "explanation": "八进制 35 = 3×8+5 = 29。"
+  },
+  "2026下-python-第1章作业/choice/6": {
+    "answer": "D。",
+    "explanation": "计算机系统包括硬件和软件。"
+  },
+  "2026下-python-第1章作业/choice/7": {
+    "answer": "C。",
+    "explanation": "UTF-8 是变长编码，Unicode 标量值编码后占 1～4 字节；Unicode 本身是字符与码点体系，不应简单视为一种定长字节编码。"
+  },
+  "2026下-python-第1章作业/choice/8": {
+    "answer": "D。",
+    "explanation": "英文半角 # 引出同一行的注释，字符串内部的 # 不作为注释起点。"
+  },
+  "2026下-python-第1章作业/choice/9": {
+    "answer": "C。",
+    "explanation": "_item 以字母或下划线开头，后续可含数字；其他项含非法字符或以数字开头。"
+  },
+  "2026下-python-第1章作业/choice/10": {
+    "answer": "A。",
+    "explanation": "Python 的官方网站是 www.python.org。"
+  },
+  "2026下-python-第1章作业/choice/11": {
+    "answer": "B。",
+    "explanation": "按题目对语言的常见分类，C 是过程式语言；Java、C++ 和 Python 提供直接的面向对象机制。"
+  },
+  "2026下-python-第1章作业/choice/12": {
+    "answer": "C。",
+    "explanation": "print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。"
+  },
+  "2026下-python-第1章作业/blank/1": {
+    "answer": "`00010011.101`。",
+    "explanation": "整数 19 为 10011，补足 8 位得到 00010011；小数 .625 乘 2 取整依次为 1、0、1。"
+  },
+  "2026下-python-第1章作业/blank/2": {
+    "answer": "`1254`。",
+    "explanation": "2AC₁₆ = 684₁₀ = 1254₈；按题目不额外添加 0o 前缀。"
+  },
+  "2026下-python-第1章作业/blank/3": {
+    "answer": "`01101010`、`01101010`、`01101010`。",
+    "explanation": "106=64+32+8+2，是正数，8 位原码、反码和补码相同。"
+  },
+  "2026下-python-第1章作业/blank/4": {
+    "answer": "`11001110`、`10110001`、`10110010`。",
+    "explanation": "78 的 7 位数值部分为 1001110；原码符号位置 1，反码保留符号位并翻转其余位，补码再加 1。"
+  },
+  "2026下-python-第2章作业/judgment/1": {
+    "answer": "F（错误）。",
+    "explanation": "'a' 是字面字符串，不是变量 a；int('a') 报错。应将变量写为 str(a)，如 int(str(a)*i)。"
+  },
+  "2026下-python-第2章作业/judgment/2": {
+    "answer": "F（错误）。",
+    "explanation": "++i 是两次一元正号，不会自增，i 仍为 3；脚本中该表达式本身也不输出内容。原代码若整体前导缩进被直接保留，还会触发缩进错误。"
+  },
+  "2026下-python-第2章作业/judgment/3": {
+    "answer": "F（错误）。",
+    "explanation": "int('a',8) 解析的是字母 a，不是变量 a；八进制不包含 a。应写 int(a,b)。"
+  },
+  "2026下-python-第2章作业/judgment/4": {
+    "answer": "F（错误）。",
+    "explanation": "int('10.0') 引发 ValueError，程序不能运行到输出；应使用 float(input())。"
+  },
+  "2026下-python-第2章作业/judgment/5": {
+    "answer": "F（错误）。",
+    "explanation": "乘方优先于左侧负号，-2**4 等于 -(2**4)，结果为 -16。"
+  },
+  "2026下-python-第2章作业/judgment/6": {
+    "answer": "F（错误）。",
+    "explanation": "第一句可以输出五个星号，第二句将 m 当作非法格式字符，不会自动读取变量。动态宽度可写 f'{s:^{m}}'。"
+  },
+  "2026下-python-第2章作业/judgment/7": {
+    "answer": "F（错误）。",
+    "explanation": "字符串默认左对齐，实际是“这是字符串输出格式123□□”，空格在右侧。"
+  },
+  "2026下-python-第2章作业/judgment/8": {
+    "answer": "T（正确）。",
+    "explanation": "整数默认右对齐，宽度 5 而 123 长度为 3，左侧补两个空格。"
+  },
+  "2026下-python-第2章作业/judgment/9": {
+    "answer": "T（正确）。",
+    "explanation": "True 参与整数转换得到 1；False 转为 0。"
+  },
+  "2026下-python-第2章作业/judgment/10": {
+    "answer": "F（错误）。",
+    "explanation": "Python 的布尔常量写作 False；未定义的 FALSE 会触发 NameError，不能直接求布尔值。"
+  },
+  "2026下-python-第2章作业/judgment/11": {
+    "answer": "T（正确）。",
+    "explanation": "空列表属于假值，bool([]) 为 False。"
+  },
+  "2026下-python-第2章作业/judgment/12": {
+    "answer": "T（正确）。",
+    "explanation": "None 表示空值，布尔转换为 False。"
+  },
+  "2026下-python-第2章作业/judgment/13": {
+    "answer": "F（错误）。",
+    "explanation": "bin() 接受整数，不接受 12.5 这样的浮点数，会引发 TypeError。"
+  },
+  "2026下-python-第2章作业/judgment/14": {
+    "answer": "F（错误）。",
+    "explanation": "八进制合法数字为 0～7，'92' 含有 9，int('92',8) 引发 ValueError。"
+  },
+  "2026下-python-第2章作业/judgment/15": {
+    "answer": "F（错误）。",
+    "explanation": "and 返回第一个为假的操作数，这里返回整数 0，而不是布尔对象 False；两者值比较相等但类型不同。"
+  },
+  "2026下-python-第2章作业/judgment/16": {
+    "answer": "T（正确）。",
+    "explanation": "普通赋值语句 y=z+1 不能嵌入表达式中。需要链式赋值可写 x=y=z+1。"
+  },
+  "2026下-python-第2章作业/choice/1": {
+    "answer": "A。",
+    "explanation": "Python 没有独立 char 类型，单个字符用长度为 1 的字符串表示。"
+  },
+  "2026下-python-第2章作业/choice/2": {
+    "answer": "A。",
+    "explanation": "1J 是复数，type(1J) 为 complex。"
+  },
+  "2026下-python-第2章作业/choice/3": {
+    "answer": "C。",
+    "explanation": "/ 执行普通除法，1/2 得到浮点数 0.5。"
+  },
+  "2026下-python-第2章作业/choice/4": {
+    "answer": "A。",
+    "explanation": "两个整数进行 // 运算，1//2 得到整数 0。"
+  },
+  "2026下-python-第2章作业/choice/5": {
+    "answer": "B。",
+    "explanation": "整数和浮点数相加得到浮点数，121+1.21 为 float。"
+  },
+  "2026下-python-第2章作业/choice/6": {
+    "answer": "D。",
+    "explanation": "0xA 为 10，0xB 为 11，相加得到十进制整数 21。"
+  },
+  "2026下-python-第2章作业/choice/7": {
+    "answer": "无严格正确选项；按普通引号还原后为运行时 `TypeError`。",
+    "explanation": "题面使用弯引号，原样作为 Python 代码会产生 SyntaxError；若按普通字符串引号理解，字符串 car 与整数 2 相加会产生 TypeError，不能称为语法错误。A 仅在原样弯引号情形下适用。"
+  },
+  "2026下-python-第2章作业/choice/8": {
+    "answer": "D。",
+    "explanation": "比较运算 > 的结果类型为 bool。"
+  },
+  "2026下-python-第2章作业/choice/9": {
+    "answer": "D。",
+    "explanation": "sqrt(4)=2.0，sqrt(9)=3.0，乘积为浮点数 6.0。"
+  },
+  "2026下-python-第2章作业/choice/10": {
+    "answer": "C。",
+    "explanation": "复数虚部后缀可以为 j 或 J，如 1J 合法。实部、虚部属性为浮点数，调用 conjugate() 得到共轭复数。选项 A 是概念示意，实际代码不能在数字与 j 之间插入空格。"
+  },
+  "2026下-python-第2章作业/choice/11": {
+    "answer": "D。",
+    "explanation": "chr(65) 返回字符 A。"
+  },
+  "2026下-python-第2章作业/choice/12": {
+    "answer": "B。",
+    "explanation": "Python 字符串不依赖空字符 \\0 表示结束，长度由字符串对象记录。"
+  },
+  "2026下-python-第2章作业/blank/1": {
+    "answer": "`10`。",
+    "explanation": "按运算优先级先算 5//3=1，再计算 10+1-1+0=10；题面的长横线按减号理解。"
+  },
+  "2026下-python-第2章作业/blank/2": {
+    "answer": "`6561`。",
+    "explanation": "乘方从右向左结合：3**(2**3)=3**8=6561。"
+  },
+  "2026下-python-第2章作业/blank/3": {
+    "answer": "`1.89`。",
+    "explanation": "3**2=9，17.0/9≈1.8888889，round(...,2) 得到 1.89。"
+  },
+  "2026下-python-第2章作业/blank/4": {
+    "answer": "`True`。",
+    "explanation": "先计算 2<True，即 2<1，为假；not 后为真。0 and 1 得到 0，再与 True 做 or 得到 True。"
+  },
+  "2026下-python-第2章作业/blank/5": {
+    "answer": "`32 5`。",
+    "explanation": "十六进制 20 为十进制 32，二进制 101 为 5；print 在参数间添加一个空格。"
+  },
+  "2026下-python-第2章作业/blank/6": {
+    "answer": "`0x10 0b1010`。",
+    "explanation": "hex()、bin() 返回带小写前缀的字符串。"
+  },
+  "2026下-python-第2章作业/blank/7": {
+    "answer": "`True`。",
+    "explanation": "not d 为假，a>=0 为真，a+c=9>b+3=8 为真，整体为 True。"
+  },
+  "2026下-python-第2章作业/blank/8": {
+    "answer": "`10.2 8.246`。",
+    "explanation": "abs(-10.2)=10.2；复数的模为 sqrt(8²+(-2)²)=sqrt(68)，保留 3 位小数为 8.246。"
+  },
+  "2026下-python-第2章作业/blank/9": {
+    "answer": "`True`。",
+    "explanation": "and 优先于 or，先得 y and z=False，再计算 True or False。"
+  },
+  "2026下-python-第2章作业/blank/10": {
+    "answer": "`False`。",
+    "explanation": "x>=y 相当于 0>=1，为假，and 短路，结果为 False。题面弯引号按普通引号理解。"
+  },
+  "2026下-python-第2章作业/blank/11": {
+    "answer": "`True`。",
+    "explanation": "第一项比较为假；XYZ 与 xyz 不同为真，10-6>18/2 为假，取反为真，因此右侧合取为真。"
+  },
+  "2026下-python-第2章作业/blank/12": {
+    "answer": "`helloworld`。",
+    "explanation": "相邻的字符串字面量在编译时自动拼接，源码中的空格不属于字符串内容。"
+  },
+  "2026下-python-第2章作业/blank/13": {
+    "answer": "`2`。",
+    "explanation": "括号内 or 得到 True，True and 2 返回右侧整数 2。"
+  },
+  "2026下-python-第2章作业/blank/14": {
+    "answer": "`0`。",
+    "explanation": "and 短路并返回遇到的假值 0，不继续检查 5。"
+  },
+  "2026下-python-第2章作业/blank/15": {
+    "answer": "`3`。",
+    "explanation": "两次一元负号相互抵消。"
+  },
+  "2026下-python-第2章作业/blank/16": {
+    "answer": "`-3`。",
+    "explanation": "三次一元负号，最终为负。"
+  },
+  "2026下-python-第2章作业/blank/17": {
+    "answer": "`1.0`。",
+    "explanation": "32.2//6 为 5.0，24//6 为 4，差为浮点数 1.0。"
+  },
+  "2026下-python-第2章作业/blank/18": {
+    "answer": "`25`；`yes`。",
+    "explanation": "各位按权重 1、2、4、8、16 累加。10011 对应 1+8+16=25；生日 19 对应 11001，各列表分别表示一个二进制位，故可还原。"
+  },
+  "2026下-python-第2章作业/blank/19": {
+    "answer": "`24352`（十六进制 `U+5F20`）。",
+    "explanation": "ord('张') 得到十进制 24352；若要求 Unicode 码点形式，则写 U+5F20。"
+  },
+  "2026下-python-第2章作业/blank/20": {
+    "answer": "`1`、`-7`、`-16`、`-10`。",
+    "explanation": "负整数位运算按符号扩展的补码理解。分别计算 -7&5、-7|9、-7^9；取反满足 ~9=-9-1=-10。"
+  },
+  "2026下-python-第2章作业/blank/21": {
+    "answer": "`6`。",
+    "explanation": "39 的二进制为 100111，共 6 位，循环每次处理一个二进制位。"
+  },
+  "2026下-python-第3章作业/judgment/1": {
+    "answer": "T（正确）。",
+    "explanation": "字符串不能与整数直接相加，执行 'age'+23 会产生 TypeError；这里把代码块末尾中文视为题目说明。"
+  },
+  "2026下-python-第3章作业/judgment/2": {
+    "answer": "F（错误）。",
+    "explanation": "find() 是字符串方法，列表查找位置用 index()，判断有无用 in。"
+  },
+  "2026下-python-第3章作业/judgment/3": {
+    "answer": "F（错误）。",
+    "explanation": "random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返回 None。"
+  },
+  "2026下-python-第3章作业/judgment/4": {
+    "answer": "T（正确）。",
+    "explanation": "两者都有顺序、索引和切片等序列操作。"
+  },
+  "2026下-python-第3章作业/judgment/5": {
+    "answer": "F（错误）。",
+    "explanation": "可索引读取，但字符串不可变，不能通过 s[i]=... 修改字符。"
+  },
+  "2026下-python-第3章作业/judgment/6": {
+    "answer": "T（正确）。",
+    "explanation": "列表可原地增删改，字符串和元组自身不能原地改位置上的引用。"
+  },
+  "2026下-python-第3章作业/judgment/7": {
+    "answer": "T（正确）。",
+    "explanation": "省略起止和步长的 [::] 复制整个列表，值与原列表一致。"
+  },
+  "2026下-python-第3章作业/judgment/8": {
+    "answer": "T（正确）。",
+    "explanation": "负步长 -1 从末尾向前遍历，生成逆序新列表。"
+  },
+  "2026下-python-第3章作业/judgment/9": {
+    "answer": "T（正确）。",
+    "explanation": "步长 2 从下标 0 开始，依次取 0、2、4、6、8。"
+  },
+  "2026下-python-第3章作业/judgment/10": {
+    "answer": "F（错误）。",
+    "explanation": "从下标 1 开始应取 1、3、5、7、9，结果为 [-5,-10,35,49,-21]。"
+  },
+  "2026下-python-第3章作业/judgment/11": {
+    "answer": "T（正确）。",
+    "explanation": "取下标 3、5、7，分别为 -10、35、49，终点 8 不包含。"
+  },
+  "2026下-python-第3章作业/judgment/12": {
+    "answer": "F（错误）。",
+    "explanation": "切片边界自动截到末尾，lst[0:100] 返回整个列表的浅拷贝，不报错。"
+  },
+  "2026下-python-第3章作业/judgment/13": {
+    "answer": "T（正确）。",
+    "explanation": "切片起点超出末尾返回空列表。"
+  },
+  "2026下-python-第3章作业/judgment/14": {
+    "answer": "T（正确）。",
+    "explanation": "单元素索引 100 越界，会产生 IndexError。"
+  },
+  "2026下-python-第3章作业/judgment/15": {
+    "answer": "F（错误）。",
+    "explanation": "sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.sort()，再 for i in a。"
+  },
+  "2026下-python-第3章作业/judgment/16": {
+    "answer": "F（错误）。",
+    "explanation": "in 与 == 组成链式比较，还需检查 \"1234\"==True，此项为假，整体为假。"
+  },
+  "2026下-python-第3章作业/judgment/17": {
+    "answer": "F（错误）。",
+    "explanation": "s1 在最后一个元素后仍有空格，join 得到的 s2 没有末尾空格，程序输出 no。"
+  },
+  "2026下-python-第3章作业/judgment/18": {
+    "answer": "F（错误）。",
+    "explanation": "左侧重复得到 12 12 12 后还带末尾空格，右侧 join 不带末尾空格。"
+  },
+  "2026下-python-第3章作业/judgment/19": {
+    "answer": "F（错误）。",
+    "explanation": "字符串默认左对齐，实际输出 this 后四个空格。"
+  },
+  "2026下-python-第3章作业/judgment/20": {
+    "answer": "F（错误）。",
+    "explanation": "整数默认右对齐，实际输出 1234 前四个空格。"
+  },
+  "2026下-python-第3章作业/judgment/21": {
+    "answer": "F（错误）。",
+    "explanation": "按 Python 3 实际格式化结果为 00014.35；14.345 的二进制浮点近似值会影响舍入，不应填 00014.34。"
+  },
+  "2026下-python-第3章作业/judgment/22": {
+    "answer": "F（错误）。",
+    "explanation": "列表拼接不会展开内部列表，结果为 [1,2,[3],4,5]。"
+  },
+  "2026下-python-第3章作业/judgment/23": {
+    "answer": "F（错误）。",
+    "explanation": "列表重复的是元素，结果为 [4,5,4,5,4,5]。"
+  },
+  "2026下-python-第3章作业/judgment/24": {
+    "answer": "F（错误）。",
+    "explanation": "c.lower 是方法对象；调用 c.lower() 才得到 a。"
+  },
+  "2026下-python-第3章作业/choice/1": {
+    "answer": "D。",
+    "explanation": "max 返回序列最大值 7。"
+  },
+  "2026下-python-第3章作业/choice/2": {
+    "answer": "B。",
+    "explanation": "字符串字面量中的真反斜杠需写成 \\\\；A 中 \\t 被解释为制表符。"
+  },
+  "2026下-python-第3章作业/choice/3": {
+    "answer": "A。",
+    "explanation": "list() 逐字符遍历字符串，得到 4 个字符元素。"
+  },
+  "2026下-python-第3章作业/choice/4": {
+    "answer": "C。",
+    "explanation": "切片终点 -1 不包含最后一个元素，结果少最后的 1。"
+  },
+  "2026下-python-第3章作业/choice/5": {
+    "answer": "B。",
+    "explanation": "append(5) 将 5 作为单个元素追加到列表末尾。"
+  },
+  "2026下-python-第3章作业/blank/1": {
+    "answer": "`232323`。",
+    "explanation": "字符串重复三次，并非数值乘法。"
+  },
+  "2026下-python-第3章作业/blank/2": {
+    "answer": "`5`。",
+    "explanation": "指定 '/' 分隔时，连续分隔符产生空字符串，列表为 ['3','','11','','2018']。"
+  },
+  "2026下-python-第3章作业/blank/3": {
+    "answer": "`4`。",
+    "explanation": "remove(3) 删除首个 3，原下标 1 的 4 成为新首元素。"
+  },
+  "2026下-python-第3章作业/blank/4": {
+    "answer": "`6`。",
+    "explanation": "range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6。"
+  },
+  "2026下-python-第3章作业/blank/5": {
+    "answer": "`100`。",
+    "explanation": "randint(a,b) 包含两个端点。"
+  },
+  "2026下-python-第3章作业/blank/6": {
+    "answer": "`3+2=5`。",
+    "explanation": "参数 0 为 2、参数 1 为 3、参数 2 为 5，按占位编号替换。"
+  },
+  "2026下-python-第3章作业/blank/7": {
+    "answer": "`34-23=11`。",
+    "explanation": "first、second 分别取 34、23，位置参数 0 为差值 11。"
+  },
+  "2026下-python-第3章作业/blank/8": {
+    "answer": "`00011111`。",
+    "explanation": "31 的二进制为 11111，去掉前缀后左侧补零至宽度 8。"
+  },
+  "2026下-python-第3章作业/blank/9": {
+    "answer": "`4`。",
+    "explanation": "从下标 2 起查找 r，第一次遇到的是下标 4，跳过下标 1 的 r。"
+  },
+  "2026下-python-第3章作业/blank/10": {
+    "answer": "`-1`。",
+    "explanation": "字符串中不存在 x，find 返回 -1。"
+  },
+  "2026下-python-第3章作业/blank/11": {
+    "answer": "`False`。",
+    "explanation": "a 不是数字，因此整个字符串不是全数字。"
+  },
+  "2026下-python-第3章作业/blank/12": {
+    "answer": "`True`。",
+    "explanation": "aABC 的每个字符都是字母。"
+  },
+  "2026下-python-第3章作业/blank/13": {
+    "answer": "`xyz□□□□xyz□xyz□□`（□ 表示空格）。",
+    "explanation": "将题面 □ 还原为空格：strip 得 'xyz'，rstrip 得 '   xyz'，lstrip 得 'xyz  '；print 又在参数之间各加一个空格，末尾保留两个空格。"
+  },
+  "2026下-python-第3章作业/blank/14": {
+    "answer": "`True`、`False`、`False`。",
+    "explanation": "b=a 共享同一对象；copy() 和 [:] 都创建不同的外层列表对象。"
+  },
+  "2026下-python-第3章作业/blank/15": {
+    "answer": "第1空：`id,name`；第2空：`students[index][0],students[index][1]`。",
+    "explanation": "第一种循环直接拆包行元组；第二种先取行，再取第 0 和第 1 列，逗号让 print 用默认空格分隔。"
+  },
+  "2026下-python-第3章作业/blank/16": {
+    "answer": "`5.0`。",
+    "explanation": "sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。"
+  },
+  "2026下-python-第3章作业/blank/17": {
+    "answer": "`2`。",
+    "explanation": "先计算右侧，此时旧 t 为 1，因此 t+1=2，然后再赋给 a。"
+  },
+  "2026下-PTA测试1/judgment/1": {
+    "answer": "F（错误）。",
+    "explanation": "else 是关键字，不能用作变量名。"
+  },
+  "2026下-PTA测试1/judgment/2": {
+    "answer": "T（正确）。",
+    "explanation": "A 的 ASCII 编码和 Unicode 码点都是 65。"
+  },
+  "2026下-PTA测试1/judgment/3": {
+    "answer": "F（错误）。",
+    "explanation": "++i 不是自增，只是两次一元正号，i 保持 3；脚本也不会自动输出表达式。"
+  },
+  "2026下-PTA测试1/judgment/4": {
+    "answer": "F（错误）。",
+    "explanation": "int('10.0') 引发 ValueError，应使用 float() 读取小数。"
+  },
+  "2026下-PTA测试1/judgment/5": {
+    "answer": "F（错误）。",
+    "explanation": "字符串默认左对齐，两个补齐空格应位于 123 右侧。"
+  },
+  "2026下-PTA测试1/judgment/6": {
+    "answer": "T（正确）。",
+    "explanation": "整数默认右对齐，宽度 5 时在 123 左边补两个空格。"
+  },
+  "2026下-PTA测试1/judgment/7": {
+    "answer": "T（正确）。",
+    "explanation": "None 的布尔值为 False。"
+  },
+  "2026下-PTA测试1/judgment/8": {
+    "answer": "F（错误）。",
+    "explanation": "bin() 不接受浮点数 12.5，会产生 TypeError。"
+  },
+  "2026下-PTA测试1/judgment/9": {
+    "answer": "F（错误）。",
+    "explanation": "八进制没有数码 9，int('92',8) 会产生 ValueError。"
+  },
+  "2026下-PTA测试1/judgment/10": {
+    "answer": "F（错误）。",
+    "explanation": "结果是整数 0，and 返回操作数，不是布尔对象 False。"
+  },
+  "2026下-PTA测试1/judgment/11": {
+    "answer": "T（正确）。",
+    "explanation": "赋值语句不能放在这种表达式位置，应写 x=y=z+1。"
+  },
+  "2026下-PTA测试1/judgment/12": {
+    "answer": "T（正确）。",
+    "explanation": "strip() 去掉重复字符串末尾的空格后，两侧都得到 12 12 12。"
+  },
+  "2026下-PTA测试1/judgment/13": {
+    "answer": "T（正确）。",
+    "explanation": "先原地排序，再遍历列表，顺序为 a、c、d、e；print(end=\" \") 还会在最后保留一个空格。"
+  },
+  "2026下-PTA测试1/judgment/14": {
+    "answer": "F（错误）。",
+    "explanation": "[4,5]*3 得到单个列表 [4,5,4,5,4,5]，不会生成三个子列表或元组。"
+  },
+  "2026下-PTA测试1/choice/1": {
+    "answer": "A。",
+    "explanation": "Python 脚本文件通常以 .py 结尾。"
+  },
+  "2026下-PTA测试1/choice/2": {
+    "answer": "D。",
+    "explanation": "半角 # 引出同行注释。"
+  },
+  "2026下-PTA测试1/choice/3": {
+    "answer": "C。",
+    "explanation": "_item 合法，不能以数字开头或含连字符、星号。"
+  },
+  "2026下-PTA测试1/choice/4": {
+    "answer": "B。",
+    "explanation": "C 属于过程式语言，其他选项提供类等面向对象机制。"
+  },
+  "2026下-PTA测试1/choice/5": {
+    "answer": "A。",
+    "explanation": "Python 没有独立的 char 内置类型。"
+  },
+  "2026下-PTA测试1/choice/6": {
+    "answer": "D。",
+    "explanation": "0xA=10，0xB=11，相加为 21。"
+  },
+  "2026下-PTA测试1/choice/7": {
+    "answer": "无严格正确选项；按普通引号还原后为运行时 `TypeError`。",
+    "explanation": "题面使用弯引号，原样作为 Python 代码会产生 SyntaxError；若按普通字符串引号理解，字符串 car 与整数 2 相加会产生 TypeError，不能称为语法错误。A 仅在原样弯引号情形下适用。"
+  },
+  "2026下-PTA测试1/choice/8": {
+    "answer": "D。",
+    "explanation": "两个平方根结果分别为浮点数 2.0 和 3.0，乘积为 6.0。"
+  },
+  "2026下-PTA测试1/choice/9": {
+    "answer": "C。",
+    "explanation": "复数虚部后缀可以为 j 或 J，如 1J 合法。实部、虚部属性为浮点数，调用 conjugate() 得到共轭复数。选项 A 是概念示意，实际代码不能在数字与 j 之间插入空格。"
+  },
+  "2026下-PTA测试1/choice/10": {
+    "answer": "D。",
+    "explanation": "码点 65 对应字符 A。"
+  },
+  "2026下-PTA测试1/choice/11": {
+    "answer": "B。",
+    "explanation": "Python 字符串不使用 \\0 标记结束。"
+  },
+  "2026下-PTA测试1/choice/12": {
+    "answer": "C（3 个）。",
+    "explanation": "a 错：i*=3+5 等价于 i=i*(3+5)；b 错：科学计数法指数不能写成 2.0；c 对：int(\"3.5\",10) 确实运行时报错；d 错：整数默认右对齐，字符串默认左对齐。"
+  },
+  "2026下-PTA测试1/choice/13": {
+    "answer": "A。",
+    "explanation": "b 和 a 指向同一列表，修改 a 后 b 同步变化；d=a[:] 是外层副本，后续 a[1]=7 不改变 d。"
+  },
+  "2026下-PTA测试1/blank/1": {
+    "answer": "`1254`。",
+    "explanation": "2AC₁₆ = 684₁₀ = 1254₈；按题目不额外添加 0o 前缀。"
+  },
+  "2026下-PTA测试1/blank/2": {
+    "answer": "`01101010`、`01101010`、`01101010`。",
+    "explanation": "106=64+32+8+2，是正数，8 位原码、反码和补码相同。"
+  },
+  "2026下-PTA测试1/blank/3": {
+    "answer": "`11001110`、`10110001`、`10110010`。",
+    "explanation": "78 的 7 位数值部分为 1001110；原码符号位置 1，反码保留符号位并翻转其余位，补码再加 1。"
+  },
+  "2026下-PTA测试1/blank/4": {
+    "answer": "`True`。",
+    "explanation": "先计算 2<True，即 2<1，为假；not 后为真。0 and 1 得到 0，再与 True 做 or 得到 True。"
+  },
+  "2026下-PTA测试1/blank/5": {
+    "answer": "`10.2 8.246`。",
+    "explanation": "abs(-10.2)=10.2；复数的模为 sqrt(8²+(-2)²)=sqrt(68)，保留 3 位小数为 8.246。"
+  },
+  "2026下-PTA测试1/blank/6": {
+    "answer": "`0`。",
+    "explanation": "and 短路并返回遇到的假值 0，不继续检查 5。"
+  },
+  "2026下-PTA测试1/blank/7": {
+    "answer": "`-3`。",
+    "explanation": "三次一元负号，最终为负。"
+  },
+  "2026下-PTA测试1/blank/8": {
+    "answer": "`1.0`。",
+    "explanation": "32.2//6 为 5.0，24//6 为 4，差为浮点数 1.0。"
+  },
+  "2026下-PTA测试1/blank/9": {
+    "answer": "`ABCD`。",
+    "explanation": "每个字符先判断大写并转小写，再独立判断小写并转大写；原本大写会连续转换两次，原本小写转换一次，最终全部大写。两个 if 不是 if-elif。"
+  }
+}

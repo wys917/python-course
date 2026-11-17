@@ -1,0 +1,1142 @@
+## Slide 1
+
+第7章文件
+
+CS, ZJU
+2018年12月
+
+## Slide 2
+
+Overview
+
+
+文件读写
+Pandas模块读写常见格式文件
+Plotly模块实现数据可视化
+
+2
+
+Python程序设计
+
+## Slide 3
+
+7.1 文件读写
+
+计算机文件，是存储在某种长期储存设备上的一段数据流。所谓“长期储存设备”一般指磁盘、光盘、U盘等。其特点是所存信息可以长期、多次使用，不会因为断电而消失。
+计算机文件可分为二种： 二进制文件和文本文件
+图形文件及文字处理程序等计算机程序都属于二进制文件。这些文件含有特殊的格式及计算机代码。
+文本文件则是可以用文字处理程序阅读的简单文本文件。
+
+3
+
+Python程序设计
+
+## Slide 4
+
+文件读写步骤
+
+1.打开文件
+ 2.处理数据
+ 3.关闭文件
+
+
+
+Python程序设计
+
+4
+
+## Slide 5
+
+显示文件内容
+
+textFile = open("7-1.txt","rt")	#以文本方式打开
+t=textFile.readline()
+print(t)
+textFile.close()
+binFile = open("7-1.txt","rb")	#以二进制方式打开
+b=binFile.readline()
+print(b)
+binFile.close()
+
+程序输出：
+欢迎学习Python语言                b'\xbb\xb6\xd3\xad\xd1\xa7\xcf\xb0Python\xd3\xef\xd1\xd4'
+
+
+Python程序设计
+
+5
+
+## Slide 6
+
+open函数
+
+fileobj = open(filename,mode)
+fileobj是open()返回的文件对象
+filename是该文件的文件名
+mode是指明文件类型和操作的字符串
+mode的第一个字母表明对其的操作。mode的第二个字母是文件类型：t（可省略）代表文本类型文件；b代表二进制类型文件。后面的文件处理操作均以文本类型为例。
+ 
+
+
+Python程序设计
+
+6
+
+## Slide 7
+
+文件打开模式
+
+Python程序设计
+
+7
+
+## Slide 8
+
+文件读写函数
+
+Python程序设计
+
+8
+
+## Slide 9
+
+文件复制
+
+cj.txt 文件是某班学生一门课的成绩。需要把这个文件的内容复制到“cjback.txt”文件中。
+复制文件不需要考虑行结构，用read函数就可以了。
+
+程序：
+source=open("cj.txt","r")
+back=open("cjback.txt","w")
+s=source.read()
+back.write(s)
+source.close()
+back.close()
+
+
+Python程序设计
+
+9
+
+## Slide 10
+
+多行文件读写
+
+用readlines()读写多行文件
+
+f=open("score.txt","r")
+for line in f.readlines():
+     print(line)    #处理行
+f.close()
+
+可用嵌套列表存放多行内容
+
+
+Python程序设计
+
+10
+
+## Slide 11
+
+计算总评分 
+
+Python程序设计
+
+11
+
+文件score.txt是学生一学期的成绩，每一行代表一个学生的成绩，由笔试、平时和实验三部分构成。总评=笔试*50%+平时*25%+实验*25%
+
+
+## Slide 12
+
+readlines函数
+
+f=open("score.txt","r")
+s=f.readlines()
+print(s)
+
+运行结果：
+['学号 姓名 专业 笔试 平时 实验\n', '2050921018 詹延峰 计算数学 65 85 76\n', '2050921036 李 小鹏  金融学类 86 95 85\n', '2050921039 裴凡法 经济学类 86 95 65\n', '2040912116 茅舒瑶 社会保障 90 95 100\n', '2050912017 陈 见影 化学 工程 62 75 92\n', '2050912064 梅 钦钦 材料科学 87 95 80\n', '2050109153 王影平  大 气科学 86 89 72\n', '2050151003 韩平医 化学 工程 82 99 60\n']
+
+
+
+
+Python程序设计
+
+12
+
+## Slide 13
+
+文件逐行读取
+
+f=open("score.txt","r")
+for line in f.readlines():
+     print(line)
+
+程序输出：
+ 
+学号 姓名 专业 笔试 平时 实验
+
+2050921018 詹延峰 计算数学 65 85 76
+
+2050921036 李 小鹏  金融学类 86 95 85
+
+2050921039 裴凡法 经济学类 86 95 65
+ 。。。。。。
+
+Python程序设计
+
+13
+
+## Slide 14
+
+计算总评分
+
+f=open("score.txt","r")
+fw=open("back.txt","w")
+head=f.readline()   #读表头行
+newhead=head[:7]+head[9:18]+''+head[18:-1]+' 总评成绩' 
+print(newhead)
+fw.write(newhead+"\n")  # 要加换行 \n 否则内容均在同一行
+for line in f.readlines():
+    l=line.split()
+    s=round(int(l[3])*0.5+int(l[4])*0.25+int(l[5])*0.25,2)  #求总评分
+    l[4]='   '+l[4]  #加空格对齐
+    l[5]='      '+l[5]  #加空格对齐
+    print(' '.join(l)+' '+str(s))   #加空格对齐
+    fw.write(' '.join(l)+' '+str(s)+"\n")  # 要加换行 \n 否则内容均在同一行
+f.close()
+fw.close()
+
+
+
+Python程序设计
+
+14
+
+
+
+## Slide 15
+
+总评成绩
+
+Python程序设计
+
+15
+
+## Slide 16
+
+文件编码
+
+ANSI编码：
+    即当前操作系统使用的编码， 可在cmd下用chcp命令查看
+UTF-8编码：
+   UTF-8 是缺省编码格式
+中文编码：
+    GB2312  ,  GBK
+
+打开编码为GBK的文件：
+     open(文件名，模式，encoding=“GBK”)
+
+Python程序设计
+
+16
+
+## Slide 17
+
+重定向
+
+Python程序设计
+
+17
+
+sys.stdin	标准输入
+sys.stdout	标准输出
+sys.stderr	标准错误输出
+
+import sys
+s=sys.stdin.readlines() #从文件读入变为从键盘输入 
+print(s)   #按 ^D 输入结束
+
+
+## Slide 18
+
+词频统计（取自pintia网站）
+
+请编写程序，对一段英文文本，统计其中所有不同单词的个数，以及词频最大的10%的单词。所谓“单词”，是指由不超过80个单词字符组成的连续字符串，但长度超过15的单词将只截取保留前15个单词字符。而合法的“单词字符”为大小写字母、数字和下划线，其它字符均认为是单词分隔符。注意“单词”不区分英文大小写，例如“PAT”和“pat”被认为是同一个单词。输入给出一段非空文本，最后以符号#结尾。输入保证存在至少10个不同的单词。输出按照词频递减的顺序，按照“词频:单词”的格式输出词频最大的前10%的单词。若有并列，则按递增字典序输出。
+ 
+
+
+
+18
+
+Data and Computation
+
+
+
+## Slide 19
+
+输入处理
+
+“ s=sys.stdin.read()”表示重定向为键盘输入
+ “ strs=s[:s.find(‘#’)]”表示取输入字符串，以符号“#”结尾
+
+
+Python程序设计
+
+19
+
+## Slide 20
+
+产生词频字典
+
+Python程序设计
+
+20
+
+for k in set([i for i in strs if i.isalnum()==False and i!='_']):
+   strs=strs.replace(k, ' ') #其它字符均认为是单词分隔符 
+strs=strs.rstrip(' ').lower().split() #全部变小写
+counts=dict()
+for i in strs:
+         k=i[:15]
+         if k not in counts:
+                counts[k]=1
+         else:
+                counts[k]+=1
+
+
+## Slide 21
+
+排序及输出
+
+#词频递减的顺序，若有并列，则按递增字典序 
+ans=sorted(counts.items(), key=lambda x:(-x[1], x[0]))
+print(len(counts))
+ 
+for i in range(0,int(0.1*len(counts))): 词频最大的前10%的单词 
+       print(str(ans[i][1])+':'+ans[i][0])
+
+
+
+Python程序设计
+
+21
+
+## Slide 22
+
+完整程序
+
+import sys
+s=sys.stdin.read()
+strs=s[:s.find('#')]	#"以符号#结尾"
+for k in set([i for i in strs if i.isalnum()==False and i!='_']):
+   strs=strs.replace(k, ' ') #其它字符均认为是单词分隔符 
+strs=strs.rstrip(' ').lower().split() #全部变小写
+counts=dict()
+for i in strs:
+         k=i[:15]
+         if k not in counts:
+                counts[k]=1
+         else:
+                counts[k]+=1
+#词频递减的顺序，若有并列，则按递增字典序 
+ans=sorted(counts.items(), key=lambda x:(-x[1], x[0]))
+print(len(counts))
+ 
+for i in range(0,int(0.1*len(counts))): 词频最大的前10%的单词 
+       print(str(ans[i][1])+':'+ans[i][0])
+
+
+Python程序设计
+
+22
+
+## Slide 23
+
+7.2  异常处理
+
+在程序运行过程中如果发生异常，Python 会输出错误消息和关于错误发生处的信息，然后终止程序。
+例如：
+>>> short_list = [1, 72, 3]
+>>> position = 6
+>>> short_list[position]
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    short_list[position]
+IndexError: list index out of range
+程序由于访问了不存在的列表元素，而发生下标越界异常。
+
+Python程序设计
+
+23
+
+## Slide 24
+
+异常处理（续）
+
+可使用try-except语句实现异常处理。
+short_list = [1, 72, 3]
+position = 6
+try:
+    short_list[position]
+except:
+    print('索引应该在 0 和', len(short_list)-1,"之间,但却是",position)
+输出：
+索引应该在 0 和 2 之间，但却是 6
+
+
+Python程序设计
+
+24
+
+## Slide 25
+
+异常处理（续2）
+
+语法格式
+try:
+     语句块1
+except 异常类型1:
+     语句块2
+except 异常类型2:
+     语句块3 
+…
+except 异常类型N:
+     语句块N+1
+except:
+     语句块N+2
+else:
+     语句块N+3
+finally:
+    语句块N+4  
+
+
+Python程序设计
+
+25
+
+## Slide 26
+
+异常处理（续3）
+
+说明
+正常程序在语句块1中执行。
+如果程序执行中发生异常，中止程序运行，跳转到所对应的异常处理块中执行。
+在“except 异常类型 ”语句中找对应的异常类型，如果找到的话，执行后面的语句块。
+如果找不到，则执行“except”后面的语句块N+2。
+如果程序正常执行没有发生异常，则继续执行else后的语句块N+3。
+无论异常是否发生，最后都执行finally后面语句块N+4。
+
+Python程序设计
+
+26
+
+## Slide 27
+
+标准异常
+
+Python程序设计
+
+27
+
+表4-4 Python常见的标准异常
+
+## Slide 28
+
+例7-5  除数为0的异常处理
+
+x=int(input())
+y=int(input())
+try:
+    result = x / y
+except ZeroDivisionError:
+    print("division by zero!")
+else:
+    print("result is", result)
+finally:
+    print("executing finally clause")
+程序输入：
+6
+4
+程序输出：
+result is 1.5
+executing finally clause
+
+Python程序设计
+
+28
+
+程序输入：
+5
+0
+程序输出：
+division by zero!
+executing finally clause
+
+## Slide 29
+
+例7-6  输入文件名，打印文件内容
+
+def open_file():
+    while True:
+        filename=input("请输入文件名：")
+        try:
+            textfile = open(filename,"rt") #以文本方式打开
+            return textfile
+        except OSError:
+            print("没有这个文件，请重新输入文件名!")
+
+f=open_file()
+
+print(f.readline())
+
+f.close()
+
+Python程序设计
+
+29
+
+## Slide 30
+
+获取其他的异常细节
+
+有时需要除了异常类型以外其他的异常细节，可以使用下面的格式获取整个异常对象：
+ except Exception as name
+
+
+Python程序设计
+
+30
+
+## Slide 31
+
+例 7-7 except Exception as name应用举例
+
+short_list = [1, 2, 3]
+while True:
+    value = input('Position [q to quit]? ')
+    if value == 'q':
+        break
+    try:
+       position = int(value)
+       print(short_list[position])
+    except IndexError as err:
+       print('Bad index:', position)
+    except Exception as other:
+       print('Something else broke:', other)
+
+Python程序设计
+
+31
+
+## Slide 32
+
+raise 语句
+
+前面讨论了异常处理，但是其中讲到的所有异常都是在Python 或者它的标准库中提前定义好的。根据自己的目的可以使用任意的异常类型，同时也可以自己定义异常类型。这就是raise语句
+
+
+Python程序设计
+
+32
+
+## Slide 33
+
+raise 语句
+
+ raise 表达式
+ 表达式描述引发的异常
+
+def area(r):
+    if r>=0:
+        s=3.14159*r*r
+        return s
+    else:
+        raise ValueError("参数错误，半径小于0")
+
+r=float(input())
+try:
+    print(area(r))
+except ValueError as msg:
+    print(msg)
+
+Python程序设计
+
+33
+
+## Slide 34
+
+ assert语句
+
+ assert是断言语句，系统变量  __debug__ 为True时
+    有效
+
+    assert   表达式
+    等价于：
+    if not 表达式：
+        raise  AssertionError
+
+     assert  表达式1，表达式2
+     等价于：
+     if not 表达式1：
+        raise  AssertionError(表达式2）
+
+
+Python程序设计
+
+34
+
+## Slide 35
+
+例7-8  计算圆面积
+
+def area(r):
+    assert r>0,"参数错误，半径小于0"
+    s=3.14159*r*r
+    return s
+    
+r=float(input())
+try:
+    print(area(r))
+except AssertionError as msg:
+    print(msg)
+
+Python程序设计
+
+35
+
+## Slide 36
+
+ *7.3  用Pandas模块读写常见格式文件
+
+
+Python的模块函数分三个层次：
+ 
+一.内置函数
+ 
+   不用import语句引入，它里面的函数可直接调用。
+ 
+二.标准模块函数
+ 
+   用import语句引入后再调用，但不必安装。如math库。 
+ 
+三.第三方模块函数
+   需先安装，再用import语句引入模块后才能调用里面
+   的函数，如Pandas模块。
+
+
+Python程序设计
+
+36
+
+## Slide 37
+
+第三方库安装
+
+Python程序设计
+
+37
+
+打开网页：https://pypi.org/
+输入模块名，就可查到模块的详细说明
+
+
+## Slide 38
+
+pip命令
+
+Python程序设计
+
+38
+
+c:\>pip install pandas  #安装pandas模块
+c:\>pip install d:\pandas-1.0.3-cp37-cp37m-win_amd64.whl   #下载文件后安装
+
+
+
+
+
+## Slide 39
+
+换模块的安装源
+
+ pip install pandas –i  https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+Python程序设计
+
+39
+
+## Slide 40
+
+Thonny环境第三方模块安装
+
+选择 ToolsManage  packages
+在右图输入需要安装的模块名
+查找安装
+
+
+Python程序设计
+
+40
+
+## Slide 41
+
+模块版本选择
+
+Python程序设计
+
+41
+
+## Slide 42
+
+ user选项
+
+没有权限修改系统默认的Python环境，把模块安装
+    在用户主目录
+在Pythonanywhere上安装,python3.6版本： 
+   $>pip3.6 install  –-user  –-upgrade  plotly
+ 系统里不是plotly最新版，上面这条命令让你升级plotly最新版。
+
+
+Python程序设计
+
+42
+
+## Slide 43
+
+Pandas模块
+
+Pandas是python的一个数据分析包
+
+Pandas最初被作为金融数据分析工具而开发出来，Pandas为时间序列分析提供了很好的支持。
+Pandas是基于NumPy 的一种工具。
+
+Pandas 纳入了大量函数和一些标准的数据模型，提供了高效操作大型数据集所需的工具，提供了大量能使我们快速便捷地处理数据的函数和方法，让Python成为强大而高效的数据分析环境。
+
+设置pandas的绘图模块
+pandas.options.plotting.backend = "plotly"
+
+
+
+Python程序设计
+
+43
+
+## Slide 44
+
+Plotly模块
+
+Plotly是一个基于JavaScript的动态绘图模块。Plotly的绘图效果与我们在网页上看到的动态交互式绘图结果是一样的，其默认的绘图结果是一个HTML网页文件，通过浏览器就可以查看。
+Plotly有着强大又丰富的绘图库，支持各种类型的绘图方案。
+Plotly是基于JavaScript的绘图库，所以其绘图结果可以与web应用无缝集成。
+Plotly最初是一款商业化的绘图软件，自plotly.js开源之后，我们可以使用本地的离线模式进行绘图，不依赖于官方的服务器 ，使得绘图速度更快，而效果与在线绘图一样。
+离线模式：  from plotly.offline import plot
+有三个子模块创建图形
+           plotly.graph_objs，plotly. figure_factory, plotly.express
+
+
+
+Python程序设计
+
+44
+
+## Slide 45
+
+DataFrame数据类型
+
+DataFrame是Pandas库的一种数据类型。DataFrame是一个行和列都具有标签的表格，它与Excel电子表格并无不同。
+DataFrame使用非常方便，当你在处理二维表格数据时，都应该使用它们。DataFrame可由元组、列表、字典或另一个DataFrame构造出来
+
+
+Python程序设计
+
+45
+
+## Slide 46
+
+
+
+用列表产生DataFrame变量data
+
+import pandas as pd
+
+data=pd.DataFrame([["2050921018","詹延峰","计算数学",65,85,76],
+                   ["2050921036","李小鹏","金融学类",86,95,85], 
+                   ["2050921039","裴凡法","经济学类",86,95,65],
+                   ["2040912116","茅舒瑶","社会保障",90,95,100],
+                   ["2050912017","陈见影","化学工程",62,75,92], 
+                   ["2050912064","梅钦钦","材料科学",87,95,80], 
+                   ["2050109153","王影平"," 大气科学",86,89,72], 
+                   ["2050151003","韩平医","化学工程",82,99,60]],
+                  columns=("学号    ","姓名  ","专业  ","笔试 ","平时  ","实验    "))
+print(data)
+
+Python程序设计
+
+46
+
+列名
+
+
+
+行索引
+
+
+
+## Slide 47
+
+用列表产生DataFrame变量data，表格显示
+
+from plotly.offline import plot
+from plotly import figure_factory as FF
+import pandas as pd
+
+data=pd.DataFrame([["2050921018","詹延峰","计算数学",65,85,76], ["2050921036","李 小鹏"," 金融学类",86,95,85], ["2050921039","裴凡法","经济学类",86,95,65], ["2040912116","茅舒瑶","社会保障",90,95,100], ["2050912017","陈 见影","化学 工程",62,75,92], ["2050912064","梅 钦钦","材料科学",87,95,80], ["2050109153","王影平"," 大 气科学",86,89,72], ["2050151003","韩平医","化学 工程",82,99,60]], columns=("学号","姓名","专业","笔试","平时","实验"))
+
+fig = FF.create_table(data)   #用plotly产生输出表格
+plot(fig, show_link=False)
+
+
+Python程序设计
+
+47
+
+## Slide 48
+
+用DataFrame计算总评分
+
+from plotly.offline import plot
+from plotly import figure_factory as FF
+import pandas as pd
+data=pd.DataFrame([["2050921018","詹延峰","计算数学",65,85,76], ["2050921036","李 小鹏"," 金融学类",86,95,85], ["2050921039","裴凡法","经济学类",86,95,65], ["2040912116","茅舒瑶","社会保障",90,95,100], ["2050912017","陈 见影","化学 工程",62,75,92], ["2050912064","梅 钦钦","材料科学",87,95,80], ["2050109153","王影平"," 大 气科学",86,89,72], ["2050151003","韩平医","化学 工程",82,99,60]], columns=("学号","姓名","专业","笔试","平时","实验"))
+#data变量中增加一列
+data["总评成绩 "]=data["笔试"]*0.5+data["平时"]*0.25+data["实验"]*0.25
+fig = FF.create_table(data)
+plot(fig, show_link=False)
+
+
+Python程序设计
+
+48
+
+## Slide 49
+
+用pandas读写各种类型文件
+
+Python程序设计
+
+49
+
+read_csv              to_csv                读写csv 文件
+read_excel           to_excel             读写excel 文件
+read_json             to_json              读写json 文件
+
+
+
+
+
+## Slide 50
+
+读取CSV文件
+
+from plotly.offline import plot
+from plotly import figure_factory as FF
+import pandas as pd
+
+data = pd.read_csv("score.csv",encoding="GBK")
+fig = FF.create_table(data)   #产生表格
+plot(fig, show_link=False)
+
+“GB2312”、“GBK”和“CP936”都是用两个字节表示中文的编码。“GB2312”是国标码，"GBK"是"GB2312"的扩展，
+"CP936"是在"GB2312"基础上开发的汉字编码。
+
+
+Python程序设计
+
+50
+
+## Slide 51
+
+写网页文件
+
+
+产生网页文件‘score.html’
+
+from plotly.offline import plot
+from plotly import figure_factory as FF
+import pandas as pd
+
+data = pd.read_csv("score.csv",encoding="GBK")
+fig = FF.create_table(data)   #产生表格
+plot(fig, filename='score.html',show_link=False)
+
+Python程序设计
+
+51
+
+## Slide 52
+
+读写Excel 文件
+
+要先装xlrd模块,openpyxl模块
+
+读score.xlsx文件
+写入scoregp.xlsx文件
+
+import pandas as pd
+data = pd.read_excel("score.xlsx")
+data["总评"]=data["笔试"]*0.5+data["平时"]*0.25+data["实验"]*0.25 
+data.to_excel("scoregp.xlsx",index=0)
+
+
+Python程序设计
+
+52
+
+## Slide 53
+
+JSON 文件读写
+
+JSON文件主要有两种结构：
+
+“键/值”对的集合：不同的语言中，它被理解为对象 ，纪录，结构，字典，哈希表，有键列表，或者关联数组 。Python中对应字典类型。
+值的有序列表：在大部分语言中，它被理解为数组。Python中对应列表类型。
+
+
+Python程序设计
+
+53
+
+## Slide 54
+
+to_json和read_json
+
+读取Excel 文件"score.xlsx”，用to_json函数产生JSON 文件data.json, 最后用read_json读JSON 文件“data.json”
+
+import pandas as pd
+data = pd.read_excel("score.xlsx")
+# force_ascii=False 有中文时不要用ASCII编码
+data.to_json("data.json",force_ascii=False)
+jsondata=pd.read_json("data.json")
+print(jsondata)
+
+
+
+Python程序设计
+
+54
+
+## Slide 55
+
+*json模块的函数
+
+Python程序设计
+
+55
+
+## Slide 56
+
+*jsonpath--解析多层嵌套json数据模块
+
+jsonPath 是一种信息抽取类库，是从JSON文档中抽取指定信息的工具，提供多种语言实现版本，包括：Javascript, Python， PHP 和 Java
+模块的安装：pip install jsonpath
+jsonpath语法
+
+
+Python程序设计
+
+56
+
+## Slide 57
+
+*应用举例--jsonpathelement
+
+import jsonpath
+datas = jsonpath.jsonpath(json_data, "$..author")
+for data in datas:
+    print(data)
+
+程序运行结果
+Nigel Rees
+Evelyn Waugh
+Herman Melville
+J. R. R. Tolkien
+
+
+
+json_data = {
+    "store": {
+        "book": [
+            {
+                "category": "reference",
+                "author": "Nigel Rees",
+                "title": "Sayings of the Century",
+                "price": 8.95
+            },
+            {
+                "category": "fiction",
+                "author": "Evelyn Waugh",
+                "title": "Sword of Honour",
+                "price": 12.99
+            },
+            {
+                "category": "fiction",
+                "author": "Herman Melville",
+                "title": "Moby Dick",
+                "isbn": "0-553-21311-3",
+                "price": 8.99
+            },
+            {
+                "category": "fiction",
+                "author": "J. R. R. Tolkien",
+                "title": "The Lord of the Rings",
+                "isbn": "0-395-19395-8",
+                "price": 22.99
+            }
+        ],
+        "bicycle": {
+            "color": "red",
+            "price": 19.95
+        }
+    },
+    "expensive": 10
+}
+
+
+Python程序设计
+
+57
+
+## Slide 58
+
+7.4 交互式数据可视化---plotly模块(4.0版)
+
+#用plotly.graph_objects创建图对象
+from plotly.offline import plot
+
+import plotly.graph_objects as go
+fig = go.Figure()     #创建图
+#增加曲线图
+fig.add_trace(go.Scatter(y=[2, 1, 4, 3]))
+#增加柱状图
+fig.add_trace(go.Bar(y=[1, 4, 3, 2]))
+#增加文字
+fig.update_layout(title = 'Hello Figure')
+plot(fig)
+
+Python程序设计
+
+58
+
+## Slide 59
+
+plotly.express 创建图
+
+import plotly.express as px
+import pandas as pd
+
+
+data = pd.read_csv("score.csv",encoding="GBK")
+data["总评成绩 "]=data["笔试"]*0.5+data["平时"]*0.25+data["实验"]*0.25
+fig = px.line(data,x="姓名",y="总评成绩 ")
+plot(fig)
+
+
+Python程序设计
+
+59
+
+## Slide 60
+
+【7-16】同时绘制笔试和总评分                的折线图
+
+import plotly.graph_objs as pygo
+import pandas as pd
+
+data = pd.read_csv("score.csv",encoding="GBK")
+data["总评成绩"]=data["笔试"]*0.5+data["平时"]*0.25+data["实验"]*0.25
+
+trace0=pygo.Scatter(x=data["姓名"],y=data["总评成绩"],name="总评成绩") #总评折线
+trace1=pygo.Scatter(x=data["姓名"],y=data["笔试"],name="笔试成绩") #笔试折线
+
+#x=0.5,xanchor='center',xref='container' 把图的标题放在中间位置
+layout=pygo.Layout(title=dict(text="总评成绩和笔试成绩相关图",x=0.5,xanchor='center',xref='container')) 
+fig=pygo.Figure(data=[trace0,trace1],layout=layout)
+fig.show()
+
+
+
+
+Python程序设计
+
+60
+
+## Slide 61
+
+【7-17】 绘制成绩柱状图
+
+import plotly.graph_objs as pygo
+import pandas as pd
+
+data = pd.read_csv("score.csv",encoding="GBK")
+trace0=pygo.Bar(x=data["姓名"],y=data["平时"]*0.25,name="平时成绩")
+trace1=pygo.Bar(x=data["姓名"],y=data["笔试"]*0.5,name="笔试成绩")
+trace2=pygo.Bar(x=data["姓名"],y=data["实验"]*0.25,name="实验成绩")
+
+layout=pygo.Layout(title=dict(text="层叠柱状图表示成绩",x=0.5,xanchor='center'),barmode='stack')
+
+fig=pygo.Figure([trace0,trace1,trace2],layout)
+fig.show()
+
+
+
+
+
+
+Python程序设计
+
+61
+
+## Slide 62
+
+显示各部分成绩
+
+Python程序设计
+
+62
+
+## Slide 63
+
+【7-18】地理化数据显示
+
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as pygo
+
+data=pd.read_csv("covid_19.csv")
+
+fig=px.scatter_geo(data,
+                   locations="Country",locationmode="country names",
+                   color_discrete_sequence=px.colors.qualitative.Light24,
+                   color="Country",size="Cumulative_deaths",
+                   hover_data=["Cumulative_cases"],hover_name="Country",
+                   title='''累计到2020年11月1号部分国家新冠肺炎数据，
+                         <br>数据来源世界卫生组织 https://covid19.who.int/info''',
+                   )
+
+fig.show()
+
+
+Python程序设计
+
+63
+
+## Slide 64
+
+新冠肺炎数据的地图显示
+
+Python程序设计
+
+64

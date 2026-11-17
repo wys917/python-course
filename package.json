@@ -1,0 +1,24 @@
+{
+  "name": "python-course",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs --host 0.0.0.0",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs --host 0.0.0.0",
+    "test": "node --test tests/content.test.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.0.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-mathjax3": "^4.3.2",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.0"
+  },
+  "overrides": {
+    "vite": "^6.4.6"
+  }
+}

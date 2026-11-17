@@ -1,0 +1,13 @@
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+playwright-report/
+test-results/
+.DS_Store
+
+# Local course source archives (not published to GitHub).
+/题目/
+/课件/
+/image-*.png
+/网站文案编辑稿.md
+/materials/*课件*.txt

@@ -1,0 +1,166 @@
+{
+  "2026下-python-第1章作业/7-1": {
+    "code": "a = int(input())\nb = int(input())\nprint(a + b)\n",
+    "explanation": "分别读取两行整数，再输出它们的和，不附加提示语。"
+  },
+  "2026下-python-第1章作业/7-2": {
+    "code": "a, b, c = map(int, input().split())\nprint(b * b - 4 * a * c)\n",
+    "explanation": "同一行拆分三个整数，按乘法优先级计算公式。若输入允许小数，可将 int 改为 float；原题样例采用整数。"
+  },
+  "2026下-python-第1章作业/7-3": {
+    "code": "print('人生苦短，我学Python')\n",
+    "explanation": "题目无输入，按原文输出，注意中文逗号及 Python 的大小写。这句话属于题面要求。"
+  },
+  "2026下-python-第1章作业/7-4": {
+    "code": "print('*   *\\n*   *\\n*****\\n*   *\\n*   *')\n",
+    "explanation": "使用换行符分隔五行；第一、二、四、五行的星号之间有三个空格。"
+  },
+  "2026下-python-第2章作业/7-1": {
+    "code": "m = int(input())\nprint(f'sum = {sum(range(11, m + 1))}')\n",
+    "explanation": "range 终点取 m+1，保证包含 m，输出等号两侧各一个空格。"
+  },
+  "2026下-python-第2章作业/7-2": {
+    "code": "x = float(input())\nresult = 0 if x == 0 else 1 / (2 * x)\nprint(f'g({x:.3f}) = {result:.3f}')\n",
+    "explanation": "x=0 时单独处理，避免除零；其他情况计算 1/(2x)，两个数都保留三位小数。"
+  },
+  "2026下-python-第2章作业/7-3": {
+    "code": "usage, extra = map(float, input().split())\ncost = min(usage, 50) * 0.53 + max(usage - 50, 0) * (0.53 + extra)\nprint(f'cost = {cost:.2f}')\n",
+    "explanation": "前 50 度按基础单价收费，只有超过的部分加价；结果格式化为两位小数。"
+  },
+  "2026下-python-第2章作业/7-4": {
+    "code": "from fractions import Fraction\nfrom math import ceil\nn = int(input())\ntotal = sum((Fraction(1, 2 * i - 1) for i in range(1, n + 1)), Fraction())\nprint(f'sum ≈ {ceil(total)}')\n",
+    "explanation": "第 i 项为 1/(2i-1)，累加后向上取整。使用 Fraction 避免整数边界附近的浮点累加误差。"
+  },
+  "2026下-python-第2章作业/7-5": {
+    "code": "n = int(input())\ntotal = sum((-1) ** (i - 1) * i / (2 * i - 1) for i in range(1, n + 1))\nprint(f'{total:.3f}')\n",
+    "explanation": "第 i 项的分子为 i，分母为 2i-1，符号为 (-1) 的 i-1 次方；输出保留三位小数。"
+  },
+  "2026下-python-第2章作业/7-6": {
+    "code": "a, b = map(int, input().replace(',', ' ').split())\nprint(int(str(a) * b))\n",
+    "explanation": "按样例兼容逗号及两侧空格，重复数字字符串 B 次，再按整数输出。"
+  },
+  "2026下-python-第2章作业/7-7": {
+    "code": "digits, base = input().replace(',', ' ').split()\nprint(int(digits, int(base)))\n",
+    "explanation": "保留第一个输入为字符串，再交给 int(字符串,基数) 解析，不能先按十进制转掉。"
+  },
+  "2026下-python-第2章作业/7-8": {
+    "code": "numbers = sorted(map(int, input().split()))\nprint('<'.join(chr(n) for n in numbers))\n",
+    "explanation": "先按码点从小到大排序，用 chr 转字符，再以 < 连接，不加空格。"
+  },
+  "2026下-python-第2章作业/7-9": {
+    "code": "lower, upper = map(int, input().split())\nif not (-20 <= lower <= upper <= 50):\n    print('Invalid.')\nelse:\n    print('celsius    fahr')\n    for c in range(lower, upper + 1, 2):\n        print(f'{c}{c * 1.8 + 32:14.1f}')\n",
+    "explanation": "先验证范围。每次摄氏度递增 2；华氏数值占 14 字符宽度，右对齐并保留一位小数。"
+  },
+  "2026下-python-第2章作业/7-10": {
+    "code": "a, n = map(int, input().split())\nprint(sum(int(str(a) * width) for width in range(2, n + 1, 2)))\n",
+    "explanation": "长度依次取 2、4、…、n，分别构造对应的重复数字整数并求和。"
+  },
+  "2026下-python-第2章作业/7-11": {
+    "code": "from fractions import Fraction\nfrom math import floor\nm, n = map(int, input().split())\ntotal = sum((i * i + Fraction(1, i) for i in range(m, n + 1)), Fraction())\nprint(f'sum ≈ {floor(total)}')\n",
+    "explanation": "每项为 i²+1/i，求和后按题目提示 floor 向下取整。Fraction 保留精确值，避免例如 m=n=1 时的浮点误差。题面“小于”与 floor 在整数处不同，此处采用提示的 floor 定义。"
+  },
+  "2026下-python-第2章作业/7-12": {
+    "code": "import math\nx = float(input())\nresult = math.sin(math.radians(35)) + (math.exp(x) - 15 * x) / math.sqrt(x ** 4 + 1) - math.log(7 * x)\nprint(f'f({x})={result:.3f}')\n",
+    "explanation": "图中 sin(35°) 需先将角度转弧度；分母为 sqrt(x⁴+1)，ln 用 math.log。x 按 float 输出，函数值保留三位小数。"
+  },
+  "2026下-python-第2章作业/7-13": {
+    "code": "x = float(input())\ny = 4 * x / 3 if x <= 15 else 2.5 * x - 17.5\nprint(f'{y:.2f}')\n",
+    "explanation": "15 吨及以下用第一段，超过 15 吨用第二段；在边界处两段都为 20 元。"
+  },
+  "2026下-python-第2章作业/7-14": {
+    "code": "n = int(input())\nfor i in range(1, n + 1):\n    print('* ' * i)\n",
+    "explanation": "每行输出 i 个星号，每个星号后一个空格，保留该作业原始样例的行尾空格。"
+  },
+  "2026下-python-第3章作业/7-1": {
+    "code": "heights = list(map(int, input().split()))\ntotal = sum(heights)\nfor height in heights:\n    if height * len(heights) > total:\n        print(height, end=' ')\nprint()\n",
+    "explanation": "通过 height×人数 > 总和 比较是否高于平均值，避免浮点误差，保留原输入顺序及每个数后的空格。"
+  },
+  "2026下-python-第3章作业/7-2": {
+    "code": "s = input()\na, b = input().split()\nfor i in range(len(s) - 1, -1, -1):\n    if s[i] == a or s[i] == b:\n        print(i, s[i])\n",
+    "explanation": "从最大下标倒序检查，两种字符任意匹配即输出；即使两字符相同也不会重复输出。"
+  },
+  "2026下-python-第3章作业/7-3": {
+    "code": "s = str(int(input()))\nprint(len(s), sum(int(c) for c in s))\n",
+    "explanation": "整数转成规范字符串后，用长度统计位数，逐字符转数字求和。"
+  },
+  "2026下-python-第3章作业/7-4": {
+    "code": "s = input()\ntable = tuple('ZYXWVUTSRQPONMLKJIHGFEDCBA')\nprint(''.join(table[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in s))\n",
+    "explanation": "转换表按 A→Z、B→Y 的顺序保存，只替换大写英文字母，其余字符原样保留。"
+  },
+  "2026下-python-第3章作业/7-5": {
+    "code": "s = input().strip()\ntarget = input().strip().lower()\nresult = ''.join(c for c in s if c.lower() != target)\nprint('result:', result)\n",
+    "explanation": "按题意清理两端空格，用小写形式比较、原字符输出，保留字符串内部其他空格。"
+  },
+  "2026下-python-第3章作业/7-6": {
+    "code": "s = input()\nseen = set()\nresult = ''\nfor c in s:\n    if ('a' <= c <= 'z' or 'A' <= c <= 'Z') and c.lower() not in seen:\n        seen.add(c.lower())\n        result += c\n        if len(result) == 10:\n            break\nprint(result if len(result) == 10 else 'not found')\n",
+    "explanation": "只接受英文字母，使用小写形式去重，保留首次出现的大小写与顺序，满 10 个立即停止。"
+  },
+  "2026下-python-第3章作业/7-7": {
+    "code": "print(int(input().strip()[::-1]))\n",
+    "explanation": "反转文本后转整数，自动去掉逆序结果的前导零，例如 700→007→7。"
+  },
+  "2026下-python-第3章作业/7-8": {
+    "code": "a = input().lower()\nb = input().lower()\nprint('yes' if sorted(a) == sorted(b) else 'no')\n",
+    "explanation": "按样例 1 忽略大小写，排序后逐字符比较，保留数字、空格及字符重复次数；不能只比较集合。原始样例 3 中 Wellcom 与 mocllew 在忽略大小写后确为变位词，但给定输出为 no，与题意及样例 1 冲突；本解按题意输出 yes，保留原始样例并注明差异。"
+  },
+  "2026下-python-第3章作业/7-9": {
+    "code": "s = input()\nchar, index = max((c, i) for i, c in enumerate(s))\nprint(f'{char}   {index}')\n",
+    "explanation": "元组先比较字符，再比较下标，因此重复最大字符时选最大下标；中间严格输出三个空格。题目按非空字符串处理。"
+  },
+  "2026下-python-第3章作业/7-10": {
+    "code": "n = int(input())\nlongest = 0\nfor _ in range(n):\n    longest = max(longest, len(input().lstrip(' ')))\nprint(f'length={longest}')\n",
+    "explanation": "逐行读取，去掉左端普通空格，保留末尾空格，累计最大长度。输出前缀按样例为 length=。"
+  },
+  "2026下-python-第3章作业/7-11": {
+    "code": "n = int(input())\nprint(bin(n).count('1'))\n",
+    "explanation": "bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0。"
+  },
+  "2026下-python-第3章作业/7-12": {
+    "code": "a = int(input())\nb = int(input())\nprint(f'{a:08b}')\nprint(f'{b:08b}')\nprint('--------')\nprint(f'{a + b:08b}')\n",
+    "explanation": "08b 表示二进制并补零到 8 位，先输出两操作数，再输出分隔线及和。"
+  },
+  "2026下-python-第3章作业/7-13": {
+    "code": "x, y = map(int, input().split())\nprint(bin(x ^ y).count('1'))\n",
+    "explanation": "异或在不同二进制位上产生 1，统计这些 1 即为汉明距离。"
+  },
+  "2026下-python-第3章作业/7-14": {
+    "code": "s = ''.join(c.lower() for c in input() if c.isalnum())\nprint('yes' if s == s[::-1] else 'no')\n",
+    "explanation": "只保留字母数字、统一小写，再比较自身与逆序字符串。isalnum 按 Unicode 字符规则判断。"
+  },
+  "2026下-python-第3章作业/7-15": {
+    "code": "s = input()\nh = ''.join(c for c in s if c in '0123456789abcdefABCDEF')\nprint(h)\nprint(int(h, 16) if h else 0)\n",
+    "explanation": "筛选合法十六进制字符，保留原大小写，再按基数 16 转整数。题面未规定完全无合法字符时的输出，此解约定输出空行和 0。"
+  },
+  "2026下-python-第3章作业/7-16": {
+    "code": "a = input()\nb = input()\nprint(sum(c in b for c in a))\n",
+    "explanation": "遍历不含重复字符的 A，逐个判断是否在 B 中，不统计 B 中的重复次数，比较区分大小写。"
+  },
+  "2026下-python-第3章作业/7-17": {
+    "code": "n = int(input())\nweights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]\ncodes = '10X98765432'\ninvalid = []\nfor _ in range(n):\n    number = input().strip()\n    if len(number) != 18 or any(c not in '0123456789' for c in number[:17]):\n        invalid.append(number)\n        continue\n    total = sum(int(c) * w for c, w in zip(number[:17], weights))\n    if number[-1] != codes[total % 11]:\n        invalid.append(number)\nprint('\\n'.join(invalid) if invalid else 'All passed')\n",
+    "explanation": "先确认前 17 位均为数字，再计算加权和，对 11 取模并查表。按输入顺序保存错误号码，全部正确时输出 All passed。"
+  },
+  "2026下-PTA测试1/7-1": {
+    "code": "x = float(input())\nresult = 0 if x == 0 else 1 / (2 * x)\nprint(f'g({x:.3f}) = {result:.3f}')\n",
+    "explanation": "x=0 时单独处理，避免除零；其他情况计算 1/(2x)，两个数都保留三位小数。"
+  },
+  "2026下-PTA测试1/7-11": {
+    "code": "from fractions import Fraction\nfrom math import floor\nm, n = map(int, input().split())\ntotal = sum((i * i + Fraction(1, i) for i in range(m, n + 1)), Fraction())\nprint(f'sum ≈ {floor(total)}')\n",
+    "explanation": "每项为 i²+1/i，求和后按题目提示 floor 向下取整。Fraction 保留精确值，避免例如 m=n=1 时的浮点误差。题面“小于”与 floor 在整数处不同，此处采用提示的 floor 定义。"
+  },
+  "2026下-PTA测试1/7-12": {
+    "code": "import math\nx = float(input())\nresult = math.sin(math.radians(35)) + (math.exp(x) - 15 * x) / math.sqrt(x ** 4 + 1) - math.log(7 * x)\nprint(f'f({x})={result:.3f}')\n",
+    "explanation": "图中 sin(35°) 需先将角度转弧度；分母为 sqrt(x⁴+1)，ln 用 math.log。x 按 float 输出，函数值保留三位小数。"
+  },
+  "2026下-PTA测试1/7-5": {
+    "code": "values = sorted(map(int, input().split()), reverse=True)\nprint('>'.join(map(str, values)))\n",
+    "explanation": "按数值降序排序，再转字符串以 > 连接；不能先按字符串排序。"
+  },
+  "2026下-PTA测试1/7-6": {
+    "code": "start, end = map(int, input().split())\nstart_minutes = start // 100 * 60 + start % 100\nend_minutes = end // 100 * 60 + end % 100\nhours, minutes = divmod(end_minutes - start_minutes, 60)\nprint(f'在途时间是{hours}小时{minutes}分钟')\n",
+    "explanation": "小时用 //100 提取，分钟用 %100 提取，统一换算为分钟求差，再除以 60。题目保证同日到达，无需跨日处理。"
+  },
+  "2026下-PTA测试1/7-14": {
+    "code": "n = int(input())\nfor i in range(1, n + 1):\n    print('* ' * i)\n",
+    "explanation": "每行有 i 个星号，每个星号后输出一个空格，保留原始网页样例的行尾空格。"
+  }
+}
