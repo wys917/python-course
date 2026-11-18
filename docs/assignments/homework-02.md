@@ -30,9 +30,6 @@ questionGroups:
  print(sum([int('a'*i) for i in range(1,n+1)]))
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -66,11 +63,14 @@ print(int('11', 2))    # 3：以二进制解析
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-2 | 1-2 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -81,9 +81,6 @@ print(int('11', 2))    # 3：以二进制解析
     i=3         
     ++i
 ```
-
-
-::::
 
 ::: answer
 
@@ -103,7 +100,7 @@ F（错误）。
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -111,11 +108,14 @@ F（错误）。
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-3 | 1-3 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -128,9 +128,6 @@ b=int(b)
 c=int('a',b)
 print(c)
 ```
-
-
-::::
 
 ::: answer
 
@@ -165,11 +162,14 @@ int('a',8) 解析的是字母 a，不是变量 a；八进制不包含 a。应写
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-4 | 1-4 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -184,9 +184,6 @@ else:
     result=1/x
 print('f({0:.1f}) = {1:.1f}'.format(x,result))
 ```
-
-
-::::
 
 ::: answer
 
@@ -221,19 +218,19 @@ int('10.0') 引发 ValueError，程序不能运行到输出；应使用 float(in
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-5 | 1-5 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式 `-2**4` 等于16。
-
-
-::::
 
 ::: answer
 
@@ -253,7 +250,7 @@ F（错误）。
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -261,11 +258,14 @@ F（错误）。
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-6 | 1-6 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -283,9 +283,6 @@ print('{:^5}'.format('*'*m))
 print('{:^m}'.format('*'*m))
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -311,7 +308,7 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -319,11 +316,14 @@ print(f'{"11":0>5s}')  # 00011
 
 <h4>容易出错的地方</h4>
 
-<p>区分实际数值和显示形式；宽度是最小宽度，精度控制显示。</p>
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-7 | 1-7 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -332,9 +332,6 @@ print(f'{"11":0>5s}')  # 00011
 
 `print("这是字符串输出格式{:5s}".format("123"))`
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -360,7 +357,7 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -368,20 +365,20 @@ print(f'{"11":0>5s}')  # 00011
 
 <h4>容易出错的地方</h4>
 
-<p>区分实际数值和显示形式；宽度是最小宽度，精度控制显示。</p>
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-8 | 1-8 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 下面语句的输出是：这是数字输出格式$\Box$$\Box$123。 $\Box$表示空格  
 `print("这是数字输出格式{:5d}".format(123))`
-
-
-::::
 
 ::: answer
 
@@ -408,7 +405,7 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -416,19 +413,19 @@ print(f'{"11":0>5s}')  # 00011
 
 <h4>容易出错的地方</h4>
 
-<p>区分实际数值和显示形式；宽度是最小宽度，精度控制显示。</p>
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-9 | 1-9 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 `int(True)`的返回值是1。
-
-
-::::
 
 ::: answer
 
@@ -448,7 +445,7 @@ T（正确）。
 
 继续阅读：[第2章：布尔类型与空值](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：真假值</h4><table><thead><tr><th>通常为假</th><th>通常为真</th></tr></thead><tbody><tr><td><code>False</code>、<code>0</code></td><td>非零数字</td></tr><tr><td><code>None</code>、<code>''</code></td><td>非空字符串</td></tr><tr><td><code>[]</code></td><td>非空容器</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -456,19 +453,19 @@ True 参与整数转换得到 1；False 转为 0。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-10 | 1-10 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 `bool(FALSE)`的返回值是True。
-
-
-::::
 
 ::: answer
 
@@ -496,19 +493,19 @@ Python 的布尔常量写作 False；未定义的 FALSE 会触发 NameError，�
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-11 | 1-11 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 `bool([])`的返回值是False。
-
-
-::::
 
 ::: answer
 
@@ -528,7 +525,7 @@ T（正确）。
 
 继续阅读：[第2章：布尔类型与空值](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：真假值</h4><table><thead><tr><th>通常为假</th><th>通常为真</th></tr></thead><tbody><tr><td><code>False</code>、<code>0</code></td><td>非零数字</td></tr><tr><td><code>None</code>、<code>''</code></td><td>非空字符串</td></tr><tr><td><code>[]</code></td><td>非空容器</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -536,19 +533,19 @@ T（正确）。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-12 | 1-12 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 `bool(None)`的返回值是False。
-
-
-::::
 
 ::: answer
 
@@ -568,7 +565,7 @@ T（正确）。
 
 继续阅读：[第2章：布尔类型与空值](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：真假值</h4><table><thead><tr><th>通常为假</th><th>通常为真</th></tr></thead><tbody><tr><td><code>False</code>、<code>0</code></td><td>非零数字</td></tr><tr><td><code>None</code>、<code>''</code></td><td>非空字符串</td></tr><tr><td><code>[]</code></td><td>非空容器</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -576,19 +573,19 @@ None 表示空值，布尔转换为 False。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-13 | 1-13 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 `print(bin(12.5))`的输出是`0b1100.1`
-
-
-::::
 
 ::: answer
 
@@ -623,19 +620,19 @@ bin() 接受整数，不接受 12.5 这样的浮点数，会引发 TypeError。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-14 | 1-14 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 int("92",8)的值是74。
-
-
-::::
 
 ::: answer
 
@@ -662,7 +659,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -670,19 +667,19 @@ print(bin(10))    # 0b1010
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-15 | 1-15 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式`3 and 0 and "hello"`的值是False。
-
-
-::::
 
 ::: answer
 
@@ -708,7 +705,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -716,21 +713,19 @@ and 返回第一个为假的操作数，这里返回整数 0，而不是布尔�
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question judgment-16 | 1-16 判断题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 z已赋值，x=(y=z+1)语句是错误语句
-
-
-::::
-
-<h2 id="choice" class="quiz-group">单选题<span>12 QUESTIONS</span></h2>
 
 ::: answer
 
@@ -758,11 +753,16 @@ T（正确）。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
+<h2 id="choice" class="quiz-group">单选题<span>12 QUESTIONS</span></h2>
+
 :::: question choice-1 | 2-1 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -776,9 +776,6 @@ T（正确）。
 **C.** float
 
 **D.** list
-
-
-::::
 
 ::: answer
 
@@ -806,11 +803,14 @@ Python 没有独立 char 类型，单个字符用长度为 1 的字符串表示�
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-2 | 2-2 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -824,9 +824,6 @@ Python 语句print(type(1J))的输出结果是______________。
 **C.** `<class ‘float’>`
 
 **D.** `<class ‘dict’>`
-
-
-::::
 
 ::: answer
 
@@ -861,11 +858,14 @@ print(abs(z))          # 5.0
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-3 | 2-3 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -879,9 +879,6 @@ Python 语句print(type(1/2))的输出结果是______________。
 **C.** `<class ‘float’>`
 
 **D.** `<class ‘double’>`
-
-
-::::
 
 ::: answer
 
@@ -909,11 +906,14 @@ C。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-4 | 2-4 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -927,9 +927,6 @@ Python 语句print(type(1//2))的输出结果是______________。
 **C.** `<class ‘float’>`
 
 **D.** `<class ‘double’>`
-
-
-::::
 
 ::: answer
 
@@ -957,11 +954,14 @@ A。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-5 | 2-5 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -975,9 +975,6 @@ Python 语句 a=121+1.21; print(type(a))的输出结果是_____________。
 **C.** `<class ‘double’>`
 
 **D.** `<class ‘long’>`
-
-
-::::
 
 ::: answer
 
@@ -1005,11 +1002,14 @@ B。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-6 | 2-6 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1023,9 +1023,6 @@ Python 语句 print(0xA + 0xB)的输出结果是______________。
 **C.** 0xA0xB
 
 **D.** 21
-
-
-::::
 
 ::: answer
 
@@ -1052,7 +1049,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1060,11 +1057,14 @@ print(bin(10))    # 0b1010
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-7 | 2-7 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1078,9 +1078,6 @@ Python 语句x=’car’; y = 2; print (x+y)的输出结果是____________。
 **C.** 'car2’
 
 **D.** 'carcar’
-
-
-::::
 
 ::: answer
 
@@ -1108,11 +1105,14 @@ Python 语句x=’car’; y = 2; print (x+y)的输出结果是____________。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-8 | 2-8 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1126,9 +1126,6 @@ Python 语句x=’car’; y = 2; print (x+y)的输出结果是____________。
 **C.** float
 
 **D.** bool
-
-
-::::
 
 ::: answer
 
@@ -1148,7 +1145,7 @@ D。
 
 继续阅读：[第2章：布尔类型与空值](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：真假值</h4><table><thead><tr><th>通常为假</th><th>通常为真</th></tr></thead><tbody><tr><td><code>False</code>、<code>0</code></td><td>非零数字</td></tr><tr><td><code>None</code>、<code>''</code></td><td>非空字符串</td></tr><tr><td><code>[]</code></td><td>非空容器</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1156,11 +1153,14 @@ D。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-9 | 2-9 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1174,9 +1174,6 @@ D。
 **C.** 13
 
 **D.** 6.0
-
-
-::::
 
 ::: answer
 
@@ -1204,11 +1201,14 @@ sqrt(4)=2.0，sqrt(9)=3.0，乘积为浮点数 6.0。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-10 | 2-10 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1222,9 +1222,6 @@ sqrt(4)=2.0，sqrt(9)=3.0，乘积为浮点数 6.0。
 **C.** 虚部必须后缀j, 且必须是小写
 
 **D.** 方法conjugate 返回复数的共轭复数
-
-
-::::
 
 ::: answer
 
@@ -1259,11 +1256,14 @@ print(abs(z))          # 5.0
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-11 | 2-11 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1277,9 +1277,6 @@ Python 语句 print(chr(65))的运行结果是___________。
 **C.** 5
 
 **D.** A
-
-
-::::
 
 ::: answer
 
@@ -1307,11 +1304,14 @@ chr(65) 返回字符 A。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question choice-12 | 2-12 单选题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -1325,11 +1325,6 @@ chr(65) 返回字符 A。
 **C.** 既可以用单引号，也可以用双引号创建字符串
 
 **D.** 在三引号字符串中可以包含换行回车等特殊字符
-
-
-::::
-
-<h2 id="blank" class="quiz-group">填空题<span>21 QUESTIONS</span></h2>
 
 ::: answer
 
@@ -1357,19 +1352,21 @@ Python 字符串不依赖空字符 \0 表示结束，长度由字符串对象记
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
+<h2 id="blank" class="quiz-group">填空题<span>21 QUESTIONS</span></h2>
+
 :::: question blank-1 | 4-1 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 表达式 10 + 5//3 –True+False的值为 _____ .
-
-
-::::
 
 ::: answer
 
@@ -1389,7 +1386,7 @@ Python 表达式 10 + 5//3 –True+False的值为 _____ .
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -1397,19 +1394,19 @@ Python 表达式 10 + 5//3 –True+False的值为 _____ .
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-2 | 4-2 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 表达式 3**2**3 的值为 _____
-
-
-::::
 
 ::: answer
 
@@ -1429,7 +1426,7 @@ Python 表达式 3**2**3 的值为 _____
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -1437,19 +1434,19 @@ Python 表达式 3**2**3 的值为 _____
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-3 | 4-3 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 表达式 round(17.0/3**2,2) 的值为 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1477,19 +1474,19 @@ Python 表达式 round(17.0/3**2,2) 的值为 _____ 。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-4 | 4-4 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 表达式 0 and 1 or not 2&lt;True 的值为 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1515,7 +1512,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1523,19 +1520,19 @@ print(not [])         # True
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-5 | 4-5 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 语句 print(int("20", 16), int("101",2))的输出结果是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1562,7 +1559,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1570,19 +1567,19 @@ print(bin(10))    # 0b1010
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-6 | 4-6 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 语句 print(hex(16), bin(10))的输出结果是(进制用小写字母表示） _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1609,7 +1606,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1617,19 +1614,19 @@ hex()、bin() 返回带小写前缀的字符串。
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-7 | 4-7 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 已知 a=3; b=5; c=6; d=True, 则表达式 not d or a>=0 and a+c>b+3的值是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1655,7 +1652,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1663,19 +1660,19 @@ not d 为假，a>=0 为真，a+c=9>b+3=8 为真，整体为 True。
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-8 | 4-8 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 语句 print(abs(-10.2), round(abs(8-2j),3)) 的输出结果是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1710,19 +1707,19 @@ abs(-10.2)=10.2；复数的模为 sqrt(8²+(-2)²)=sqrt(68)，保留 3 位小数
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-9 | 4-9 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 语句 x=True; y=False; z=False; print(x or y and z)的程序运行结果是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1748,7 +1745,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1756,19 +1753,19 @@ and 优先于 or，先得 y and z=False，再计算 True or False。
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-10 | 4-10 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 语句 x=0; y= True; print(x>=y and‘A'&lt;'B') 的程序运行结果是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1794,7 +1791,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1802,19 +1799,19 @@ x>=y 相当于 0>=1，为假，and 短路，结果为 False。题面弯引号按
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-11 | 4-11 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python 表达式 16-25>78/2 or "XYZ"!="xyz"and not (10-6>18/2)的值是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1840,7 +1837,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1848,19 +1845,19 @@ print(not [])         # True
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-12 | 4-12 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 Python输出 print("hello" 'world')的结果是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -1895,19 +1892,19 @@ print(len(s))          # 8
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-13 | 4-13 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式((2>=2) or (2&lt;2)) and 2的值为多少？ _____
-
-
-::::
 
 ::: answer
 
@@ -1933,7 +1930,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1941,19 +1938,19 @@ print(not [])         # True
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-14 | 4-14 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式 3 and 0 and 5的结果是什么？。 _____
-
-
-::::
 
 ::: answer
 
@@ -1979,7 +1976,7 @@ print(not [])         # True
 
 继续阅读：[第2章：逻辑运算](../topics/chapter-02.md)。
 
-
+<h4>知识点速查：and / or</h4><table><thead><tr><th>表达式</th><th>特点</th></tr></thead><tbody><tr><td><code>x and y</code></td><td>x 为假时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>x or y</code></td><td>x 为真时直接返回 x，否则继续并返回 y</td></tr><tr><td><code>not x</code></td><td>一定得到 True 或 False</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -1987,19 +1984,19 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 <h4>容易出错的地方</h4>
 
-<p>and/or 会返回某个操作数，并可能因为短路而不计算右侧。</p>
+<p>and/or 可能不计算右边，并且返回操作数本身。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-15 | 4-15 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式 --3 的结果是什么？ _____ 。
-
-
-::::
 
 ::: answer
 
@@ -2019,7 +2016,7 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -2027,19 +2024,19 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-16 | 4-16 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式 ---3 的结果是什么？ _____ 。
-
-
-::::
 
 ::: answer
 
@@ -2059,7 +2056,7 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
 
-<h4>Python 常见运算符优先级</h4><p>下面从高到低列出本课程常见的运算符。括号可以明确改变分组；同一层通常从左到右计算，乘方 <code>**</code> 是重要例外，它从右向左结合。</p><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x</code>、<code>-x</code>、<code>~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>*</code>、<code>/</code>、<code>//</code>、<code>%</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+</code>、<code>-</code></td><td>加、减</td></tr><tr><td></td><td><code>&lt;</code>、<code>&lt;=</code>、<code>&gt;</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code>、<code>in</code>、<code>is</code></td><td>比较</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>例如 <code>3 + 2 * 4</code> 先算乘法；<code>3 ** 2 ** 3</code> 要看成 <code>3 ** (2 ** 3)</code>，所以结果是 6561。</p>
+<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
 
 <h4>回到这道题</h4>
 
@@ -2067,19 +2064,19 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 <h4>容易出错的地方</h4>
 
-<p>长表达式不要凭直觉从左往右算，先找括号，再按优先级分层。</p>
+<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-17 | 4-17 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 表达式`32.2//6-24//6`的值是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -2107,11 +2104,14 @@ and 短路并返回遇到的假值 0，不继续检查 5。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-18 | 4-18 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2134,9 +2134,6 @@ print((lst1[0] if s[0]=="1" else 0)
         +(lst4[0] if s[3]=="1" else 0)
         +(lst5[0] if s[4]=="1" else 0))
 ```
-
-
-::::
 
 ::: answer
 
@@ -2163,7 +2160,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -2171,19 +2168,19 @@ print(bin(10))    # 0b1010
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-19 | 4-19 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
 
 汉字`张`的Unicode编码是 _____ 。
-
-
-::::
 
 ::: answer
 
@@ -2211,11 +2208,14 @@ ord('张') 得到十进制 24352；若要求 Unicode 码点形式，则写 U+5F2
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-20 | 4-20 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2226,9 +2226,6 @@ ord('张') 得到十进制 24352；若要求 Unicode 码点形式，则写 U+5F2
 -7 ^ 9 的结果是_____。
  ~9 的结果是_____
 ```
-
-
-::::
 
 ::: answer
 
@@ -2256,11 +2253,14 @@ ord('张') 得到十进制 24352；若要求 Unicode 码点形式，则写 U+5F2
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question blank-21 | 4-21 填空题
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2276,11 +2276,6 @@ while n>0:
 print(len(remainders))
 
 ```
-
-
-::::
-
-<h2 id="programming" class="quiz-group">编程题<span>14 QUESTIONS</span></h2>
 
 ::: answer
 
@@ -2308,11 +2303,16 @@ print(len(remainders))
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
+<h2 id="programming" class="quiz-group">编程题<span>14 QUESTIONS</span></h2>
+
 :::: question programming-1 | 7-1 计算 11+12+13+...+m
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2343,9 +2343,6 @@ print(len(remainders))
 sum = 4040
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2375,11 +2372,14 @@ range 终点取 m+1，保证包含 m，输出等号两侧各一个空格。
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-2 | 7-2 计算分段函数
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2428,9 +2428,6 @@ g(500.000) = 0.001
 g(0.000) = 0.000
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2470,11 +2467,14 @@ x=0 时单独处理，避免除零；其他情况计算 1/(2x)，两个数都保
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-3 | 7-3 阶梯电价
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2521,9 +2521,6 @@ cost = 5.30
 cost = 55.50
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2563,11 +2560,14 @@ print(c)  # A
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-4 | 7-4 求奇数分之一序列前N项近似和
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2598,9 +2598,6 @@ print(c)  # A
 sum ≈ 3
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2627,11 +2624,14 @@ print(f'sum ≈ {ceil(total)}')
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-5 | 7-5 求交错序列前N项和
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2658,9 +2658,6 @@ print(f'sum ≈ {ceil(total)}')
 0.917
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2685,11 +2682,14 @@ print(f'{total:.3f}')
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-6 | 7-6 产生每位数字相同的n位数
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2736,9 +2736,6 @@ print(f'{total:.3f}')
 3333
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2775,11 +2772,14 @@ print(int('11', 2))    # 3：以二进制解析
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-7 | 7-7 转换函数使用
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2810,9 +2810,6 @@ print(int('11', 2))    # 3：以二进制解析
 37
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2841,7 +2838,7 @@ print(bin(10))    # 0b1010
 
 继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
 
-
+<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
 
 <h4>回到这道题</h4>
 
@@ -2849,11 +2846,14 @@ print(bin(10))    # 0b1010
 
 <h4>容易出错的地方</h4>
 
-<p>先确认源进制和目标进制，再选择 int、bin、oct、hex 等工具。</p>
+<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-8 | 7-8 比较大小
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2884,9 +2884,6 @@ print(bin(10))    # 0b1010
 A<a<d
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2908,7 +2905,7 @@ print('<'.join(chr(n) for n in numbers))
 
 继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
 
-
+<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
 
 <h4>回到这道题</h4>
 
@@ -2916,11 +2913,14 @@ print('<'.join(chr(n) for n in numbers))
 
 <h4>容易出错的地方</h4>
 
-<p>先确认比较的是数字还是字符串，再确认升降序，并注意 sort 与 sorted 的返回值。</p>
+<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-9 | 7-9 输出摄氏-华氏温度转换表
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -2978,9 +2978,6 @@ celsius    fahr
 Invalid.
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3015,11 +3012,14 @@ else:
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-10 | 7-10 偶数位特殊序列和
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -3050,9 +3050,6 @@ else:
 1122
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3076,11 +3073,14 @@ print(sum(int(str(a) * width) for width in range(2, n + 1, 2)))
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-11 | 7-11 求平方与倒数序列的近似和
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -3113,9 +3113,6 @@ $m^{2}$+1/m+$(m+1)^{2}$+1/(m+1)+⋯+$n^{2}$+1/n。
 sum ≈ 355
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3142,11 +3139,14 @@ print(f'sum ≈ {floor(total)}')
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-12 | 7-12 计算函数f(x)
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -3194,9 +3194,6 @@ f(3.64)=-3.907
 f(20.0)=1212904.080
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3228,11 +3225,14 @@ print(f'f({x})={result:.3f}')
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-13 | 7-13 分段计算居民水费
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -3270,9 +3270,6 @@ print(f'f({x})={result:.3f}')
 ```python
 22.50
 ```
-
-
-::::
 
 ::: answer
 
@@ -3313,11 +3310,14 @@ print(c)  # A
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
+
 :::: question programming-14 | 7-14 输出指定图形
 
 <div class="section-label">题干 <span>QUESTION</span></div>
@@ -3366,9 +3366,6 @@ print(c)  # A
 * * * 
 ```
 
-
-::::
-
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3399,8 +3396,10 @@ for i in range(1, n + 1):
 
 <h4>容易出错的地方</h4>
 
-<p>先把题目中的术语翻译成具体的 Python 对象或操作，再一步一步跟踪结果。</p>
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
 
 </div>
 
 :::
+
+::::
