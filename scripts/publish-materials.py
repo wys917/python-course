@@ -29,6 +29,6 @@ for group,path,title,code in groups:
    # Keep option letters as literal text instead of repeated ordered-list markers.
    body=re.sub(r'^([ABCD])\. ',r'**\1.** ',body,flags=re.M)
    body=body.replace('**D.** ```python', '**D.**\n\n```python')
-   fm+=f'\n:::: question {kind}-{i} | {heading}\n\n<div class="section-label">题干 <span>QUESTION</span></div>\n\n{body}\n\n::: answer\n\n{answer}\n\n:::\n\n::: explanation\n\n{explanation}\n\n:::\n\n::::\n'
+   fm+=f'\n:::: question {kind}-{i} | {heading}\n\n<div class="section-label">题干 <span>QUESTION</span></div>\n\n{body}\n\n::: answer\n\n<div class="answer-section-label">参考答案 <span>ANSWER</span></div>\n\n{answer}\n\n<div class="explanation">\n\n<div class="section-label">解析 <span>EXPLANATION</span></div>\n\n{explanation}\n\n</div>\n\n:::\n\n::::\n'
  (root/('docs/'+path+'.md')).write_text(fm)
  print(path,len(items))
