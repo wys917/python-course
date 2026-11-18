@@ -49,9 +49,18 @@ test('new homework and quiz collections preserve all source questions and code i
   ]
   for (const [group, file, count] of collections) {
     const markdown = readFileSync(file, 'utf8')
-    assert.equal((markdown.match(/^:::: question /gm) || []).length, count)
-    assert.equal((markdown.match(/^::: answer$/gm) || []).length, count)
-    assert.equal((markdown.match(/^::: explanation$/gm) || []).length, count)
+    const questions = markdown.split(/^:::: question /m).slice(1)
+    assert.equal(questions.length, count, `${file}: question count`)
+    for (const question of questions) {
+      const location = `${file}: ${question.split('\n', 1)[0]}`
+      const answers = [...question.matchAll(/^::: answer\n([\s\S]*?)^:::$/gm)]
+      assert.equal(answers.length, 1, `${location}: expected one answer panel`)
+      const explanation = file.startsWith('docs/assignments/')
+        ? answers[0][1].match(/^<div class="explanation">\n([\s\S]*?)^<\/div>$/m)?.[1]
+        : question.match(/^::: explanation\n([\s\S]*?)^:::$/m)?.[1]
+      const body = explanation?.replace(/^<div class="section-label">.*<\/div>$/gm, '').replace(/<!--[\s\S]*?-->/g, '').trim()
+      assert.ok(body, `${location}: missing explanation content`)
+    }
     for (const q of sourceQuestions.filter(q => q.group === group)) {
       for (const [, code] of q.body.matchAll(/```[^\n]*\n([\s\S]*?)```/g)) {
         assert.ok(markdown.includes(code), `${file}: code or sample changed for ${q.number}`)
