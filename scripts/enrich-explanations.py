@@ -125,11 +125,12 @@ def enrich_page(path):
         body = chunks[i + 1]
         # Replace only a prior enrichment, preserving original imported explanation.
         body = re.sub(r'\n\n' + re.escape(START) + r'.*?' + re.escape(END), '', body, flags=re.S)
-        match = re.search(r'(^::: explanation\n)(.*?)(\n:::\s*\n\s*::::)', body, re.M | re.S)
+        match = re.search(r'(<div class="explanation">\s*\n\s*<div class="section-label">解析 <span>EXPLANATION</span></div>\s*\n)([\s\S]*?)(\n\s*</div>\s*\n\s*:::)', body, re.M)
         assert match, (path, chunks[i])
+        # Replace only a prior enrichment, preserving the imported explanation and answer.
+        enriched = re.sub(r'\n\s*' + re.escape(START) + r'.*?' + re.escape(END), '', match[2], flags=re.S).rstrip()
         addition = '\n\n' + START + '\n\n' + extra + '\n\n' + END
-        original = match[2].rstrip()
-        body = body[:match.start(2)] + original + addition + '\n' + body[match.end(2):]
+        body = body[:match.start(2)] + enriched + addition + '\n\n' + body[match.end(2):]
         chunks[i + 1] = body
         total += 1
     for kind, keys in MAP[path.stem].items():
