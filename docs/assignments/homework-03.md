@@ -28,15 +28,13 @@ questionGroups:
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-字符串不能与整数直接相加，执行 'age'+23 会产生 TypeError；这里把代码块末尾中文视为题目说明。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：同一个运算符对不同类型有不同含义**
 
@@ -46,7 +44,17 @@ T（正确）。
 
 继续阅读：[第2章：字符串与类型转换](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+字符串不能与整数直接相加，执行 'age'+23 会产生 TypeError；这里把代码块末尾中文视为题目说明。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -60,15 +68,13 @@ T（正确）。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-find() 是字符串方法，列表查找位置用 index()，判断有无用 in。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：查存在、查位置与查全部匹配**
 
@@ -85,7 +91,17 @@ print('x' in s)         # False
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+find() 是字符串方法，列表查找位置用 index()，判断有无用 in。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -99,15 +115,13 @@ print('x' in s)         # False
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返回 None。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：排序的对象、顺序与返回值**
 
@@ -117,7 +131,17 @@ random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返�
 
 继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
+
+<h4>回到这道题</h4>
+
+random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返回 None。
+
+<h4>容易出错的地方</h4>
+
+<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
+
+</div>
 
 :::
 
@@ -131,15 +155,13 @@ random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返�
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-两者都有顺序、索引和切片等序列操作。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：字符串是不可变的字符序列**
 
@@ -149,7 +171,17 @@ Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。�
 
 继续阅读：[第3章：序列与字符串](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+两者都有顺序、索引和切片等序列操作。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -163,15 +195,13 @@ Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。�
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-可索引读取，但字符串不可变，不能通过 s[i]=... 修改字符。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：原地修改与生成新对象**
 
@@ -181,7 +211,17 @@ F（错误）。
 
 继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+可索引读取，但字符串不可变，不能通过 s[i]=... 修改字符。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -195,15 +235,13 @@ F（错误）。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-列表可原地增删改，字符串和元组自身不能原地改位置上的引用。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：原地修改与生成新对象**
 
@@ -213,7 +251,17 @@ T（正确）。
 
 继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+列表可原地增删改，字符串和元组自身不能原地改位置上的引用。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -227,15 +275,13 @@ T（正确）。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-省略起止和步长的 [::] 复制整个列表，值与原列表一致。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -252,7 +298,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+省略起止和步长的 [::] 复制整个列表，值与原列表一致。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -266,15 +322,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-负步长 -1 从末尾向前遍历，生成逆序新列表。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -291,7 +345,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+负步长 -1 从末尾向前遍历，生成逆序新列表。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -305,15 +369,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-步长 2 从下标 0 开始，依次取 0、2、4、6、8。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -330,7 +392,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+步长 2 从下标 0 开始，依次取 0、2、4、6、8。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -344,15 +416,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-从下标 1 开始应取 1、3、5、7、9，结果为 [-5,-10,35,49,-21]。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -369,7 +439,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+从下标 1 开始应取 1、3、5、7、9，结果为 [-5,-10,35,49,-21]。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -383,15 +463,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-取下标 3、5、7，分别为 -10、35、49，终点 8 不包含。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -408,7 +486,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+取下标 3、5、7，分别为 -10、35、49，终点 8 不包含。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -422,15 +510,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-切片边界自动截到末尾，lst[0:100] 返回整个列表的浅拷贝，不报错。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -447,7 +533,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+切片边界自动截到末尾，lst[0:100] 返回整个列表的浅拷贝，不报错。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -461,15 +557,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-切片起点超出末尾返回空列表。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -486,7 +580,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+切片起点超出末尾返回空列表。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -500,15 +604,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 T（正确）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-单元素索引 100 越界，会产生 IndexError。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -525,7 +627,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+单元素索引 100 越界，会产生 IndexError。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -545,15 +657,13 @@ for i in a.sort():
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.sort()，再 for i in a。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：排序的对象、顺序与返回值**
 
@@ -563,7 +673,17 @@ sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.s
 
 继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
+
+<h4>回到这道题</h4>
+
+sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.sort()，再 for i in a。
+
+<h4>容易出错的地方</h4>
+
+<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
+
+</div>
 
 :::
 
@@ -577,15 +697,13 @@ sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.s
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-in 与 == 组成链式比较，还需检查 "1234"==True，此项为假，整体为假。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：链式比较会复用中间操作数**
 
@@ -595,7 +713,17 @@ in 与 == 组成链式比较，还需检查 "1234"==True，此项为假，整体
 
 继续阅读：[第4章：条件语句](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+in 与 == 组成链式比较，还需检查 "1234"==True，此项为假，整体为假。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -621,15 +749,13 @@ else:
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-s1 在最后一个元素后仍有空格，join 得到的 s2 没有末尾空格，程序输出 no。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：连接字符串与空格精确比较**
 
@@ -646,7 +772,17 @@ print(len(s))          # 8
 
 继续阅读：[第3章：字符串和列表的互转](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+s1 在最后一个元素后仍有空格，join 得到的 s2 没有末尾空格，程序输出 no。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -660,15 +796,13 @@ print(len(s))          # 8
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-左侧重复得到 12 12 12 后还带末尾空格，右侧 join 不带末尾空格。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：连接字符串与空格精确比较**
 
@@ -685,7 +819,17 @@ print(len(s))          # 8
 
 继续阅读：[第3章：字符串和列表的互转](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+左侧重复得到 12 12 12 后还带末尾空格，右侧 join 不带末尾空格。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -700,15 +844,13 @@ print(len(s))          # 8
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-字符串默认左对齐，实际输出 this 后四个空格。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式规格由填充、对齐、宽度和类型组成**
 
@@ -725,7 +867,17 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+字符串默认左对齐，实际输出 this 后四个空格。
+
+<h4>容易出错的地方</h4>
+
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
+
+</div>
 
 :::
 
@@ -739,15 +891,13 @@ print(f'{"11":0>5s}')  # 00011
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-整数默认右对齐，实际输出 1234 前四个空格。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式规格由填充、对齐、宽度和类型组成**
 
@@ -764,7 +914,17 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+整数默认右对齐，实际输出 1234 前四个空格。
+
+<h4>容易出错的地方</h4>
+
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
+
+</div>
 
 :::
 
@@ -778,15 +938,13 @@ print(f'{"11":0>5s}')  # 00011
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-按 Python 3 实际格式化结果为 00014.35；14.345 的二进制浮点近似值会影响舍入，不应填 00014.34。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：浮点近似与最终显示**
 
@@ -796,7 +954,17 @@ F（错误）。
 
 继续阅读：[第2章：数字类型与格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+按 Python 3 实际格式化结果为 00014.35；14.345 的二进制浮点近似值会影响舍入，不应填 00014.34。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -810,15 +978,13 @@ F（错误）。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-列表拼接不会展开内部列表，结果为 [1,2,[3],4,5]。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：序列重复与内部引用共享**
 
@@ -828,7 +994,17 @@ F（错误）。
 
 继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+列表拼接不会展开内部列表，结果为 [1,2,[3],4,5]。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -842,15 +1018,13 @@ F（错误）。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-列表重复的是元素，结果为 [4,5,4,5,4,5]。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：序列重复与内部引用共享**
 
@@ -860,7 +1034,17 @@ F（错误）。
 
 继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+列表重复的是元素，结果为 [4,5,4,5,4,5]。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -879,15 +1063,13 @@ print(c.lower)
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 F（错误）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-c.lower 是方法对象；调用 c.lower() 才得到 a。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：取得方法与执行方法是两回事**
 
@@ -905,7 +1087,17 @@ print(c.isalpha())# True
 
 继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
+
+<h4>回到这道题</h4>
+
+c.lower 是方法对象；调用 c.lower() 才得到 a。
+
+<h4>容易出错的地方</h4>
+
+<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
+
+</div>
 
 :::
 
@@ -929,15 +1121,13 @@ max((3, 5, 1, 7, 4))的结果是____。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 D。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-max 返回序列最大值 7。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：排序的对象、顺序与返回值**
 
@@ -947,7 +1137,17 @@ max 返回序列最大值 7。
 
 继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
+
+<h4>回到这道题</h4>
+
+max 返回序列最大值 7。
+
+<h4>容易出错的地方</h4>
+
+<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
+
+</div>
 
 :::
 
@@ -969,15 +1169,13 @@ max 返回序列最大值 7。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 B。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-字符串字面量中的真反斜杠需写成 \\；A 中 \t 被解释为制表符。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：源码写法与实际字符串并不相同**
 
@@ -994,7 +1192,17 @@ print(len('\\t'))  # 2：反斜杠和字母 t
 
 继续阅读：[第2章：字符串类型](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+字符串字面量中的真反斜杠需写成 \\；A 中 \t 被解释为制表符。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1016,15 +1224,13 @@ list("abcd")的结果是?
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 A。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-list() 逐字符遍历字符串，得到 4 个字符元素。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：字符串是不可变的字符序列**
 
@@ -1034,7 +1240,17 @@ Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。�
 
 继续阅读：[第3章：序列与字符串](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+list() 逐字符遍历字符串，得到 4 个字符元素。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1056,15 +1272,13 @@ Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。�
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 C。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-切片终点 -1 不包含最后一个元素，结果少最后的 1。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：索引、切片与负步长**
 
@@ -1081,7 +1295,17 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
+
+<h4>回到这道题</h4>
+
+切片终点 -1 不包含最后一个元素，结果少最后的 1。
+
+<h4>容易出错的地方</h4>
+
+<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
+
+</div>
 
 :::
 
@@ -1103,15 +1327,13 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 B。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-append(5) 将 5 作为单个元素追加到列表末尾。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：列表方法按“位置”还是“值”操作**
 
@@ -1129,7 +1351,17 @@ print(a)       # [4]
 
 继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+append(5) 将 5 作为单个元素追加到列表末尾。
+
+<h4>容易出错的地方</h4>
+
+<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
+
+</div>
 
 :::
 
@@ -1145,15 +1377,13 @@ print(a)       # [4]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `232323`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-字符串重复三次，并非数值乘法。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：序列重复与内部引用共享**
 
@@ -1163,7 +1393,17 @@ print(a)       # [4]
 
 继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+字符串重复三次，并非数值乘法。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1177,15 +1417,13 @@ len('3//11//2018'.split('/'))的结果是_____。 _____
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `5`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-指定 '/' 分隔时，连续分隔符产生空字符串，列表为 ['3','','11','','2018']。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：指定分隔符与默认拆分不同**
 
@@ -1202,7 +1440,17 @@ print(''.split())         # []
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+指定 '/' 分隔时，连续分隔符产生空字符串，列表为 ['3','','11','','2018']。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1216,15 +1464,13 @@ lst=[3,4,5,6,5,4,3],执行lst.remove(3)后，lst[0]的值是：_。 _____
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `4`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-remove(3) 删除首个 3，原下标 1 的 4 成为新首元素。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：列表方法按“位置”还是“值”操作**
 
@@ -1242,7 +1488,17 @@ print(a)       # [4]
 
 继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+remove(3) 删除首个 3，原下标 1 的 4 成为新首元素。
+
+<h4>容易出错的地方</h4>
+
+<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
+
+</div>
 
 :::
 
@@ -1256,15 +1512,13 @@ list(range(2,12,2))[:-2].pop()的结果是：_____。 _____
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `6`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：列表方法按“位置”还是“值”操作**
 
@@ -1282,7 +1536,17 @@ print(a)       # [4]
 
 继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6。
+
+<h4>容易出错的地方</h4>
+
+<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
+
+</div>
 
 :::
 
@@ -1296,15 +1560,13 @@ print(a)       # [4]
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `100`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-randint(a,b) 包含两个端点。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：随机区间的端点**
 
@@ -1321,7 +1583,17 @@ random.shuffle(items)  # 原地打乱，返回 None
 
 继续阅读：[第3章：random 库](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+randint(a,b) 包含两个端点。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1335,15 +1607,13 @@ random.shuffle(items)  # 原地打乱，返回 None
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `3+2=5`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-参数 0 为 2、参数 1 为 3、参数 2 为 5，按占位编号替换。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式串中的占位符怎样取值**
 
@@ -1353,7 +1623,17 @@ random.shuffle(items)  # 原地打乱，返回 None
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+参数 0 为 2、参数 1 为 3、参数 2 为 5，按占位编号替换。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1373,15 +1653,13 @@ print("{first}-{second}={0}".format(34-23,first=a,second=b))
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `34-23=11`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-first、second 分别取 34、23，位置参数 0 为差值 11。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式串中的占位符怎样取值**
 
@@ -1391,7 +1669,17 @@ first、second 分别取 34、23，位置参数 0 为差值 11。
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+first、second 分别取 34、23，位置参数 0 为差值 11。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1405,15 +1693,13 @@ first、second 分别取 34、23，位置参数 0 为差值 11。
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `00011111`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-31 的二进制为 11111，去掉前缀后左侧补零至宽度 8。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式规格由填充、对齐、宽度和类型组成**
 
@@ -1430,7 +1716,17 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+31 的二进制为 11111，去掉前缀后左侧补零至宽度 8。
+
+<h4>容易出错的地方</h4>
+
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
+
+</div>
 
 :::
 
@@ -1446,15 +1742,13 @@ print(f'{"11":0>5s}')  # 00011
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `4`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-从下标 2 起查找 r，第一次遇到的是下标 4，跳过下标 1 的 r。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：查存在、查位置与查全部匹配**
 
@@ -1471,7 +1765,17 @@ print('x' in s)         # False
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+从下标 2 起查找 r，第一次遇到的是下标 4，跳过下标 1 的 r。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1485,15 +1789,13 @@ print('x' in s)         # False
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `-1`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-字符串中不存在 x，find 返回 -1。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：查存在、查位置与查全部匹配**
 
@@ -1510,7 +1812,17 @@ print('x' in s)         # False
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+字符串中不存在 x，find 返回 -1。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1524,15 +1836,13 @@ print('x' in s)         # False
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `False`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-a 不是数字，因此整个字符串不是全数字。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：取得方法与执行方法是两回事**
 
@@ -1550,7 +1860,17 @@ print(c.isalpha())# True
 
 继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
+
+<h4>回到这道题</h4>
+
+a 不是数字，因此整个字符串不是全数字。
+
+<h4>容易出错的地方</h4>
+
+<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
+
+</div>
 
 :::
 
@@ -1564,15 +1884,13 @@ print(c.isalpha())# True
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `True`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-aABC 的每个字符都是字母。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：取得方法与执行方法是两回事**
 
@@ -1590,7 +1908,17 @@ print(c.isalpha())# True
 
 继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
+
+<h4>回到这道题</h4>
+
+aABC 的每个字符都是字母。
+
+<h4>容易出错的地方</h4>
+
+<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
+
+</div>
 
 :::
 
@@ -1605,15 +1933,13 @@ print("$\Box$$\Box$$\Box$xyz$\Box$$\Box$".strip(),"$\Box$$\Box$$\Box$xyz$\Box$$\
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `xyz□□□□xyz□xyz□□`（□ 表示空格）。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-将题面 □ 还原为空格：strip 得 'xyz'，rstrip 得 '   xyz'，lstrip 得 'xyz  '；print 又在参数之间各加一个空格，末尾保留两个空格。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：清理哪一端，保留哪些字符**
 
@@ -1623,7 +1949,17 @@ print("$\Box$$\Box$$\Box$xyz$\Box$$\Box$".strip(),"$\Box$$\Box$$\Box$xyz$\Box$$\
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+将题面 □ 还原为空格：strip 得 'xyz'，rstrip 得 '   xyz'，lstrip 得 'xyz  '；print 又在参数之间各加一个空格，末尾保留两个空格。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1647,15 +1983,13 @@ print(id(a)==id(d))
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `True`、`False`、`False`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-b=a 共享同一对象；copy() 和 [:] 都创建不同的外层列表对象。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：赋值、浅拷贝和深拷贝**
 
@@ -1674,7 +2008,17 @@ print(a[1])       # 2：外层位置独立
 
 继续阅读：[第3章：赋值、浅拷贝与嵌套引用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+b=a 共享同一对象；copy() 和 [:] 都创建不同的外层列表对象。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1711,15 +2055,13 @@ for index in range(len(students)):  #按索引存取
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 第1空：`id,name`；第2空：`students[index][0],students[index][1]`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-第一种循环直接拆包行元组；第二种先取行，再取第 0 和第 1 列，逗号让 print 用默认空格分隔。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：遍历元素、遍历下标与拆包**
 
@@ -1735,7 +2077,17 @@ for index, (number, name) in enumerate(students):
 
 继续阅读：[第3章：计数、序列拆包与元组](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+第一种循环直接拆包行元组；第二种先取行，再取第 0 和第 1 列，逗号让 print 用默认空格分隔。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1749,15 +2101,13 @@ for index, (number, name) in enumerate(students):
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `5.0`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：计数、求和、平均值与最值累积**
 
@@ -1767,7 +2117,17 @@ sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。
 
 继续阅读：[第4章：循环、搜索和最值](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1787,15 +2147,13 @@ print(a)
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 `2`。
 
-:::
+<div class="explanation">
 
-::: explanation
-
-先计算右侧，此时旧 t 为 1，因此 t+1=2，然后再赋给 a。
-
-<!-- teaching-notes:start -->
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：赋值、表达式与拆包顺序**
 
@@ -1805,7 +2163,17 @@ print(a)
 
 继续阅读：[第2章：赋值与拆包](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+先计算右侧，此时旧 t 为 1，因此 t+1=2，然后再赋给 a。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1845,6 +2213,8 @@ print(a)
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 heights = list(map(int, input().split()))
 total = sum(heights)
@@ -1854,17 +2224,9 @@ for height in heights:
 print()
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-通过 height×人数 > 总和 比较是否高于平均值，避免浮点误差，保留原输入顺序及每个数后的空格。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先读完整组身高并求总和，再按原顺序逐一判断。条件 `height*人数 > 总和` 与“身高严格大于平均值”等价，却无需浮点除法。等于平均值的不输出，也不能先排序改变原序。每个合格身高后按样例保留一个空格，最后另行换行。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：计数、求和、平均值与最值累积**
 
@@ -1874,7 +2236,17 @@ print()
 
 继续阅读：[第4章：循环、搜索和最值](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+通过 height×人数 > 总和 比较是否高于平均值，避免浮点误差，保留原输入顺序及每个数后的空格。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1921,6 +2293,8 @@ s p
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input()
 a, b = input().split()
@@ -1929,17 +2303,9 @@ for i in range(len(s) - 1, -1, -1):
         print(i, s[i])
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-从最大下标倒序检查，两种字符任意匹配即输出；即使两字符相同也不会重复输出。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-最大合法下标是 `len(s)-1`，倒序遍历用 `range(len(s)-1,-1,-1)`，其中终点 -1 不会被取到，所以下标 0 仍会检查。匹配 a 或 b 用一个 `or`，两字符恰好相同时也只输出一次。输出的是原字符串下标和原字符，不能先反转字符串后直接使用反转后的下标。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：查存在、查位置与查全部匹配**
 
@@ -1956,7 +2322,17 @@ print('x' in s)         # False
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+从最大下标倒序检查，两种字符任意匹配即输出；即使两字符相同也不会重复输出。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -1994,22 +2370,16 @@ print('x' in s)         # False
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = str(int(input()))
 print(len(s), sum(int(c) for c in s))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-整数转成规范字符串后，用长度统计位数，逐字符转数字求和。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先把输入规范化为整数，再转成字符串，因而不会把前导零算进位数。位数等于字符个数，各位和则逐字符转成整数累加。输入 0 时字符串是 `0`，位数为 1、数字和为 0。代码按题目给定的非负数范围工作；若扩展到负数，应先取绝对值，不能把负号送给 `int(c)`。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：文本形式与数值类型转换**
 
@@ -2026,7 +2396,17 @@ print(int('11', 2))    # 3：以二进制解析
 
 继续阅读：[第2章：内置转换函数](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+整数转成规范字符串后，用长度统计位数，逐字符转数字求和。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2075,23 +2455,17 @@ Ghis is a pen.
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input()
 table = tuple('ZYXWVUTSRQPONMLKJIHGFEDCBA')
 print(''.join(table[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in s))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-转换表按 A→Z、B→Y 的顺序保存，只替换大写英文字母，其余字符原样保留。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-反向字母表从 Z 到 A，原字母相对 A 的偏移量为 `ord(c)-ord('A')`，用这个偏移量索引转换表。只转换 A～Z，其余字符原样保留。检查 A→Z、Z→A、M→N 三个位置，可以确认映射起点和方向；`join()` 只拼接结果，不增加分隔符。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：筛选条件与保留内容应分开设计**
 
@@ -2107,7 +2481,17 @@ print(clean)  # a1b2
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+转换表按 A→Z、B→Y 的顺序保存，只替换大写英文字母，其余字符原样保留。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2164,6 +2548,8 @@ result: 7jdk*ASyu
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input().strip()
 target = input().strip().lower()
@@ -2171,17 +2557,9 @@ result = ''.join(c for c in s if c.lower() != target)
 print('result:', result)
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-按题意清理两端空格，用小写形式比较、原字符输出，保留字符串内部其他空格。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先按题意处理输入两端空格，再把目标字符转为小写，作为比较标准。遍历 s 时用 `c.lower()` 判断是否应删去，但保留下来的仍是原字符 c，因此不会把整串都变成小写。内部空格不应因删除字符而自动合并，若题意没有要求忽略大小写，也不能自行标准化。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：筛选条件与保留内容应分开设计**
 
@@ -2197,7 +2575,17 @@ print(clean)  # a1b2
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+按题意清理两端空格，用小写形式比较、原字符输出，保留字符串内部其他空格。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2252,6 +2640,8 @@ Thisaexmpl
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input()
 seen = set()
@@ -2265,17 +2655,9 @@ for c in s:
 print(result if len(result) == 10 else 'not found')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-只接受英文字母，使用小写形式去重，保留首次出现的大小写与顺序，满 10 个立即停止。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-`seen` 保存已经接受过的字母的小写形式，用于不区分大小写地判断重复；`result` 保存原字符，保留首次出现的大小写。先排除非英文字母，再判断首次出现，满 10 个后立即停止。最后检查是否确实凑够 10 个，不足时输出 `not found`，不能输出不完整结果。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：存在性、出现次数与字符多重集合**
 
@@ -2285,7 +2667,17 @@ print(result if len(result) == 10 else 'not found')
 
 继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+只接受英文字母，使用小写形式去重，保留首次出现的大小写与顺序，满 10 个立即停止。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2321,21 +2713,15 @@ print(result if len(result) == 10 else 'not found')
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 print(int(input().strip()[::-1]))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-反转文本后转整数，自动去掉逆序结果的前导零，例如 700→007→7。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-反转对象是数字的十进制文本，而不是整数本身。`[::-1]` 产生反向字符串，再转成整数会自动去掉前导零，所以 700 得到 7。此解按题目非负输入范围处理；若扩展到负数，需要单独保存符号，不能让反转后的负号落在末尾。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：文本形式与数值类型转换**
 
@@ -2352,7 +2738,17 @@ print(int('11', 2))    # 3：以二进制解析
 
 继续阅读：[第2章：内置转换函数](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+反转文本后转整数，自动去掉逆序结果的前导零，例如 700→007→7。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2425,23 +2821,17 @@ no
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 a = input().lower()
 b = input().lower()
 print('yes' if sorted(a) == sorted(b) else 'no')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-按样例 1 忽略大小写，排序后逐字符比较，保留数字、空格及字符重复次数；不能只比较集合。原始样例 3 中 Wellcom 与 mocllew 在忽略大小写后确为变位词，但给定输出为 no，与题意及样例 1 冲突；本解按题意输出 yes，保留原始样例并注明差异。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先统一大小写，再对字符排序。排序既保留字符种类，也保留每种字符的出现次数，因此能区分 aab 与 abb；单纯比较 `set()` 做不到。空格、数字及标点没有被题意排除时都参与比较，不能随意删掉。原样例冲突仍按上文保留和说明，参考代码遵循忽略大小写的题意。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：存在性、出现次数与字符多重集合**
 
@@ -2451,7 +2841,17 @@ print('yes' if sorted(a) == sorted(b) else 'no')
 
 继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+按样例 1 忽略大小写，排序后逐字符比较，保留数字、空格及字符重复次数；不能只比较集合。原始样例 3 中 Wellcom 与 mocllew 在忽略大小写后确为变位词，但给定输出为 no，与题意及样例 1 冲突；本解按题意输出 yes，保留原始样例并注明差异。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2489,23 +2889,17 @@ y   7
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input()
 char, index = max((c, i) for i, c in enumerate(s))
 print(f'{char}   {index}')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-元组先比较字符，再比较下标，因此重复最大字符时选最大下标；中间严格输出三个空格。题目按非空字符串处理。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-`enumerate(s)` 产生字符及其下标，代码交换成 `(字符,下标)` 元组交给 `max()`。元组先比较第一项，相同才比较第二项，因此会选最大字符的最后一次出现位置。这是利用元组的字典序规则，而不是 `max()` 自动知道题意。非空字符串是前提，空串没有可选元素。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：排序的对象、顺序与返回值**
 
@@ -2515,7 +2909,17 @@ print(f'{char}   {index}')
 
 继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
+
+<h4>回到这道题</h4>
+
+元组先比较字符，再比较下标，因此重复最大字符时选最大下标；中间严格输出三个空格。题目按非空字符串处理。
+
+<h4>容易出错的地方</h4>
+
+<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
+
+</div>
 
 :::
 
@@ -2557,6 +2961,8 @@ length=6
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 n = int(input())
 longest = 0
@@ -2565,17 +2971,9 @@ for _ in range(n):
 print(f'length={longest}')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-逐行读取，去掉左端普通空格，保留末尾空格，累计最大长度。输出前缀按样例为 length=。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-每次用 `input()` 读取完整一行，只去掉左侧普通空格后测长度。末尾空格属于有效内容，不能用 `strip()`；中间空格也不能用拆分输入的方式破坏。`longest` 从 0 开始，每轮代表已读各行的最大有效长度。输出 `length=` 后紧跟数值，没有额外空格。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：清理哪一端，保留哪些字符**
 
@@ -2585,7 +2983,17 @@ print(f'length={longest}')
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+逐行读取，去掉左端普通空格，保留末尾空格，累计最大长度。输出前缀按样例为 length=。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2639,22 +3047,16 @@ print(f'length={longest}')
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 n = int(input())
 print(bin(n).count('1'))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-`bin(n)` 返回带 `0b` 前缀的二进制字符串，前缀里没有字符 1，因此直接统计 `1` 即可。n=0 得到 `0b0`，统计结果仍是 0。这里统计的是值为 1 的位，不是总位数，也不是十进制数字 1 的个数；补前导零不会改变答案。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：按位运算与数位统计**
 
@@ -2664,7 +3066,17 @@ bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0�
 
 继续阅读：[第2章：位运算](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2706,6 +3118,8 @@ bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0�
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 a = int(input())
 b = int(input())
@@ -2715,17 +3129,9 @@ print('--------')
 print(f'{a + b:08b}')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-08b 表示二进制并补零到 8 位，先输出两操作数，再输出分隔线及和。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-分别把两个整数格式化为至少 8 位二进制，然后输出分隔线和两数的和。`08b` 中 0 表示补零，8 是最小宽度，b 是二进制；若和需要第 9 位，不会被截掉。不要只把两个输入的二进制字符串拼接，也不要先把格式化文本当十进制数相加。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：格式规格由填充、对齐、宽度和类型组成**
 
@@ -2742,7 +3148,17 @@ print(f'{"11":0>5s}')  # 00011
 
 继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
+
+<h4>回到这道题</h4>
+
+08b 表示二进制并补零到 8 位，先输出两操作数，再输出分隔线及和。
+
+<h4>容易出错的地方</h4>
+
+<p>先确定实际数值，再检查宽度、对齐和精度。</p>
+
+</div>
 
 :::
 
@@ -2780,22 +3196,16 @@ print(f'{"11":0>5s}')  # 00011
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 x, y = map(int, input().split())
 print(bin(x ^ y).count('1'))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-异或在不同二进制位上产生 1，统计这些 1 即为汉明距离。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-对每一二进制位，异或只在两数该位不同的时候产生 1。因此先求 `x^y`，再统计其二进制中 1 的数量即可。两数相等时异或为 0，距离为 0；高位补零后仍适用。这个做法依赖题目的非负整数表示语义，负数若未规定固定字长，不能直接照搬汉明距离解释。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：按位运算与数位统计**
 
@@ -2805,7 +3215,17 @@ print(bin(x ^ y).count('1'))
 
 继续阅读：[第2章：位运算](../topics/chapter-02.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+异或在不同二进制位上产生 1，统计这些 1 即为汉明距离。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2844,22 +3264,16 @@ yes
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = ''.join(c.lower() for c in input() if c.isalnum())
 print('yes' if s == s[::-1] else 'no')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-只保留字母数字、统一小写，再比较自身与逆序字符串。isalnum 按 Unicode 字符规则判断。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先筛出字母数字，再统一小写，最后比较标准化字符串与逆序结果。三个步骤的顺序与目的要分开：标点不参与，大小写不影响匹配，数字仍参与。清理后为空串时，它和自身逆序相等，代码输出 yes。若题目只允许 ASCII 字母数字，需要相应缩小筛选范围。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：筛选条件与保留内容应分开设计**
 
@@ -2875,7 +3289,17 @@ print(clean)  # a1b2
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+只保留字母数字、统一小写，再比较自身与逆序字符串。isalnum 按 Unicode 字符规则判断。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2914,6 +3338,8 @@ a1B
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 s = input()
 h = ''.join(c for c in s if c in '0123456789abcdefABCDEF')
@@ -2921,17 +3347,9 @@ print(h)
 print(int(h, 16) if h else 0)
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-筛选合法十六进制字符，保留原大小写，再按基数 16 转整数。题面未规定完全无合法字符时的输出，此解约定输出空行和 0。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-按原顺序筛出合法十六进制字符，构造 h；保留原字符是为了满足第一行输出的大小写要求。第二行再用 `int(h,16)` 计算数值，例如 a1B 为 `10*16**2+1*16+11=2587`。`isalnum()` 会接受 G 等非法十六进制字符，不能替代白名单。空结果的处理约定已在上文说明。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：筛选条件与保留内容应分开设计**
 
@@ -2947,7 +3365,17 @@ print(clean)  # a1b2
 
 继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+筛选合法十六进制字符，保留原大小写，再按基数 16 转整数。题面未规定完全无合法字符时的输出，此解约定输出空行和 0。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -2987,23 +3415,17 @@ HELLO World!
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 a = input()
 b = input()
 print(sum(c in b for c in a))
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-遍历不含重复字符的 A，逐个判断是否在 B 中，不统计 B 中的重复次数，比较区分大小写。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-A 保证没有重复字符，因此逐个遍历 A 并检查是否在 B 中，每个共同字符恰好计数一次。布尔值可参与求和，`sum(c in b for c in a)` 就是把每次匹配的 True 当成 1。不能改为遍历 B，因为它的重复字符可能多算；大小写按原字符比较，不能额外转小写。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：存在性、出现次数与字符多重集合**
 
@@ -3013,7 +3435,17 @@ A 保证没有重复字符，因此逐个遍历 A 并检查是否在 B 中，每
 
 继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+遍历不含重复字符的 A，逐个判断是否在 B 中，不统计 B 中的重复次数，比较区分大小写。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
@@ -3080,6 +3512,8 @@ All passed
 
 ::: answer
 
+<div class="answer-section-label">参考答案 <span>ANSWER</span></div>
+
 ```python
 n = int(input())
 weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
@@ -3096,17 +3530,9 @@ for _ in range(n):
 print('\n'.join(invalid) if invalid else 'All passed')
 ```
 
-:::
+<div class="explanation">
 
-::: explanation
-
-先确认前 17 位均为数字，再计算加权和，对 11 取模并查表。按输入顺序保存错误号码，全部正确时输出 All passed。
-
-<!-- teaching-notes:start -->
-
-**解题步骤与边界**
-
-先检查长度和前 17 位是否均为十进制数字，避免转换时报错；合法后让每一位与对应权重相乘，再求和。余数 `total%11` 是校验表下标，查到的字符必须与第 18 位完全一致，包括大写 X。错误号码按输入顺序收集，最后统一输出；只有列表为空时才输出 `All passed`。
+<div class="section-label">解析 <span>EXPLANATION</span></div>
 
 **从本题理解：存在性、出现次数与字符多重集合**
 
@@ -3116,7 +3542,17 @@ print('\n'.join(invalid) if invalid else 'All passed')
 
 继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
 
-<!-- teaching-notes:end -->
+
+
+<h4>回到这道题</h4>
+
+先确认前 17 位均为数字，再计算加权和，对 11 取模并查表。按输入顺序保存错误号码，全部正确时输出 All passed。
+
+<h4>容易出错的地方</h4>
+
+<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+
+</div>
 
 :::
 
