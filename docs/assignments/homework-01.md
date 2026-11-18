@@ -20,9 +20,12 @@ questionGroups:
 
 :::: question judgment-1 | 1-1 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 高级语言程序要被机器执行,只有用解释器来解释执行。
+
+<div class="question-tags">
+<span class="question-tag">编译与解释</span>
+<span class="question-tag">Python 运行机制</span>
+</div>
 
 ::: answer
 
@@ -34,23 +37,9 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：源代码怎样运行**
+“高级语言”描述的是编程语言，“编译”和“解释”描述的是程序的执行方式。程序可以先经过编译，再运行；也可以由解释器执行。同一种语言也可能采用两种方式。
 
-“高级语言”描述的是语言抽象层次，“编译”和“解释”描述的是实现程序的执行方式，不能把两者一一对应。编译器可以先把程序翻译成另一种形式，解释器则负责执行相应指令；同一种语言也可以有不同实现。
-
-以常用的 CPython 为例，源代码先编译成字节码，再由解释器执行，因此把 Python 理解成“完全不经过编译”也不准确。`.py` 是源文件扩展名，不是运行结果；终端执行 `python 文件名.py` 时，真正运行程序的是所选 Python 解释器。交互环境会显示裸表达式的值，脚本通常需要 `print()` 才会输出。
-
-继续阅读：[第1章：Python 与运行环境](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-高级语言既可编译执行，也可解释执行，或结合两者，并非只能使用解释器。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+例如，常用的 CPython 会先把 Python 源代码编译成字节码，再由解释器执行。因此，高级语言并非只能通过解释器运行，题目说法错误。
 
 </div>
 
@@ -60,9 +49,12 @@ F（错误）。
 
 :::: question judgment-2 | 1-2 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 不可以在同一台计算机上安装多个不同的Python解释器版本。
+
+<div class="question-tags">
+<span class="question-tag">Python 解释器</span>
+<span class="question-tag">Python 版本</span>
+</div>
 
 ::: answer
 
@@ -74,23 +66,9 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：解释器、编辑器与版本**
+解释器是负责执行 Python 代码的软件。同一台计算机可以安装多个 Python 版本，例如 Python 3.10 和 Python 3.12。运行程序时，选择对应的解释器即可。
 
-编辑器负责写代码，解释器负责执行代码，二者不是同一个工具。IDLE 将编辑和交互运行放在一起，但保存 `.py` 文件后，也可以从终端调用解释器执行。
-
-同一台电脑可以安装多个 Python 版本。遇到“这里能运行，那里找不到模块”，先确认两个环境使用的解释器是否一致：在交互环境执行 `import sys`，再查看 `sys.executable` 和 `sys.version`。安装第三方包时，`python -m pip` 会使用这个 `python` 对应的环境。开源、免费和跨平台不意味着任意平台的文件路径、系统命令都完全相同。
-
-继续阅读：[第1章：Python 简介与开发环境](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-多个 Python 版本可以共存，运行程序时需选择对应解释器。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，多个版本可以共存，题目说法错误。需要注意：安装第三方库时，也要确认使用的是当前运行程序的那个 Python 环境。
 
 </div>
 
@@ -100,9 +78,12 @@ F（错误）。
 
 :::: question judgment-3 | 1-3 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 Python是一种跨平台、开源、免费的动态编程语言。
+
+<div class="question-tags">
+<span class="question-tag">Python 语言特点</span>
+<span class="question-tag">动态类型</span>
+</div>
 
 ::: answer
 
@@ -114,23 +95,9 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：解释器、编辑器与版本**
+题目中的三个说法都正确：Python 可以在 Windows、macOS、Linux 等系统上运行，因此具有跨平台性；它是开源软件，源代码可以公开获取；使用 Python 本身不需要付费。
 
-编辑器负责写代码，解释器负责执行代码，二者不是同一个工具。IDLE 将编辑和交互运行放在一起，但保存 `.py` 文件后，也可以从终端调用解释器执行。
-
-同一台电脑可以安装多个 Python 版本。遇到“这里能运行，那里找不到模块”，先确认两个环境使用的解释器是否一致：在交互环境执行 `import sys`，再查看 `sys.executable` 和 `sys.version`。安装第三方包时，`python -m pip` 会使用这个 `python` 对应的环境。开源、免费和跨平台不意味着任意平台的文件路径、系统命令都完全相同。
-
-继续阅读：[第1章：Python 简介与开发环境](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-Python 跨平台、开源、免费，变量名在运行时绑定到对象。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+Python 还是动态类型语言，变量不需要提前声明固定类型。例如，`x = 3` 后还可以执行 `x = "hello"`，让变量名 `x` 绑定到字符串对象。因此本题正确。
 
 </div>
 
@@ -140,9 +107,12 @@ Python 跨平台、开源、免费，变量名在运行时绑定到对象。
 
 :::: question judgment-4 | 1-4 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 math模块是python语言的数学模块。
+
+<div class="question-tags">
+<span class="question-tag">math 模块</span>
+<span class="question-tag">Python 标准库</span>
+</div>
 
 ::: answer
 
@@ -154,23 +124,16 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：数学公式如何翻译成 Python**
+`math` 是 Python 标准库中的数学模块，提供了常用数学函数和常量，例如平方根 `math.sqrt()`、正弦函数 `math.sin()` 和圆周率 `math.pi`。
 
-先识别公式的运算结构，再选择函数。平方根用 `math.sqrt()`，自然对数用 `math.log()`，指数 $e^x$ 用 `math.exp()`；乘法必须明确写 `*`，分式的分子、分母需要分别加括号。`sqrt(4)` 返回 `2.0`，所以后续乘积可能是浮点数而不是整数。
+使用前需要先导入：
 
-三角函数参数以弧度为单位，角度先用 `math.radians()` 转换。还要检查定义域：实数平方根的参数不能为负，自然对数参数必须大于 0，分母不能为 0。输出格式化只控制最后显示多少位，并不修复公式、定义域或中间计算的错误。`ceil()` 向上取整，`floor()` 向下取整，均与向零截断的 `int()` 有区别。
+```python
+import math
+print(math.sqrt(9))  # 3.0
+```
 
-继续阅读：[第2章：math 库](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-标准库 math 提供平方根、三角函数、向上取整等数学功能，使用前先导入。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，题目说法正确。
 
 </div>
 
@@ -180,9 +143,12 @@ T（正确）。
 
 :::: question judgment-5 | 1-5 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 在Python 3.x中，input()函数把用户的键盘输入作为字符串返回。
+
+<div class="question-tags">
+<span class="question-tag">input 函数</span>
+<span class="question-tag">字符串与数字转换</span>
+</div>
 
 ::: answer
 
@@ -194,29 +160,9 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输入处理的四个步骤**
+`input()` 读取键盘输入，并且始终以字符串形式返回。即使输入的是 `18`，得到的也是字符串 `"18"`。
 
-多项数值输入可按“读整行 → 拆文本 → 逐项转换 → 拆包赋值”理解。输入 `3 5` 时，`input()` 返回 `'3 5'`，`split()` 得到 `['3','5']`，`map(int,...)` 按需将每一项转成整数，最后两个变量分别接收 3 和 5。
-
-```python
-line = input()
-parts = line.split()
-m, n = map(int, parts)
-```
-
-`int(parts)` 不会逐项处理，而会因参数是列表而报错。输入 `3,5` 应使用 `split(',')`。拆出的项目数和变量数不匹配会产生 `ValueError`；数字格式非法也会在转换时产生 `ValueError`。处理整行字符串时不要随意 `split()`，否则原有空格结构会丢失。
-
-继续阅读：[第1章：输入及输出函数](../topics/chapter-01.md)。
-
-<h4>知识点速查：输入</h4><table><thead><tr><th>写法</th><th>得到什么</th></tr></thead><tbody><tr><td><code>input()</code></td><td>一整行字符串</td></tr><tr><td><code>input().split()</code></td><td>按空白拆成字符串列表</td></tr><tr><td><code>map(int, ...)</code></td><td>把每一项转换成整数</td></tr><tr><td><code>a, b = ...</code></td><td>把结果分别赋给两个变量</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-input() 返回字符串，去掉行末换行；数值输入需要 int() 或 float() 转换。
-
-<h4>容易出错的地方</h4>
-
-<p>先区分字符串和数字，再检查拆分、转换、赋值。</p>
+如果后续需要进行数学运算，就要先转换类型，例如 `int(input())` 将输入转成整数，`float(input())` 将输入转成浮点数。因此本题正确。
 
 </div>
 
@@ -226,9 +172,12 @@ input() 返回字符串，去掉行末换行；数值输入需要 int() 或 floa
 
 :::: question judgment-6 | 1-6 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 print()函数是输出函数。
+
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">输出格式</span>
+</div>
 
 ::: answer
 
@@ -240,29 +189,13 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输出内容由哪些部分组成**
-
-`print(a,b)` 不是把两个变量原样紧贴输出，而是先将参数转成文本，再用 `sep` 连接，最后加上 `end`。默认 `sep=' '`、`end='\n'`，所以参数间有一个空格，输出后换行。`print(a,b,sep='')` 才是无分隔拼接。
+`print()` 是 Python 的输出函数，可以把内容显示在屏幕上。例如：
 
 ```python
-print(5, 9)             # 5 9
-print(5, 9, sep='-')    # 5-9
-print('*', end=' ')     # 星号后有一个空格，暂不换行
+print("Hello")
 ```
 
-判断题和编程题都要检查前导空格、参数间空格、行尾空格与换行。不要给自动评测的输出加入“请输入”等提示语。观察不可见字符时可先构造字符串，再使用 `repr()` 查看其边界；直接看网页中排版后的文字不一定能分辨空格数量。
-
-继续阅读：[第1章：print 与输出格式](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-print() 将参数转换成文本并输出，默认以空格分隔、换行结束。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+默认情况下，`print(a, b)` 会在两个参数之间加一个空格，并在输出结束后换行。因此本题正确。
 
 </div>
 
@@ -272,9 +205,12 @@ print() 将参数转换成文本并输出，默认以空格分隔、换行结束
 
 :::: question judgment-7 | 1-7 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 在Python中，可以用else作为变量名。
+
+<div class="question-tags">
+<span class="question-tag">标识符</span>
+<span class="question-tag">Python 关键字</span>
+</div>
 
 ::: answer
 
@@ -286,23 +222,9 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：标识符、关键字与内置名称**
+`else` 是 Python 的关键字，用于表示条件语句中的“否则”分支。关键字具有固定的语法用途，不能拿来作为普通变量名。
 
-入门题中常见的合法名字由字母、数字和下划线组成，不能以数字开头，且区分大小写。`item_1` 与 `_item` 合法；`1item` 不合法；`item-name` 会被当成减法表达式，而不是一个名字。Python 也允许部分 Unicode 字符用于标识符。
-
-还要区分关键字和内置名称：`else`、`for` 是语法保留字，不能作普通变量名；`print`、`list` 不是关键字，给它们赋值在语法上合法，却会遮蔽原有功能。例如 `print=3` 后再执行 `print(5)`，是在调用整数，因而报 `TypeError`。布尔常量必须写作 `True`、`False`，大小写变化后会被当成别的名字。
-
-继续阅读：[第1章：标识符和变量](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-else 是关键字，不能作为变量名。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+例如，`score`、`item_1` 可以作为变量名，但 `else` 不可以。因此本题错误。
 
 </div>
 
@@ -312,9 +234,12 @@ else 是关键字，不能作为变量名。
 
 :::: question judgment-8 | 1-8 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 已知 x=3, 则执行“ x=7”后，id(x)的返回值与原来没有变化。
+
+<div class="question-tags">
+<span class="question-tag">变量赋值</span>
+<span class="question-tag">对象与 id()</span>
+</div>
 
 ::: answer
 
@@ -326,23 +251,9 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：变量绑定与对象身份**
+`x = 3` 表示让变量名 `x` 指向整数对象 `3`。执行 `x = 7` 后，`x` 会重新指向整数对象 `7`，原来的绑定关系发生了变化。
 
-把变量理解成“指向对象的名字”，比理解成“永远装着某种类型的盒子”更准确。`x=3` 将名字 `x` 绑定到整数对象；执行 `x=7` 是重新绑定，不是把整数对象 3 修改成 7。类型属于对象，变量可以随后绑定到另一种类型的对象。
-
-`==` 比较值，`is` 比较是否为同一对象，`id()` 给出对象存活期间的身份标识。判断两个数是否相等应使用 `==`，不能依赖小整数缓存或字符串复用造成的 `is` 结果。可变列表的原地修改与名字重新赋值也有区别：前者可能被所有别名观察到，后者只改变当前名字的绑定。
-
-继续阅读：[第3章：赋值与对象引用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-x=7 将 x 从整数对象 3 重新绑定到整数对象 7，对象身份随之改变。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+`id(x)` 用来查看当前对象的身份标识。对于题目中的两个整数，重新赋值后对应的是另一个对象，因此 `id(x)` 不再是原来的值，题目说法错误。
 
 </div>
 
@@ -352,9 +263,12 @@ x=7 将 x 从整数对象 3 重新绑定到整数对象 7，对象身份随之�
 
 :::: question judgment-9 | 1-9 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 字母A的ASCII编码值和Unicode编码值相同。
+
+<div class="question-tags">
+<span class="question-tag">ASCII 编码</span>
+<span class="question-tag">Unicode 编码</span>
+</div>
 
 ::: answer
 
@@ -366,23 +280,9 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：字符、码点与字节编码**
+在 ASCII 编码中，字母 `A` 对应的数值是 65。在 Unicode 中，`A` 对应的码点是 `U+0041`，换算成十进制同样是 65。
 
-Unicode 为字符分配码点，例如 `ord('A')` 为 65，`ord('张')` 为 24352；`chr()` 完成反向转换。`U+5F20` 和十进制 24352 表示同一码点，只是记数方式不同。`ord()` 接收单个字符，不能直接把整个多字符字符串转换成一个码点。
-
-UTF-8 则规定如何把码点编码成字节，不能把它和 Unicode 字符集合混为一谈。例如 `len('张')` 为 1，而 `len('张'.encode('utf-8'))` 为 3；前者数 Python 字符串中的码点，后者数字节。ASCII 字符在 UTF-8 中仍占一个字节，这也是英文字符 A 的编码值在本题中保持 65 的原因。
-
-继续阅读：[第1章：字符编码](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-ASCII 字符 A 的编码值与 Unicode 码点均为十进制 65。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，字母 A 的 ASCII 编码值和 Unicode 码点值相同，本题正确。
 
 </div>
 
@@ -392,14 +292,18 @@ ASCII 字符 A 的编码值与 Unicode 码点均为十进制 65。
 
 :::: question judgment-10 | 1-10 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 下面程序输入是`3 5`，输出是8。
 
 ```python
 m,n=int(input().split())
 print(m+n)
 ```
+
+<div class="question-tags">
+<span class="question-tag">split 函数</span>
+<span class="question-tag">map 函数</span>
+<span class="question-tag">int 类型转换</span>
+</div>
 
 ::: answer
 
@@ -411,29 +315,18 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输入处理的四个步骤**
+输入 `3 5` 后，`input()` 读取到字符串 `"3 5"`，`split()` 按空格拆分，得到列表 `['3', '5']`。
 
-多项数值输入可按“读整行 → 拆文本 → 逐项转换 → 拆包赋值”理解。输入 `3 5` 时，`input()` 返回 `'3 5'`，`split()` 得到 `['3','5']`，`map(int,...)` 按需将每一项转成整数，最后两个变量分别接收 3 和 5。
+原程序接着执行 `int()`，试图把整个列表转换成整数。`int()` 只能转换单个数字字符串，不能直接转换列表，因此程序会报错，无法输出 8。
+
+正确写法是：
 
 ```python
-line = input()
-parts = line.split()
-m, n = map(int, parts)
+m, n = map(int, input().split())
+print(m + n)
 ```
 
-`int(parts)` 不会逐项处理，而会因参数是列表而报错。输入 `3,5` 应使用 `split(',')`。拆出的项目数和变量数不匹配会产生 `ValueError`；数字格式非法也会在转换时产生 `ValueError`。处理整行字符串时不要随意 `split()`，否则原有空格结构会丢失。
-
-继续阅读：[第1章：输入及输出函数](../topics/chapter-01.md)。
-
-<h4>知识点速查：输入</h4><table><thead><tr><th>写法</th><th>得到什么</th></tr></thead><tbody><tr><td><code>input()</code></td><td>一整行字符串</td></tr><tr><td><code>input().split()</code></td><td>按空白拆成字符串列表</td></tr><tr><td><code>map(int, ...)</code></td><td>把每一项转换成整数</td></tr><tr><td><code>a, b = ...</code></td><td>把结果分别赋给两个变量</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-split() 得到列表 ['3','5']，int() 不能一次转换整个列表。应写 m,n=map(int,input().split())。
-
-<h4>容易出错的地方</h4>
-
-<p>先区分字符串和数字，再检查拆分、转换、赋值。</p>
+`map(int, ...)` 会把列表中的每个字符串分别转换成整数，再赋值给 `m` 和 `n`。
 
 </div>
 
@@ -443,14 +336,17 @@ split() 得到列表 ['3','5']，int() 不能一次转换整个列表。应写 m
 
 :::: question judgment-11 | 1-11 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 下面程序的输出是5。
 
 ```python
 print=3
 print(5)
 ```
+
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">变量赋值</span>
+</div>
 
 ::: answer
 
@@ -462,23 +358,9 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：标识符、关键字与内置名称**
+`print` 是 Python 内置的输出函数。执行 `print = 3` 后，变量名 `print` 被重新绑定到整数 `3`，原来的函数名称被遮蔽。
 
-入门题中常见的合法名字由字母、数字和下划线组成，不能以数字开头，且区分大小写。`item_1` 与 `_item` 合法；`1item` 不合法；`item-name` 会被当成减法表达式，而不是一个名字。Python 也允许部分 Unicode 字符用于标识符。
-
-还要区分关键字和内置名称：`else`、`for` 是语法保留字，不能作普通变量名；`print`、`list` 不是关键字，给它们赋值在语法上合法，却会遮蔽原有功能。例如 `print=3` 后再执行 `print(5)`，是在调用整数，因而报 `TypeError`。布尔常量必须写作 `True`、`False`，大小写变化后会被当成别的名字。
-
-继续阅读：[第1章：标识符和变量](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-print=3 遮蔽了内置函数名称，随后 print(5) 相当于调用整数，引发 TypeError。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，下一行 `print(5)` 实际上是在尝试调用整数 `3`，会产生类型错误，并不会输出 `5`。本题错误。
 
 </div>
 
@@ -490,8 +372,6 @@ print=3 遮蔽了内置函数名称，随后 print(5) 相当于调用整数，�
 
 :::: question choice-1 | 2-1 单选题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 计算机存储器的单位是字节（B,Byte）,1B等于__________。
 
 **A.** 一位二进制
@@ -501,6 +381,11 @@ print=3 遮蔽了内置函数名称，随后 print(5) 相当于调用整数，�
 **C.** 八位二进制
 
 **D.** 十六位二进制
+
+<div class="question-tags">
+<span class="question-tag">字节与比特</span>
+<span class="question-tag">计算机存储单位</span>
+</div>
 
 ::: answer
 
@@ -512,23 +397,9 @@ C。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：硬件、软件与存储单位**
+计算机中的基本信息单位是 bit（位），一个 bit 可以表示 0 或 1。Byte（字节）是常用的存储单位，1 Byte 等于 8 bit。
 
-硬件是处理器、内存、存储设备等物理部件；软件是让硬件完成任务的程序及相关数据。操作系统属于系统软件，编辑器等工具属于软件，Python 源程序本身也不是硬件。
-
-最小的二进制信息单位是 bit，一个字节 B 通常含 8 bit，因此 2 B 可保存 16 个二进制位。要区分“位数”和“可表示的状态数”：8 bit 有 $2^8=256$ 种组合，无符号整数范围为 0～255，而不是 1～256。字符占几个字节还取决于编码，不能把一个字符直接等同于一个字节。
-
-继续阅读：[第1章：计算机基础](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-1 字节等于 8 个二进制位，即 1 B = 8 bit。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，1B 等于八位二进制，选择 C。
 
 </div>
 
@@ -537,8 +408,6 @@ C。
 ::::
 
 :::: question choice-2 | 2-2 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 Python程序在Windows上的扩展名是_________。
 
@@ -550,6 +419,11 @@ Python程序在Windows上的扩展名是_________。
 
 **D.** jpg
 
+<div class="question-tags">
+<span class="question-tag">Python 文件扩展名</span>
+<span class="question-tag">Python 源代码</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -560,23 +434,9 @@ A。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：源代码怎样运行**
+Python 源代码文件通常使用 `.py` 作为扩展名，例如 `hello.py`。`.exe` 通常是 Windows 下的可执行文件，`.docx` 是 Word 文档，`.jpg` 是图片文件。
 
-“高级语言”描述的是语言抽象层次，“编译”和“解释”描述的是实现程序的执行方式，不能把两者一一对应。编译器可以先把程序翻译成另一种形式，解释器则负责执行相应指令；同一种语言也可以有不同实现。
-
-以常用的 CPython 为例，源代码先编译成字节码，再由解释器执行，因此把 Python 理解成“完全不经过编译”也不准确。`.py` 是源文件扩展名，不是运行结果；终端执行 `python 文件名.py` 时，真正运行程序的是所选 Python 解释器。交互环境会显示裸表达式的值，脚本通常需要 `print()` 才会输出。
-
-继续阅读：[第1章：Python 与运行环境](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-Python 源代码脚本通常使用 .py 扩展名。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此选择 A。
 
 </div>
 
@@ -585,8 +445,6 @@ Python 源代码脚本通常使用 .py 扩展名。
 ::::
 
 :::: question choice-3 | 2-3 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 Python的输出函数是________。
 
@@ -598,6 +456,11 @@ Python的输出函数是________。
 
 **D.** turtle()
 
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">input 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -608,29 +471,9 @@ B。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输入处理的四个步骤**
+`print()` 用于把内容输出到屏幕；`input()` 用于读取用户输入。`math` 是数学模块，`turtle` 是绘图模块。
 
-多项数值输入可按“读整行 → 拆文本 → 逐项转换 → 拆包赋值”理解。输入 `3 5` 时，`input()` 返回 `'3 5'`，`split()` 得到 `['3','5']`，`map(int,...)` 按需将每一项转成整数，最后两个变量分别接收 3 和 5。
-
-```python
-line = input()
-parts = line.split()
-m, n = map(int, parts)
-```
-
-`int(parts)` 不会逐项处理，而会因参数是列表而报错。输入 `3,5` 应使用 `split(',')`。拆出的项目数和变量数不匹配会产生 `ValueError`；数字格式非法也会在转换时产生 `ValueError`。处理整行字符串时不要随意 `split()`，否则原有空格结构会丢失。
-
-继续阅读：[第1章：输入及输出函数](../topics/chapter-01.md)。
-
-<h4>知识点速查：输入</h4><table><thead><tr><th>写法</th><th>得到什么</th></tr></thead><tbody><tr><td><code>input()</code></td><td>一整行字符串</td></tr><tr><td><code>input().split()</code></td><td>按空白拆成字符串列表</td></tr><tr><td><code>map(int, ...)</code></td><td>把每一项转换成整数</td></tr><tr><td><code>a, b = ...</code></td><td>把结果分别赋给两个变量</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-print() 输出，input() 输入。
-
-<h4>容易出错的地方</h4>
-
-<p>先区分字符串和数字，再检查拆分、转换、赋值。</p>
+因此，Python 的输出函数是 `print()`，选择 B。
 
 </div>
 
@@ -639,8 +482,6 @@ print() 输出，input() 输入。
 ::::
 
 :::: question choice-4 | 2-4 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 10的二进制值是__________。
 
@@ -652,6 +493,11 @@ print() 输出，input() 输入。
 
 **D.** 1110
 
+<div class="question-tags">
+<span class="question-tag">二进制转换</span>
+<span class="question-tag">位权</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -662,30 +508,13 @@ B。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：进制转换与位权**
+二进制从右往左的位权依次是 1、2、4、8……。因此，十进制的 10 可以拆成 `8 + 2`：
 
-在基数为 $b$ 的计数制中，各位从右往左的权重依次为 $b^0,b^1,b^2,\ldots$。例如八进制 `35` 是 $3\times8+5=29$，十六进制 `2AC` 是 $2\times16^2+10\times16+12=684$。转换到目标进制时，可反复除以目标基数，并把余数倒序排列。
+\[
+10 = 1\times 8 + 0\times 4 + 1\times 2 + 0\times 1
+\]
 
-```python
-n = int('2AC', 16)
-print(n)          # 684
-print(oct(n))     # 0o1254
-print(bin(10))    # 0b1010
-```
-
-整数对象只保存数值，`0xA` 与 `10` 不是两种整数类型。`bin()`、`oct()`、`hex()` 返回带前缀的字符串，而 `int(文本,基数)` 返回整数；题目只要求数字部分时，不能额外写进制前缀。某基数的合法数码必须小于该基数，例如八进制不能含 8 或 9。
-
-继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
-
-<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-10 = 8+2，二进制为 1010。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
+对应的二进制是 `1010`，选择 B。
 
 </div>
 
@@ -694,8 +523,6 @@ print(bin(10))    # 0b1010
 ::::
 
 :::: question choice-5 | 2-5 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 八进制35的十进制值是_________。
 
@@ -707,6 +534,11 @@ print(bin(10))    # 0b1010
 
 **D.** 29
 
+<div class="question-tags">
+<span class="question-tag">八进制转换</span>
+<span class="question-tag">位权</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -717,30 +549,13 @@ D。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：进制转换与位权**
+八进制每一位的位权从右往左依次是 1、8、64……。因此，八进制 `35` 表示：
 
-在基数为 $b$ 的计数制中，各位从右往左的权重依次为 $b^0,b^1,b^2,\ldots$。例如八进制 `35` 是 $3\times8+5=29$，十六进制 `2AC` 是 $2\times16^2+10\times16+12=684$。转换到目标进制时，可反复除以目标基数，并把余数倒序排列。
+\[
+3\times 8 + 5\times 1 = 29
+\]
 
-```python
-n = int('2AC', 16)
-print(n)          # 684
-print(oct(n))     # 0o1254
-print(bin(10))    # 0b1010
-```
-
-整数对象只保存数值，`0xA` 与 `10` 不是两种整数类型。`bin()`、`oct()`、`hex()` 返回带前缀的字符串，而 `int(文本,基数)` 返回整数；题目只要求数字部分时，不能额外写进制前缀。某基数的合法数码必须小于该基数，例如八进制不能含 8 或 9。
-
-继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
-
-<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-八进制 35 = 3×8+5 = 29。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
+所以它对应的十进制数是 29，选择 D。
 
 </div>
 
@@ -749,8 +564,6 @@ print(bin(10))    # 0b1010
 ::::
 
 :::: question choice-6 | 2-6 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 计算机系统由硬件和________组成。
 
@@ -762,6 +575,11 @@ print(bin(10))    # 0b1010
 
 **D.** 软件
 
+<div class="question-tags">
+<span class="question-tag">计算机硬件</span>
+<span class="question-tag">计算机软件</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -772,23 +590,9 @@ D。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：硬件、软件与存储单位**
+计算机系统由硬件和软件组成。硬件是看得见、摸得着的物理设备，例如处理器、内存和存储器；软件是运行在计算机上的程序，例如操作系统和应用程序。
 
-硬件是处理器、内存、存储设备等物理部件；软件是让硬件完成任务的程序及相关数据。操作系统属于系统软件，编辑器等工具属于软件，Python 源程序本身也不是硬件。
-
-最小的二进制信息单位是 bit，一个字节 B 通常含 8 bit，因此 2 B 可保存 16 个二进制位。要区分“位数”和“可表示的状态数”：8 bit 有 $2^8=256$ 种组合，无符号整数范围为 0～255，而不是 1～256。字符占几个字节还取决于编码，不能把一个字符直接等同于一个字节。
-
-继续阅读：[第1章：计算机基础](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-计算机系统包括硬件和软件。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+控制器和存储器都属于硬件的一部分，因此应选择“软件”，答案为 D。
 
 </div>
 
@@ -797,8 +601,6 @@ D。
 ::::
 
 :::: question choice-7 | 2-7 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 ______是不等长编码。
 
@@ -810,6 +612,11 @@ ______是不等长编码。
 
 **D.** 以上都不
 
+<div class="question-tags">
+<span class="question-tag">Unicode 编码</span>
+<span class="question-tag">UTF-8 编码</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -820,23 +627,9 @@ C。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：字符、码点与字节编码**
+UTF-8 是一种变长编码方式：不同字符编码后占用的字节数可能不同，通常为 1～4 个字节。
 
-Unicode 为字符分配码点，例如 `ord('A')` 为 65，`ord('张')` 为 24352；`chr()` 完成反向转换。`U+5F20` 和十进制 24352 表示同一码点，只是记数方式不同。`ord()` 接收单个字符，不能直接把整个多字符字符串转换成一个码点。
-
-UTF-8 则规定如何把码点编码成字节，不能把它和 Unicode 字符集合混为一谈。例如 `len('张')` 为 1，而 `len('张'.encode('utf-8'))` 为 3；前者数 Python 字符串中的码点，后者数字节。ASCII 字符在 UTF-8 中仍占一个字节，这也是英文字符 A 的编码值在本题中保持 65 的原因。
-
-继续阅读：[第1章：字符编码](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-UTF-8 是变长编码，Unicode 标量值编码后占 1～4 字节；Unicode 本身是字符与码点体系，不应简单视为一种定长字节编码。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+Unicode 规定字符对应的码点，UTF-8 则规定如何把这些码点编码成字节。因此，题目中的不等长编码是 UTF-8，选择 C。
 
 </div>
 
@@ -845,8 +638,6 @@ UTF-8 是变长编码，Unicode 标量值编码后占 1～4 字节；Unicode 本
 ::::
 
 :::: question choice-8 | 2-8 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 _______号表示同一行的后面部分是Python程序的注释。
 
@@ -862,6 +653,11 @@ _______号表示同一行的后面部分是Python程序的注释。
 #
 ```
 
+<div class="question-tags">
+<span class="question-tag">Python 注释</span>
+<span class="question-tag"># 符号</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -872,23 +668,15 @@ D。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：注释与字符串的边界**
+Python 使用英文半角 `#` 表示单行注释。从 `#` 开始直到本行结束的内容都会被当作注释，不参与程序执行。
 
-英文半角 `#` 在字符串外引出单行注释，从它开始到本行末尾不再作为代码执行。例如 `x=3 # 说明` 中，赋值仍然会执行。全角 `＃` 不是 Python 注释符号。
+例如：
 
-字符串内部的 `#` 属于普通字符：`print('#')` 会输出井号。判断一段代码时，先确认引号边界，再识别注释，不能看到 `#` 就认为后面全部无效。三引号首先定义的是多行字符串；它在模块、类或函数开头时可以作为文档字符串，不能简单地把所有三引号字符串都称为注释。
+```python
+x = 3  # 给变量 x 赋值
+```
 
-继续阅读：[第1章：注释](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-英文半角 # 引出同一行的注释，字符串内部的 # 不作为注释起点。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此选择 D。
 
 </div>
 
@@ -897,8 +685,6 @@ D。
 ::::
 
 :::: question choice-9 | 2-9 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 Python语言正确的标识符是_______。
 
@@ -910,6 +696,11 @@ Python语言正确的标识符是_______。
 
 **D.** abc*234
 
+<div class="question-tags">
+<span class="question-tag">标识符</span>
+<span class="question-tag">变量命名规则</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -920,23 +711,14 @@ C。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：标识符、关键字与内置名称**
+Python 标识符可以由字母、数字和下划线组成，但不能以数字开头。
 
-入门题中常见的合法名字由字母、数字和下划线组成，不能以数字开头，且区分大小写。`item_1` 与 `_item` 合法；`1item` 不合法；`item-name` 会被当成减法表达式，而不是一个名字。Python 也允许部分 Unicode 字符用于标识符。
+- `2you`：以数字开头，不合法。
+- `my-name`：包含减号，会被理解为减法表达式。
+- `_item`：以下划线开头，合法。
+- `abc*234`：包含乘号，不合法。
 
-还要区分关键字和内置名称：`else`、`for` 是语法保留字，不能作普通变量名；`print`、`list` 不是关键字，给它们赋值在语法上合法，却会遮蔽原有功能。例如 `print=3` 后再执行 `print(5)`，是在调用整数，因而报 `TypeError`。布尔常量必须写作 `True`、`False`，大小写变化后会被当成别的名字。
-
-继续阅读：[第1章：标识符和变量](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-_item 以字母或下划线开头，后续可含数字；其他项含非法字符或以数字开头。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此选择 C。
 
 </div>
 
@@ -945,8 +727,6 @@ _item 以字母或下划线开头，后续可含数字；其他项含非法字�
 ::::
 
 :::: question choice-10 | 2-10 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 Python语言的官方网站地址是_______。
 
@@ -958,6 +738,10 @@ Python语言的官方网站地址是_______。
 
 **D.** [www.pythontutor.com](http://www.pythontutor.com/)
 
+<div class="question-tags">
+<span class="question-tag">Python 官方网站</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -968,23 +752,9 @@ A。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：解释器、编辑器与版本**
+Python 的官方网站是 `www.python.org`，可以在这里获取 Python 安装程序、官方文档和相关资料。
 
-编辑器负责写代码，解释器负责执行代码，二者不是同一个工具。IDLE 将编辑和交互运行放在一起，但保存 `.py` 文件后，也可以从终端调用解释器执行。
-
-同一台电脑可以安装多个 Python 版本。遇到“这里能运行，那里找不到模块”，先确认两个环境使用的解释器是否一致：在交互环境执行 `import sys`，再查看 `sys.executable` 和 `sys.version`。安装第三方包时，`python -m pip` 会使用这个 `python` 对应的环境。开源、免费和跨平台不意味着任意平台的文件路径、系统命令都完全相同。
-
-继续阅读：[第1章：Python 简介与开发环境](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-Python 的官方网站是 www.python.org。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此选择 A。
 
 </div>
 
@@ -993,8 +763,6 @@ Python 的官方网站是 www.python.org。
 ::::
 
 :::: question choice-11 | 2-11 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 不是面向对象的程序设计语言是________。
 
@@ -1006,6 +774,11 @@ Python 的官方网站是 www.python.org。
 
 **D.** Python
 
+<div class="question-tags">
+<span class="question-tag">面向对象编程</span>
+<span class="question-tag">程序设计范式</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1016,23 +789,9 @@ B。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：程序设计语言的分类**
+Java、C++ 和 Python 都支持面向对象编程，可以通过类和对象组织程序。C 语言通常归类为过程式编程语言，主要通过函数和语句组织程序。
 
-过程式编程围绕“按什么步骤完成任务”组织函数和语句；面向对象编程把状态与相关操作组织到对象中。它们是组织程序的思路，不是语言只能二选一的标签。
-
-例如计算一组成绩的平均分，可以用函数接收列表并返回结果；管理学生姓名、成绩及相关操作时，也可以设计 `Student` 类。Python 支持过程式、面向对象等多种方式。题目按课程常见分类选择答案时，需要理解分类依据；不能据此推断 Python 程序必须使用类，或 C 语言不能实现复杂的数据抽象。
-
-继续阅读：[第8章：类和对象](../topics/chapter-08.md)。
-
-
-
-<h4>回到这道题</h4>
-
-按题目对语言的常见分类，C 是过程式语言；Java、C++ 和 Python 提供直接的面向对象机制。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此，按常见的程序设计语言分类，本题选择 B。
 
 </div>
 
@@ -1041,8 +800,6 @@ B。
 ::::
 
 :::: question choice-12 | 2-12 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 下面程序的输出是什么？
 
@@ -1059,6 +816,11 @@ print(a, b)
 
 **D.** 5$\Box$$\Box$9 (5和9之间二个空格)
 
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">sep 参数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1069,29 +831,13 @@ C。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输出内容由哪些部分组成**
+执行 `print(a, b)` 时，`print()` 默认会用一个空格分隔多个参数。题目中 `a = 5`、`b = 9`，所以输出为：
 
-`print(a,b)` 不是把两个变量原样紧贴输出，而是先将参数转成文本，再用 `sep` 连接，最后加上 `end`。默认 `sep=' '`、`end='\n'`，所以参数间有一个空格，输出后换行。`print(a,b,sep='')` 才是无分隔拼接。
-
-```python
-print(5, 9)             # 5 9
-print(5, 9, sep='-')    # 5-9
-print('*', end=' ')     # 星号后有一个空格，暂不换行
+```text
+5 9
 ```
 
-判断题和编程题都要检查前导空格、参数间空格、行尾空格与换行。不要给自动评测的输出加入“请输入”等提示语。观察不可见字符时可先构造字符串，再使用 `repr()` 查看其边界；直接看网页中排版后的文字不一定能分辨空格数量。
-
-继续阅读：[第1章：print 与输出格式](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+两个数字之间只有一个空格，因此选择 C。
 
 </div>
 
@@ -1103,9 +849,12 @@ print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。
 
 :::: question blank-1 | 4-1 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 十进制19.625的二进制是 _____ 。（整数部分用八位二进制表示）
+
+<div class="question-tags">
+<span class="question-tag">二进制转换</span>
+<span class="question-tag">小数进制转换</span>
+</div>
 
 ::: answer
 
@@ -1117,23 +866,19 @@ print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：整数和小数的进制转换方向不同**
+整数部分和小数部分要分开转换。
 
-整数部分用“除基取余、逆序排列”；纯小数部分用“乘基取整、顺序排列”。例如 $0.625\times2=1.25$ 取 1，$0.25\times2=0.5$ 取 0，$0.5\times2=1$ 取 1，于是 $0.625=(0.101)_2$。整数 19 是 `10011`，若题目要求整数部分占 8 位，再在左侧补零。
+**整数部分 19：** 除以 2 依次取余，余数从下往上读，得到 `10011`。题目要求八位，因此在左侧补三个 0，得到 `00010011`。
 
-为什么有些小数算不完？一个最简分数能用有限二进制小数表示，当且仅当分母只含质因子 2，例如 $5/8$ 可以，$1/10$ 不可以。因此循环既要判断余数是否归零，也要遵守题目给定位数上限；截断和四舍五入是两种不同要求。精确转换十进制输入时，可用 `Fraction(输入字符串)`，避免先转 `float` 造成近似。
+**小数部分 0.625：** 不断乘以 2，依次记录结果的整数部分：
 
-继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
+| 计算 | 记录的整数部分 |
+|---|---:|
+| 0.625 × 2 = 1.25 | 1 |
+| 0.25 × 2 = 0.5 | 0 |
+| 0.5 × 2 = 1.0 | 1 |
 
-
-
-<h4>回到这道题</h4>
-
-整数 19 为 10011，补足 8 位得到 00010011；小数 .625 乘 2 取整依次为 1、0、1。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+按计算顺序排列，得到 `.101`。最后合并，答案为 `00010011.101`。
 
 </div>
 
@@ -1143,9 +888,12 @@ print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。
 
 :::: question blank-2 | 4-2 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 十六进制`2AC`的八进制表示是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">十六进制转换</span>
+<span class="question-tag">八进制转换</span>
+</div>
 
 ::: answer
 
@@ -1157,30 +905,15 @@ print(a,b) 默认在两个参数间输出一个空格，因此是 5□9。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：进制转换与位权**
+可以先把十六进制转换成二进制，再转换成八进制。每一位十六进制数对应 4 位二进制：
 
-在基数为 $b$ 的计数制中，各位从右往左的权重依次为 $b^0,b^1,b^2,\ldots$。例如八进制 `35` 是 $3\times8+5=29$，十六进制 `2AC` 是 $2\times16^2+10\times16+12=684$。转换到目标进制时，可反复除以目标基数，并把余数倒序排列。
+- `2` → `0010`
+- `A` → `1010`
+- `C` → `1100`
 
-```python
-n = int('2AC', 16)
-print(n)          # 684
-print(oct(n))     # 0o1254
-print(bin(10))    # 0b1010
-```
+所以 `2AC` 对应 `001010101100`。从右往左每三位分成一组：`001 010 101 100`。每组转换成一位八进制数，得到 `1 2 5 4`。
 
-整数对象只保存数值，`0xA` 与 `10` 不是两种整数类型。`bin()`、`oct()`、`hex()` 返回带前缀的字符串，而 `int(文本,基数)` 返回整数；题目只要求数字部分时，不能额外写进制前缀。某基数的合法数码必须小于该基数，例如八进制不能含 8 或 9。
-
-继续阅读：[第1章：数制与进制转换](../topics/chapter-01.md)。
-
-<h4>知识点速查：进制</h4><table><thead><tr><th>写法</th><th>含义</th></tr></thead><tbody><tr><td><code>0b1010</code></td><td>二进制</td></tr><tr><td><code>0o12</code></td><td>八进制</td></tr><tr><td><code>0xA</code></td><td>十六进制</td></tr><tr><td><code>bin(10)</code></td><td>整数 → 二进制字符串</td></tr><tr><td><code>int('1010', 2)</code></td><td>按二进制解析文本 → 整数</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-2AC₁₆ = 684₁₀ = 1254₈；按题目不额外添加 0o 前缀。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认源进制和目标进制，再选择对应的转换工具。</p>
+因此答案是 `1254`。
 
 </div>
 
@@ -1190,9 +923,12 @@ print(bin(10))    # 0b1010
 
 :::: question blank-3 | 4-3 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 十进制106的原码是 _____ ，反码是 _____ ，补码是 _____ 。 （用八位表示）
+
+<div class="question-tags">
+<span class="question-tag">原码、反码与补码</span>
+<span class="question-tag">二进制表示</span>
+</div>
 
 ::: answer
 
@@ -1204,23 +940,15 @@ print(bin(10))    # 0b1010
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：固定字长下的原码、反码、补码**
+先把 106 转换成二进制：
 
-先确定题目规定的字长，再写二进制位。8 位有符号表示中，正数的原码、反码和补码相同，最高位为 0；负数的原码将最高位置 1，反码保留符号位并翻转其余位，补码在反码基础上加 1。
+\[
+106 = 64 + 32 + 8 + 2 = (1101010)_2
+\]
 
-以 -78 为例：正数 78 是 `01001110`，负数原码 `11001110`，反码 `10110001`，补码 `10110010`。也可用 $2^8-78=178$ 验证其补码位型。8 位补码范围为 -128～127，不能把任意大整数强行塞进 8 位。Python 的 `int` 不固定为 8 位；本题的字长来自表示要求，而不是 Python 整数的实际存储大小。
+写成八位是 `01101010`。因为 106 是正数，八位表示中最高位为符号位 0，正数的原码、反码和补码完全相同。
 
-继续阅读：[第1章：原码、反码、补码](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-106=64+32+8+2，是正数，8 位原码、反码和补码相同。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此三个空依次填写：`01101010`、`01101010`、`01101010`。
 
 </div>
 
@@ -1230,9 +958,12 @@ print(bin(10))    # 0b1010
 
 :::: question blank-4 | 4-4 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 -78的原码是 _____ ，反码是 _____ ，补码是 _____ 。 （用八位表示）
+
+<div class="question-tags">
+<span class="question-tag">原码、反码与补码</span>
+<span class="question-tag">负数的二进制表示</span>
+</div>
 
 ::: answer
 
@@ -1244,23 +975,13 @@ print(bin(10))    # 0b1010
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：固定字长下的原码、反码、补码**
+先写出正数 78 的八位二进制：`01001110`。再按照负数的表示规则依次转换：
 
-先确定题目规定的字长，再写二进制位。8 位有符号表示中，正数的原码、反码和补码相同，最高位为 0；负数的原码将最高位置 1，反码保留符号位并翻转其余位，补码在反码基础上加 1。
+1. **原码：** 符号位改为 1，其余位不变，得到 `11001110`。
+2. **反码：** 保留符号位 1，将其余七位取反，得到 `10110001`。
+3. **补码：** 在反码的基础上加 1，得到 `10110010`。
 
-以 -78 为例：正数 78 是 `01001110`，负数原码 `11001110`，反码 `10110001`，补码 `10110010`。也可用 $2^8-78=178$ 验证其补码位型。8 位补码范围为 -128～127，不能把任意大整数强行塞进 8 位。Python 的 `int` 不固定为 8 位；本题的字长来自表示要求，而不是 Python 整数的实际存储大小。
-
-继续阅读：[第1章：原码、反码、补码](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-78 的 7 位数值部分为 1001110；原码符号位置 1，反码保留符号位并翻转其余位，补码再加 1。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+因此答案依次为 `11001110`、`10110001`、`10110010`。
 
 </div>
 
@@ -1271,8 +992,6 @@ print(bin(10))    # 0b1010
 <h2 id="programming" class="quiz-group">编程题<span>04 QUESTIONS</span></h2>
 
 :::: question programming-1 | 7-1 从键盘输入两个数，求它们的和并输出
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 本题目要求读入2个整数A和B，然后输出它们的和。
 
@@ -1302,6 +1021,12 @@ print(bin(10))    # 0b1010
 -30
 ```
 
+<div class="question-tags">
+<span class="question-tag">input 函数</span>
+<span class="question-tag">int 类型转换</span>
+<span class="question-tag">print 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1316,29 +1041,17 @@ print(a + b)
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输入处理的四个步骤**
-
-多项数值输入可按“读整行 → 拆文本 → 逐项转换 → 拆包赋值”理解。输入 `3 5` 时，`input()` 返回 `'3 5'`，`split()` 得到 `['3','5']`，`map(int,...)` 按需将每一项转成整数，最后两个变量分别接收 3 和 5。
+题目要求读取两行整数，再输出它们的和，因此需要调用两次 `input()`：
 
 ```python
-line = input()
-parts = line.split()
-m, n = map(int, parts)
+a = int(input())
+b = int(input())
+print(a + b)
 ```
 
-`int(parts)` 不会逐项处理，而会因参数是列表而报错。输入 `3,5` 应使用 `split(',')`。拆出的项目数和变量数不匹配会产生 `ValueError`；数字格式非法也会在转换时产生 `ValueError`。处理整行字符串时不要随意 `split()`，否则原有空格结构会丢失。
+`input()` 读取一行输入，`int()` 将字符串转换成整数。第一行读入 `18`，第二行读入 `-48`，所以 `a + b = -30`，最后由 `print()` 输出结果。
 
-继续阅读：[第1章：输入及输出函数](../topics/chapter-01.md)。
-
-<h4>知识点速查：输入</h4><table><thead><tr><th>写法</th><th>得到什么</th></tr></thead><tbody><tr><td><code>input()</code></td><td>一整行字符串</td></tr><tr><td><code>input().split()</code></td><td>按空白拆成字符串列表</td></tr><tr><td><code>map(int, ...)</code></td><td>把每一项转换成整数</td></tr><tr><td><code>a, b = ...</code></td><td>把结果分别赋给两个变量</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-分别读取两行整数，再输出它们的和，不附加提示语。
-
-<h4>容易出错的地方</h4>
-
-<p>先区分字符串和数字，再检查拆分、转换、赋值。</p>
+注意：题目要求两个数分两行输入，因此这里要写两次 `input()`。
 
 </div>
 
@@ -1347,8 +1060,6 @@ m, n = map(int, parts)
 ::::
 
 :::: question programming-2 | 7-2 从键盘输入三个数到a,b,c中，按公式值输出
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 在同一行依次输入三个值a,b,c，用空格分开，输出 b*b-4*a*c的值
 
@@ -1376,6 +1087,12 @@ m, n = map(int, parts)
 -44
 ```
 
+<div class="question-tags">
+<span class="question-tag">split 函数</span>
+<span class="question-tag">map 函数</span>
+<span class="question-tag">算术运算符</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1389,23 +1106,25 @@ print(b * b - 4 * a * c)
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：优先级、结合方向与一元运算**
+题目中的三个数在同一行输入，因此可以先用 `split()` 拆分，再用 `map(int, ...)` 将它们转换成整数：
 
-计算表达式时先列出括号，再处理乘方、乘除与整除求余、加减，最后处理比较和逻辑运算。同一层大多从左到右，但乘方从右向左结合：`3**2**3` 是 `3**(2**3)`，不是 `(3**2)**3`。
+```python
+a, b, c = map(int, input().split())
+```
 
-乘方与负号相邻时需特别注意：`-2**4` 是 `-(2**4)=-16`，`(-2)**4` 才是 16；右侧指数可以写负号，如 `2**-2=0.25`。Python 没有 `++` 自增运算，`++i` 只是两次一元正号，`--i` 是两次一元负号，都不会更新变量；真正增加 1 应写 `i+=1`。不要把其他语言的符号含义直接套到 Python。
+接着计算题目要求的表达式：
 
-继续阅读：[第2章：数字运算与语句](../topics/chapter-02.md)。
+```python
+print(b * b - 4 * a * c)
+```
 
-<h4>知识点速查：Python 常见运算符优先级</h4><table><thead><tr><th>优先级</th><th>运算符</th><th>作用</th></tr></thead><tbody><tr><td>最高</td><td><code>(...)</code></td><td>括号</td></tr><tr><td></td><td><code>**</code></td><td>乘方</td></tr><tr><td></td><td><code>+x -x ~x</code></td><td>一元运算</td></tr><tr><td></td><td><code>* / // %</code></td><td>乘、除、整除、取余</td></tr><tr><td></td><td><code>+ -</code></td><td>加、减</td></tr><tr><td></td><td>比较运算</td><td>比较、in、is</td></tr><tr><td></td><td><code>not</code></td><td>逻辑非</td></tr><tr><td></td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>最低</td><td><code>or</code></td><td>逻辑或</td></tr></tbody></table><p>乘方从右向左结合：<code>3**2**3 = 3**(2**3) = 6561</code>。</p>
+输入 `3 4 5` 时，`a = 3`、`b = 4`、`c = 5`，计算结果为：
 
-<h4>回到这道题</h4>
+\[
+4\times4-4\times3\times5=16-60=-44
+\]
 
-同一行拆分三个整数，按乘法优先级计算公式。若输入允许小数，可将 int 改为 float；原题样例采用整数。
-
-<h4>容易出错的地方</h4>
-
-<p>长表达式先找括号，再按优先级处理，并检查结合方向。</p>
+因此输出 `-44`。
 
 </div>
 
@@ -1414,8 +1133,6 @@ print(b * b - 4 * a * c)
 ::::
 
 :::: question programming-3 | 7-3 输出“人生苦短，我学Python”
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 #### 输入格式:
 
@@ -1437,6 +1154,11 @@ print(b * b - 4 * a * c)
 人生苦短，我学Python
 ```
 
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">字符串输出</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1449,29 +1171,13 @@ print('人生苦短，我学Python')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：输出内容由哪些部分组成**
-
-`print(a,b)` 不是把两个变量原样紧贴输出，而是先将参数转成文本，再用 `sep` 连接，最后加上 `end`。默认 `sep=' '`、`end='\n'`，所以参数间有一个空格，输出后换行。`print(a,b,sep='')` 才是无分隔拼接。
+这道题没有输入，只要求输出指定的一句话。直接使用 `print()`，并将要输出的内容放在引号中即可：
 
 ```python
-print(5, 9)             # 5 9
-print(5, 9, sep='-')    # 5-9
-print('*', end=' ')     # 星号后有一个空格，暂不换行
+print('人生苦短，我学Python')
 ```
 
-判断题和编程题都要检查前导空格、参数间空格、行尾空格与换行。不要给自动评测的输出加入“请输入”等提示语。观察不可见字符时可先构造字符串，再使用 `repr()` 查看其边界；直接看网页中排版后的文字不一定能分辨空格数量。
-
-继续阅读：[第1章：print 与输出格式](../topics/chapter-01.md)。
-
-
-
-<h4>回到这道题</h4>
-
-题目无输入，按原文输出，注意中文逗号及 Python 的大小写。这句话属于题面要求。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+注意保留题目中的中文逗号，以及 `Python` 的大小写。
 
 </div>
 
@@ -1480,8 +1186,6 @@ print('*', end=' ')     # 星号后有一个空格，暂不换行
 ::::
 
 :::: question programming-4 | 7-4 写字母H
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 字母`H`可以这样输出。编程序输出`H`
 
@@ -1521,6 +1225,12 @@ print('*', end=' ')     # 星号后有一个空格，暂不换行
 *   *
 ```
 
+<div class="question-tags">
+<span class="question-tag">print 函数</span>
+<span class="question-tag">转义字符 \n</span>
+<span class="question-tag">字符串输出</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1533,23 +1243,13 @@ print('*   *\n*   *\n*****\n*   *\n*   *')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：把图形拆成行号和行内规律**
+题目要求输出一个由五行组成的字母 H。可以把五行内容放在同一个字符串中，并用 `\n` 表示换行：
 
-先确定第 i 行由哪几段组成，再决定循环。星号三角形常见规律是第 i 行有 i 个星号；等腰数字图形则可以拆成左侧空格、递增段和递减段。最高值只出现一次，所以递减段从 i-1 开始，而不是再次从 i 开始。
+```python
+print('*   *\n*   *\n*****\n*   *\n*   *')
+```
 
-假设所有数字都占一个字符，峰值为 i 的回文数字行宽为 `2*i-1`，最终行峰值为 n，则左侧空格数是 n-i。若数字可能达到两位，必须重新核对题目限制和实际字符宽度，不能继续套单字符公式。输出前用小输入手算每行的前导空格、分隔符、行尾空格和换行；不要用网页里看起来相近的形状替代精确字符比较。
-
-继续阅读：[第4章：for 循环](../topics/chapter-04.md)。
-
-
-
-<h4>回到这道题</h4>
-
-使用换行符分隔五行；第一、二、四、五行的星号之间有三个空格。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
+`\n` 是换行符，运行时会让后面的内容从下一行开始输出。每行两个星号之间有三个空格，空格数量也要与样例保持一致。
 
 </div>
 

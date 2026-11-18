@@ -16,7 +16,8 @@ test('all 41 source questions retain question text, explanation, code, tables an
     const question = original.split('**答案')[0].replace('**题目：**', '').trim()
     assert.ok(imported.includes(question), `Question ${i + 1} text lost`)
     const explanation = original.split('**解析：**')[1].trim()
-    assert.ok(imported.includes(explanation), `Question ${i + 1} explanation lost`)
+    const panel = imported.match(/^::: answer\n([\s\S]*?)^:::$/m)?.[1]
+    assert.ok(panel?.includes(explanation), `Question ${i + 1} explanation missing from answer panel`)
     const fences = [...original.matchAll(/```[^\n]*\n([\s\S]*?)```/g)]
     for (const [, code] of fences) assert.ok(imported.includes(code), `Question ${i + 1} code whitespace changed`)
     const answer = original.slice(original.indexOf('**答案'), original.indexOf('**解析：**'))
@@ -55,9 +56,7 @@ test('new homework and quiz collections preserve all source questions and code i
       const location = `${file}: ${question.split('\n', 1)[0]}`
       const answers = [...question.matchAll(/^::: answer\n([\s\S]*?)^:::$/gm)]
       assert.equal(answers.length, 1, `${location}: expected one answer panel`)
-      const explanation = file.startsWith('docs/assignments/')
-        ? answers[0][1].match(/^<div class="explanation">\n([\s\S]*?)^<\/div>$/m)?.[1]
-        : question.match(/^::: explanation\n([\s\S]*?)^:::$/m)?.[1]
+      const explanation = answers[0][1].match(/^<div class="explanation">\n([\s\S]*?)^<\/div>$/m)?.[1]
       const body = explanation?.replace(/^<div class="section-label">.*<\/div>$/gm, '').replace(/<!--[\s\S]*?-->/g, '').trim()
       assert.ok(body, `${location}: missing explanation content`)
     }

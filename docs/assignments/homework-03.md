@@ -20,11 +20,14 @@ questionGroups:
 
 :::: question judgment-1 | 1-1 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 ```python
 'age'+23不是正确的表达式。  
 ```
+
+<div class="question-tags">
+<span class="question-tag">字符串拼接</span>
+<span class="question-tag">类型转换</span>
+</div>
 
 ::: answer
 
@@ -36,24 +39,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：同一个运算符对不同类型有不同含义**
-
-对数字，`+` 表示加法；对字符串，表示拼接；对列表，表示连接两边的元素。例如 `2+3` 为 5，`'2'+'3'` 为 `'23'`，`[2]+[3]` 为 `[2,3]`。Python 不会为了完成拼接自动把整数变成字符串，所以 `'age'+23` 在运行时产生 `TypeError`。
-
-若要拼接，使用 `'age'+str(23)` 或 `f'age{23}'`；若要计算，使用 `int('23')+1`。二者目的不同，不能随意选择一种转换。还要把语法阶段和执行阶段分开：正常引号下的字符串加整数，能通过语法解析；弯引号 `“ ”` 不是 Python 字符串定界符，原样输入会先出现语法错误。
-
-继续阅读：[第2章：字符串与类型转换](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-字符串不能与整数直接相加，执行 'age'+23 会产生 TypeError；这里把代码块末尾中文视为题目说明。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+Python 可以解析 `'age' + 23`，但执行时会报 `TypeError`：`+` 不能直接把字符串和整数拼接。若想得到 `age23`，需要先把整数转换成字符串：`'age' + str(23)`。因此题目说法正确。
 </div>
 
 :::
@@ -62,9 +48,12 @@ T（正确）。
 
 :::: question judgment-2 | 1-2 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表可以用find()函数来搜索数据是否在列表中。
+
+<div class="question-tags">
+<span class="question-tag">列表查找</span>
+<span class="question-tag">find 方法</span>
+</div>
 
 ::: answer
 
@@ -76,31 +65,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：查存在、查位置与查全部匹配**
-
-只判断有无时使用 `x in seq`，结果为布尔值。字符串 `find()` 返回第一次匹配的起始下标，找不到返回 -1；字符串和列表的 `index()` 也查首次位置，但找不到会引发 `ValueError`。列表没有 `find()` 方法。
-
-```python
-s = 'programming'
-print(s.find('r'))      # 1
-print(s.find('r', 2))   # 4：从下标 2 开始找
-print('x' in s)         # False
-```
-
-不能写 `if s.find(x)` 判断存在：找到在下标 0 时是假值，没找到的 -1 反而是真值。应写 `if x in s` 或 `if s.find(x) != -1`。题目要求输出所有匹配位置时，需要遍历下标或重复搜索，而不是只调用一次查找；要求倒序位置时还需改变遍历方向。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-find() 是字符串方法，列表查找位置用 index()，判断有无用 in。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`find()` 是字符串方法，列表没有这个方法。判断元素是否在列表中，可以使用 `x in lst`；如果需要查找元素第一次出现的位置，可以使用 `lst.index(x)`。因此题目说法错误。
 </div>
 
 :::
@@ -109,9 +74,12 @@ find() 是字符串方法，列表查找位置用 index()，判断有无用 in�
 
 :::: question judgment-3 | 1-3 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 将列表中的元素顺序打乱的函数shuffle()不是random模块的函数或方法。
+
+<div class="question-tags">
+<span class="question-tag">random 模块</span>
+<span class="question-tag">shuffle 方法</span>
+</div>
 
 ::: answer
 
@@ -123,24 +91,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：排序的对象、顺序与返回值**
-
-`sorted(items)` 返回新的已排序列表，原对象不变；`a.sort()` 原地修改列表并返回 `None`。要降序使用 `reverse=True`。`max()` 只取最大元素，不返回排序后的完整序列，空序列且无默认值时还会报错。
-
-排序前先确定按什么比较：整数 `[2,10]` 排成 `[2,10]`，字符串 `['2','10']` 则排成 `['10','2']`。若题意是按数值大小，必须先转成数值再排序，最后再转回字符串用于输出。`random.shuffle(a)` 也原地修改列表并返回 `None`，但它是打乱，不是排序；不要写 `a=random.shuffle(a)`。
-
-继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
-
-<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
-
-<h4>回到这道题</h4>
-
-random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返回 None。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
-
+`shuffle()` 是 `random` 模块提供的方法，用于随机打乱列表中的元素顺序。例如 `random.shuffle(lst)` 会直接修改原列表。因此题目说它不是 `random` 模块的方法，错误。注意：`shuffle()` 原地修改列表，返回值是 `None`。
 </div>
 
 :::
@@ -149,9 +100,12 @@ random.shuffle() 就是 random 模块提供的方法，原地打乱列表并返�
 
 :::: question judgment-4 | 1-4 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 字符串和列表都是序列类型。
+
+<div class="question-tags">
+<span class="question-tag">序列类型</span>
+<span class="question-tag">字符串与列表</span>
+</div>
 
 ::: answer
 
@@ -163,24 +117,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：字符串是不可变的字符序列**
-
-Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。字符串支持索引、切片、遍历、成员判断与长度查询，但不支持 `s[0]='B'` 这样的原地修改。要更改字符，可构造新字符串并重新赋值，例如 `s='B'+s[1:]`。
-
-字符串的长度由对象记录，不依赖 `\0` 作为结束标志；`len('a\0b')` 为 3，中间的空字符也计入长度。`list('abc')` 会遍历字符串，生成 `['a','b','c']`；`['abc']` 则只含一个完整字符串。这个区别也适用于拆包和 `extend()`：传入字符串时，它通常被当成可逐字符遍历的序列。
-
-继续阅读：[第3章：序列与字符串](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-两者都有顺序、索引和切片等序列操作。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+字符串和列表都属于序列类型，都有确定的元素顺序，可以通过下标访问元素，也支持切片和 `len()`。区别在于：字符串不可变，列表可变。因此本题正确。
 </div>
 
 :::
@@ -189,9 +126,12 @@ Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。�
 
 :::: question judgment-5 | 1-5 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 可以通过[]来访问字符串的某个字符，也可以将它修改成其他字符。
+
+<div class="question-tags">
+<span class="question-tag">字符串索引</span>
+<span class="question-tag">字符串不可变</span>
+</div>
 
 ::: answer
 
@@ -203,24 +143,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：原地修改与生成新对象**
-
-列表是可变对象，能原地修改元素或增删；字符串、元组不能更改自身位置上的引用。`s=s+'x'` 虽然能执行，但它创建新字符串并让名字 `s` 重新绑定，不能证明字符串可变。元组里的列表仍可改变，如 `t=([1],)` 后执行 `t[0].append(2)` 合法。
-
-另一个常考区别是返回值：`a.sort()`、`a.reverse()`、`a.append(x)` 修改列表并返回 `None`；`sorted(a)`、`a[::-1]` 返回新列表。因此 `b=a.sort()` 后 `b` 不是已排序列表，而是 `None`。阅读代码时分别记录“原对象现在是什么”和“表达式返回了什么”，就能避免把二者混为一谈。
-
-继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-可索引读取，但字符串不可变，不能通过 s[i]=... 修改字符。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+字符串可以通过下标读取字符，例如 `s[0]`，但不能通过下标直接修改字符。执行 `s[0] = 'B'` 会报错，因为字符串是不可变对象。若要替换字符，需要构造一个新字符串。因此本题错误。
 </div>
 
 :::
@@ -229,9 +152,12 @@ F（错误）。
 
 :::: question judgment-6 | 1-6 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 字符串对象和元组对象是不可变对象，列表对象为可变对象。
+
+<div class="question-tags">
+<span class="question-tag">可变与不可变对象</span>
+<span class="question-tag">列表与元组</span>
+</div>
 
 ::: answer
 
@@ -243,24 +169,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：原地修改与生成新对象**
-
-列表是可变对象，能原地修改元素或增删；字符串、元组不能更改自身位置上的引用。`s=s+'x'` 虽然能执行，但它创建新字符串并让名字 `s` 重新绑定，不能证明字符串可变。元组里的列表仍可改变，如 `t=([1],)` 后执行 `t[0].append(2)` 合法。
-
-另一个常考区别是返回值：`a.sort()`、`a.reverse()`、`a.append(x)` 修改列表并返回 `None`；`sorted(a)`、`a[::-1]` 返回新列表。因此 `b=a.sort()` 后 `b` 不是已排序列表，而是 `None`。阅读代码时分别记录“原对象现在是什么”和“表达式返回了什么”，就能避免把二者混为一谈。
-
-继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-列表可原地增删改，字符串和元组自身不能原地改位置上的引用。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+字符串和元组创建后，不能直接修改其中某个位置的元素；列表则可以通过下标修改，也可以增删元素。因此字符串、元组是不可变对象，列表是可变对象，本题正确。
 </div>
 
 :::
@@ -269,9 +178,12 @@ T（正确）。
 
 :::: question judgment-7 | 1-7 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[::]的结果是[12, -5, -22, -10, -26, 35, 0, 49, 3, -21]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片步长</span>
+</div>
 
 ::: answer
 
@@ -283,31 +195,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-省略起止和步长的 [::] 复制整个列表，值与原列表一致。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[::]` 省略了起点、终点和步长，默认从头到尾、每次取一个元素，因此会得到包含原列表全部元素的新列表。它与原列表内容相同，但外层列表对象是新建的。本题正确。
 </div>
 
 :::
@@ -316,9 +204,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-8 | 1-8 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[::-1]的结果是[-21, 3, 49, 0, 35, -26, -10, -22, -5, 12]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">列表逆序</span>
+</div>
 
 ::: answer
 
@@ -330,31 +221,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-负步长 -1 从末尾向前遍历，生成逆序新列表。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+切片中的步长为 `-1`，表示从右向左每次移动一个位置。`lst[::-1]` 因此会把列表中的元素按相反顺序取出，结果正好是题目给出的逆序列表。本题正确。
 </div>
 
 :::
@@ -363,9 +230,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-9 | 1-9 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[::2]的结果是[12, -22, -26, 0, 3]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片步长</span>
+</div>
 
 ::: answer
 
@@ -377,31 +247,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-步长 2 从下标 0 开始，依次取 0、2、4、6、8。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[::2]` 表示从下标 0 开始，每次向后移动 2 个位置，所以依次取得下标 `0、2、4、6、8` 的元素：`[12, -22, -26, 0, 3]`。与题目一致，因此正确。
 </div>
 
 :::
@@ -410,9 +256,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-10 | 1-10 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[1::2]的结果是[12, -22, -26, 0, 3]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片起点</span>
+</div>
 
 ::: answer
 
@@ -424,31 +273,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-从下标 1 开始应取 1、3、5、7、9，结果为 [-5,-10,35,49,-21]。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[1::2]` 从下标 1 开始，每次移动 2 位，取得下标 `1、3、5、7、9` 的元素，结果是 `[-5, -10, 35, 49, -21]`，与题目给出的结果不同，因此错误。
 </div>
 
 :::
@@ -457,9 +282,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-11 | 1-11 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[3:8:2]的结果是[-10, 35, 49]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片终点</span>
+</div>
 
 ::: answer
 
@@ -471,31 +299,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-取下标 3、5、7，分别为 -10、35、49，终点 8 不包含。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[3:8:2]` 从下标 3 开始，每次增加 2，直到下标达到 8 前停止。实际取得下标 `3、5、7`，对应 `-10、35、49`。切片的终点 8 不包含在结果中，因此本题正确。
 </div>
 
 :::
@@ -504,9 +308,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-12 | 1-12 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[0:100]的结果是错误。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片越界</span>
+</div>
 
 ::: answer
 
@@ -518,31 +325,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-切片边界自动截到末尾，lst[0:100] 返回整个列表的浅拷贝，不报错。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+切片的起止位置超出列表范围时，Python 会自动截取到合法边界，不会因此报错。`lst[0:100]` 会从开头一直取到列表末尾，结果就是整个列表。因此“结果是错误”的说法不正确。
 </div>
 
 :::
@@ -551,9 +334,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-13 | 1-13 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[100:]的结果是[]。
+
+<div class="question-tags">
+<span class="question-tag">列表切片</span>
+<span class="question-tag">切片越界</span>
+</div>
 
 ::: answer
 
@@ -565,31 +351,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-切片起点超出末尾返回空列表。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[100:]` 表示从下标 100 开始取到末尾。列表没有这么大的下标，因此切片结果为空列表 `[]`。切片越界不会报错，所以本题正确。
 </div>
 
 :::
@@ -598,9 +360,12 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 :::: question judgment-14 | 1-14 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 列表lst=[12, -5, -22, -10, -26, 35, 0, 49, 3, -21],lst[100]的结果是运行错误。
+
+<div class="question-tags">
+<span class="question-tag">列表索引</span>
+<span class="question-tag">索引越界</span>
+</div>
 
 ::: answer
 
@@ -612,31 +377,7 @@ T（正确）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-单元素索引 100 越界，会产生 IndexError。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`lst[100]` 是直接访问下标为 100 的单个元素。列表长度只有 10，下标范围是 `0` 到 `9`，因此会触发 `IndexError`。注意：单个索引越界会报错，切片越界通常会自动截取。
 </div>
 
 :::
@@ -644,8 +385,6 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 ::::
 
 :::: question judgment-15 | 1-15 判断题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 下面的程序当输入是 `c d e a`时，输出是 `a c d e`。
 
@@ -655,6 +394,11 @@ for i in a.sort():
     print(i,end=" ")
 ```
 
+<div class="question-tags">
+<span class="question-tag">sort 方法</span>
+<span class="question-tag">列表方法返回值</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -665,24 +409,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：排序的对象、顺序与返回值**
-
-`sorted(items)` 返回新的已排序列表，原对象不变；`a.sort()` 原地修改列表并返回 `None`。要降序使用 `reverse=True`。`max()` 只取最大元素，不返回排序后的完整序列，空序列且无默认值时还会报错。
-
-排序前先确定按什么比较：整数 `[2,10]` 排成 `[2,10]`，字符串 `['2','10']` 则排成 `['10','2']`。若题意是按数值大小，必须先转成数值再排序，最后再转回字符串用于输出。`random.shuffle(a)` 也原地修改列表并返回 `None`，但它是打乱，不是排序；不要写 `a=random.shuffle(a)`。
-
-继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
-
-<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
-
-<h4>回到这道题</h4>
-
-sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.sort()，再 for i in a。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
-
+`a.sort()` 会直接对列表 `a` 排序，但它的返回值是 `None`。因此 `for i in a.sort()` 实际上是在遍历 `None`，会报 `TypeError`，程序无法按题目所说输出。正确写法是先执行 `a.sort()`，再遍历 `a`。
 </div>
 
 :::
@@ -691,9 +418,12 @@ sort() 原地排序并返回 None；遍历 None 会产生 TypeError。应先 a.s
 
 :::: question judgment-16 | 1-16 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 表达式：`"34" in "1234"==True` 返回值是True。
+
+<div class="question-tags">
+<span class="question-tag">链式比较</span>
+<span class="question-tag">in 运算符</span>
+</div>
 
 ::: answer
 
@@ -705,24 +435,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：链式比较会复用中间操作数**
-
-`a < b < c` 按逻辑可理解为 `a < b and b < c`，并不是先把 `a < b` 的布尔值拿去与 `c` 比较。成员运算 `in` 也属于比较运算，所以 `'34' in '1234' == True` 中，中间操作数是字符串 `'1234'`，后一项比较的是 `'1234' == True`，结果为假。
-
-加括号会改变分组：`('34' in '1234') == True` 先得到成员判断结果，因此为真。实际编程中直接写 `'34' in '1234'` 更清楚。链式比较还具有短路特性，前一项为假时不再计算后项；遇到混合比较符号时，把它拆成相邻两项的比较，再逐项分析最可靠。
-
-继续阅读：[第4章：条件语句](../topics/chapter-04.md)。
-
-
-
-<h4>回到这道题</h4>
-
-in 与 == 组成链式比较，还需检查 "1234"==True，此项为假，整体为假。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+Python 会把 `a < b < c` 这样的表达式理解为 `a < b and b < c`。因此，`'34' in '1234' == True` 相当于同时判断 `'34' in '1234'` 和 `'1234' == True`。前者为真，后者为假，所以整体结果为 `False`。若想先判断成员关系再与 `True` 比较，需要加括号。
 </div>
 
 :::
@@ -730,8 +443,6 @@ in 与 == 组成链式比较，还需检查 "1234"==True，此项为假，整体
 ::::
 
 :::: question judgment-17 | 1-17 判断题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 下面程序输出是`yes`。
 
@@ -747,6 +458,11 @@ else:
     print("no")
 ```
 
+<div class="question-tags">
+<span class="question-tag">join 方法</span>
+<span class="question-tag">字符串比较</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -757,31 +473,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：连接字符串与空格精确比较**
-
-`分隔符.join(各字符串)` 只在相邻项之间放分隔符，不会自动在首尾添加。例如 `' '.join(['12','12','12'])` 为 `'12 12 12'`，而 `'12 '*3` 为 `'12 12 12 '`，末尾多一个空格，比较结果为假。
-
-```python
-parts = ['12', '12', '12']
-s = ' '.join(parts)
-print(repr(s))         # '12 12 12'
-print(len(s))          # 8
-```
-
-`join()` 的元素必须是字符串，数值列表先用 `map(str,values)` 转换。`strip()` 能改变两端空白，但不能为了解决输出问题随意使用：若空格属于题目要求，去掉它就是改变答案。比较字符串时，先写出每一段内容和长度，再叠加 `print()` 自带的 `sep`，能更准确地定位多余空格。
-
-继续阅读：[第3章：字符串和列表的互转](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-s1 在最后一个元素后仍有空格，join 得到的 s2 没有末尾空格，程序输出 no。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+循环中每次都执行 `s1 = s1 + c + ' '`，所以 `s1` 最后会多出一个末尾空格。`' '.join(lst)` 只在元素之间添加空格，不会在末尾添加空格。两个字符串因此不相等，程序输出 `no`，本题说输出 `yes` 是错误的。
 </div>
 
 :::
@@ -790,9 +482,12 @@ s1 在最后一个元素后仍有空格，join 得到的 s2 没有末尾空格�
 
 :::: question judgment-18 | 1-18 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `"12 "*3==" ".join(["12","12","12"])` 的输出是True
+
+<div class="question-tags">
+<span class="question-tag">字符串重复</span>
+<span class="question-tag">空格处理</span>
+</div>
 
 ::: answer
 
@@ -804,31 +499,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：连接字符串与空格精确比较**
-
-`分隔符.join(各字符串)` 只在相邻项之间放分隔符，不会自动在首尾添加。例如 `' '.join(['12','12','12'])` 为 `'12 12 12'`，而 `'12 '*3` 为 `'12 12 12 '`，末尾多一个空格，比较结果为假。
-
-```python
-parts = ['12', '12', '12']
-s = ' '.join(parts)
-print(repr(s))         # '12 12 12'
-print(len(s))          # 8
-```
-
-`join()` 的元素必须是字符串，数值列表先用 `map(str,values)` 转换。`strip()` 能改变两端空白，但不能为了解决输出问题随意使用：若空格属于题目要求，去掉它就是改变答案。比较字符串时，先写出每一段内容和长度，再叠加 `print()` 自带的 `sep`，能更准确地定位多余空格。
-
-继续阅读：[第3章：字符串和列表的互转](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-左侧重复得到 12 12 12 后还带末尾空格，右侧 join 不带末尾空格。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`'12 ' * 3` 的结果是 `'12 12 12 '`，末尾仍然有一个空格。`' '.join(['12','12','12'])` 的结果是 `'12 12 12'`，只在元素之间放空格。两者末尾是否有空格不同，因此比较结果为 `False`。
 </div>
 
 :::
@@ -837,10 +508,13 @@ print(len(s))          # 8
 
 :::: question judgment-19 | 1-19 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 语句`print("输出结果是{:8s}".format("this"))`的输出是：输出结果是 $\Box$$\Box$$\Box$$\Box$this。  
  $\Box$表示空格。
+
+<div class="question-tags">
+<span class="question-tag">format 方法</span>
+<span class="question-tag">字符串对齐</span>
+</div>
 
 ::: answer
 
@@ -852,31 +526,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式规格由填充、对齐、宽度和类型组成**
-
-常见结构为 `[[填充字符]对齐方式][宽度][.精度][类型]`。`<` 左对齐、`>` 右对齐、`^` 居中；字符串默认左对齐，数值默认右对齐。宽度是最小宽度，不会截断过长内容。`d` 用于十进制整数，`s` 用于字符串，`.2f` 表示小数点后保留两位。
-
-```python
-print(f'|{"this":8s}|') # |this    |
-print(f'|{1234:8d}|')   # |    1234|
-print(f'{31:08b}')      # 00011111
-print(f'{"11":0>5s}')  # 00011
-```
-
-先算内容本身长度，再用字段宽度减去它，才知道补几个字符。动态宽度应显式写成 `f'{s:^{width}}'`，格式串里的普通字母不会自动读取同名变量。浮点格式化的宽度还包含符号和小数点，精度不等于总字符数。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-字符串默认左对齐，实际输出 this 后四个空格。
-
-<h4>容易出错的地方</h4>
-
-<p>先确定实际数值，再检查宽度、对齐和精度。</p>
-
+格式说明 `{:8s}` 表示字符串占用宽度至少为 8。字符串默认左对齐，因此 `this` 后面补 4 个空格，结果是 `this□□□□`，而不是在 `this` 前面补空格。本题错误。
 </div>
 
 :::
@@ -885,9 +535,12 @@ print(f'{"11":0>5s}')  # 00011
 
 :::: question judgment-20 | 1-20 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 语句`print("输出结果是{:8d}".format(1234))`的输出是：输出结果是 1234□□□□。 □表示空格。
+
+<div class="question-tags">
+<span class="question-tag">format 方法</span>
+<span class="question-tag">数字对齐</span>
+</div>
 
 ::: answer
 
@@ -899,31 +552,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式规格由填充、对齐、宽度和类型组成**
-
-常见结构为 `[[填充字符]对齐方式][宽度][.精度][类型]`。`<` 左对齐、`>` 右对齐、`^` 居中；字符串默认左对齐，数值默认右对齐。宽度是最小宽度，不会截断过长内容。`d` 用于十进制整数，`s` 用于字符串，`.2f` 表示小数点后保留两位。
-
-```python
-print(f'|{"this":8s}|') # |this    |
-print(f'|{1234:8d}|')   # |    1234|
-print(f'{31:08b}')      # 00011111
-print(f'{"11":0>5s}')  # 00011
-```
-
-先算内容本身长度，再用字段宽度减去它，才知道补几个字符。动态宽度应显式写成 `f'{s:^{width}}'`，格式串里的普通字母不会自动读取同名变量。浮点格式化的宽度还包含符号和小数点，精度不等于总字符数。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-整数默认右对齐，实际输出 1234 前四个空格。
-
-<h4>容易出错的地方</h4>
-
-<p>先确定实际数值，再检查宽度、对齐和精度。</p>
-
+格式说明 `{:8d}` 表示整数按十进制显示，字段宽度为 8。整数默认右对齐，`1234` 前面会补 4 个空格，实际结果是 `□□□□1234`，不是题目描述的格式。因此本题错误。
 </div>
 
 :::
@@ -932,9 +561,12 @@ print(f'{"11":0>5s}')  # 00011
 
 :::: question judgment-21 | 1-21 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 语句`print("输出结果是{:08.2f}".format(14.345))`的输出是：输出结果是00014.34。
+
+<div class="question-tags">
+<span class="question-tag">浮点数</span>
+<span class="question-tag">格式化输出</span>
+</div>
 
 ::: answer
 
@@ -946,24 +578,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：浮点近似与最终显示**
-
-多数十进制小数不能被二进制浮点数精确表示，计算机保存的是附近的可表示值。因此 `round()` 或 `.2f` 格式化所处理的，可能并不是纸面上那个精确的十进制数。遇到 14.345 一类边界值，不能机械地按十进制“第三位是 5”判断结果。
-
-即使没有表示误差，Python 的 `round()` 在恰好居中时也采用向偶数舍入，而不是一律进位：`round(2.5)` 为 2，`round(3.5)` 为 4。格式化返回字符串，`round(x,2)` 返回数值，不保证显示末尾的零。若业务要求精确十进制及指定舍入规则，应从原始文本构造 `Decimal` 并明确舍入方式；不要先转成 `float` 再期望恢复精确输入。
-
-继续阅读：[第2章：数字类型与格式化输出](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-按 Python 3 实际格式化结果为 00014.35；14.345 的二进制浮点近似值会影响舍入，不应填 00014.34。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`{:08.2f}` 表示总宽度至少为 8、保留 2 位小数，不足的宽度在左侧补 `0`。Python 对 `14.345` 按浮点数实际存储值进行格式化，结果为 `00014.35`，并非 `00014.34`，因此本题错误。
 </div>
 
 :::
@@ -972,9 +587,12 @@ F（错误）。
 
 :::: question judgment-22 | 1-22 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 [1,2,[3]]+[4,5]的结果是[1,2,3,4,5]。
+
+<div class="question-tags">
+<span class="question-tag">列表拼接</span>
+<span class="question-tag">嵌套列表</span>
+</div>
 
 ::: answer
 
@@ -986,24 +604,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：序列重复与内部引用共享**
-
-字符串或列表乘整数表示重复，不是把内容解释成数值。`'23'*3` 为 `'232323'`，`[4,5]*3` 为 `[4,5,4,5,4,5]`，不会自动生成三个子列表。字符串原有的空格也会一起重复，所以 `'12 '*3` 在最后仍有一个空格。
-
-若元素本身是可变列表，重复操作复制的是引用：`rows=[[0]*2]*3` 中三行是同一个对象，执行 `rows[0][0]=1` 会让三行都改变。要创建独立的行，应写 `rows=[[0]*2 for _ in range(3)]`。同样，列表 `+` 只连接一层，`[1,2]+[[3]]` 得到 `[1,2,[3]]`，不会递归展开内部列表。
-
-继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-列表拼接不会展开内部列表，结果为 [1,2,[3],4,5]。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+列表的 `+` 会把两个列表的元素依次连接起来，不会自动展开内部的嵌套列表。因此 `[1, 2, [3]] + [4, 5]` 的结果是 `[1, 2, [3], 4, 5]`，其中 `[3]` 仍然是一个子列表。本题错误。
 </div>
 
 :::
@@ -1012,9 +613,12 @@ F（错误）。
 
 :::: question judgment-23 | 1-23 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 [4,5]`*`3的结果是[[4,5],[4,5],[4,5]]。
+
+<div class="question-tags">
+<span class="question-tag">列表重复</span>
+<span class="question-tag">序列运算</span>
+</div>
 
 ::: answer
 
@@ -1026,24 +630,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：序列重复与内部引用共享**
-
-字符串或列表乘整数表示重复，不是把内容解释成数值。`'23'*3` 为 `'232323'`，`[4,5]*3` 为 `[4,5,4,5,4,5]`，不会自动生成三个子列表。字符串原有的空格也会一起重复，所以 `'12 '*3` 在最后仍有一个空格。
-
-若元素本身是可变列表，重复操作复制的是引用：`rows=[[0]*2]*3` 中三行是同一个对象，执行 `rows[0][0]=1` 会让三行都改变。要创建独立的行，应写 `rows=[[0]*2 for _ in range(3)]`。同样，列表 `+` 只连接一层，`[1,2]+[[3]]` 得到 `[1,2,[3]]`，不会递归展开内部列表。
-
-继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-列表重复的是元素，结果为 [4,5,4,5,4,5]。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+列表乘以整数表示重复列表中的元素。`[4, 5] * 3` 得到 `[4, 5, 4, 5, 4, 5]`，不会把原列表整体复制成三个嵌套列表。因此本题错误。
 </div>
 
 :::
@@ -1052,14 +639,17 @@ F（错误）。
 
 :::: question judgment-24 | 1-24 判断题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 下面程序的输出是字符`a`
 
 ```python
 c="A"
 print(c.lower)
 ```
+
+<div class="question-tags">
+<span class="question-tag">字符串方法</span>
+<span class="question-tag">lower 方法</span>
+</div>
 
 ::: answer
 
@@ -1071,32 +661,7 @@ F（错误）。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：取得方法与执行方法是两回事**
-
-`c.lower` 取得绑定到对象 `c` 上的方法对象，`c.lower()` 才真正调用它并返回小写字符串。打印方法对象会得到方法描述，不能当成转换结果。字符串不可变，因此 `lower()` 不会改变原对象，若要保存结果需写 `c=c.lower()`。
-
-```python
-c = 'AbC'
-result = c.lower()
-print(c)          # AbC：原值不变
-print(result)     # abc
-print(c.isalpha())# True
-```
-
-`isdigit()`、`isalpha()`、`isalnum()` 检查整个字符串是否非空且每个字符都满足相应类别；空串的这几种判断为假。它们按 Unicode 规则工作，不只接受 ASCII 字符。题目严格要求英文字母或十六进制字符时，应按明确范围判断，不能直接把“属于字母数字”当成“合法十六进制数码”。
-
-继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
-
-<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
-
-<h4>回到这道题</h4>
-
-c.lower 是方法对象；调用 c.lower() 才得到 a。
-
-<h4>容易出错的地方</h4>
-
-<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
-
+`c.lower` 只是取得 `lower` 方法本身，并没有执行大小写转换。调用方法时需要加括号：`c.lower()`，结果才是字符串 `'a'`。原程序打印的是方法对象，不会输出字符 `a`，因此本题错误。
 </div>
 
 :::
@@ -1106,8 +671,6 @@ c.lower 是方法对象；调用 c.lower() 才得到 a。
 <h2 id="choice" class="quiz-group">单选题<span>05 QUESTIONS</span></h2>
 
 :::: question choice-1 | 2-1 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 max((3, 5, 1, 7, 4))的结果是____。
 
@@ -1119,6 +682,11 @@ max((3, 5, 1, 7, 4))的结果是____。
 
 **D.** 7
 
+<div class="question-tags">
+<span class="question-tag">Python 数据类型</span>
+<span class="question-tag">字符串类型</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1129,24 +697,7 @@ D。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：排序的对象、顺序与返回值**
-
-`sorted(items)` 返回新的已排序列表，原对象不变；`a.sort()` 原地修改列表并返回 `None`。要降序使用 `reverse=True`。`max()` 只取最大元素，不返回排序后的完整序列，空序列且无默认值时还会报错。
-
-排序前先确定按什么比较：整数 `[2,10]` 排成 `[2,10]`，字符串 `['2','10']` 则排成 `['10','2']`。若题意是按数值大小，必须先转成数值再排序，最后再转回字符串用于输出。`random.shuffle(a)` 也原地修改列表并返回 `None`，但它是打乱，不是排序；不要写 `a=random.shuffle(a)`。
-
-继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
-
-<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
-
-<h4>回到这道题</h4>
-
-max 返回序列最大值 7。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
-
+Python 有整数 `int`、浮点数 `float`、列表 `list` 等内置类型，但没有单独的 `char` 字符类型。单个字符也使用字符串表示，例如 `'A'` 的类型是 `str`。因此选择 A。
 </div>
 
 :::
@@ -1154,8 +705,6 @@ max 返回序列最大值 7。
 ::::
 
 :::: question choice-2 | 2-2 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 以下哪句打印出smith\exam1\test.txt？
 
@@ -1167,6 +716,11 @@ max 返回序列最大值 7。
 
 **D.** `print("smith"\exam1"\test.txt")`
 
+<div class="question-tags">
+<span class="question-tag">复数类型</span>
+<span class="question-tag">type 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1177,31 +731,7 @@ B。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：源码写法与实际字符串并不相同**
-
-普通字符串中的反斜杠引出转义，例如 `\n` 是一个换行符、`\t` 是一个制表符，`\\` 才是一个真实反斜杠。因此 Windows 风格路径中的 `\test` 如果直接写进普通字符串，开头的 `\t` 会被解释成制表符，打印结果就改变了。
-
-```python
-path = r'smith\exam1\test.txt'
-print(path)
-print(len('\t'))   # 1：一个制表符
-print(len('\\t'))  # 2：反斜杠和字母 t
-```
-
-`r` 前缀可以减少路径中的转义处理，但原始字符串也有语法限制，例如不能以奇数个反斜杠紧接结束引号。查看 `repr(path)` 会得到便于观察转义的表示，不能把其中为展示而写出的双反斜杠误认为实际内容里有两个反斜杠。
-
-继续阅读：[第2章：字符串类型](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-字符串字面量中的真反斜杠需写成 \\；A 中 \t 被解释为制表符。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+Python 使用 `j` 或 `J` 表示虚数单位，因此 `1J` 是一个复数。`type(1J)` 返回复数类型 `<class 'complex'>`，选择 A。
 </div>
 
 :::
@@ -1209,8 +739,6 @@ print(len('\\t'))  # 2：反斜杠和字母 t
 ::::
 
 :::: question choice-3 | 2-3 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 list("abcd")的结果是?
 
@@ -1222,6 +750,11 @@ list("abcd")的结果是?
 
 **D.** ['abcd']
 
+<div class="question-tags">
+<span class="question-tag">除法运算</span>
+<span class="question-tag">type 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1232,24 +765,7 @@ A。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：字符串是不可变的字符序列**
-
-Python 没有单独的内置 `char` 类型，`'A'` 是长度为 1 的 `str`。字符串支持索引、切片、遍历、成员判断与长度查询，但不支持 `s[0]='B'` 这样的原地修改。要更改字符，可构造新字符串并重新赋值，例如 `s='B'+s[1:]`。
-
-字符串的长度由对象记录，不依赖 `\0` 作为结束标志；`len('a\0b')` 为 3，中间的空字符也计入长度。`list('abc')` 会遍历字符串，生成 `['a','b','c']`；`['abc']` 则只含一个完整字符串。这个区别也适用于拆包和 `extend()`：传入字符串时，它通常被当成可逐字符遍历的序列。
-
-继续阅读：[第3章：序列与字符串](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-list() 逐字符遍历字符串，得到 4 个字符元素。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+Python 中 `/` 表示普通除法，即使两个操作数都是整数，结果也会是浮点数。`1 / 2` 得到 `0.5`，所以 `type(1/2)` 是 `float`，选择 C。
 </div>
 
 :::
@@ -1257,8 +773,6 @@ list() 逐字符遍历字符串，得到 4 个字符元素。
 ::::
 
 :::: question choice-4 | 2-4 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 如果list1 = [1, 2, 3, 4, 5, 4, 3, 2, 1]，那么以下那个是list1[:-1]？
 
@@ -1270,6 +784,11 @@ list() 逐字符遍历字符串，得到 4 个字符元素。
 
 **D.** [0, 1, 2, 3, 4, 3, 2, 1, 0]
 
+<div class="question-tags">
+<span class="question-tag">整除运算</span>
+<span class="question-tag">type 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1280,31 +799,7 @@ C。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：索引、切片与负步长**
-
-索引 `a[i]` 取得一个元素，下标从 0 开始，负下标从尾部计数，`-1` 是最后一个元素。切片 `a[start:stop:step]` 取得一个新序列：从起点开始，每次前进步长，只要还没到终点就继续，终点本身不取。正步长时可用 `range(start,stop,step)` 列出目标下标。
-
-```python
-a = [10, 20, 30, 40, 50]
-print(a[1:5:2])  # [20, 40]：下标 1、3
-print(a[:-1])    # [10, 20, 30, 40]
-print(a[::-1])   # [50, 40, 30, 20, 10]
-```
-
-切片越界会裁剪到合法边界，而单个索引越界会报错。负步长时默认起点和终点随方向改变，`a[::-1]` 的省略终点不等于显式写 `a[-1:-1:-1]`；后者是空列表。步长不能为 0。列表切片是浅拷贝，外层新建，内部可变对象仍可能共享。
-
-继续阅读：[第3章：序列的访问及运算符](../topics/chapter-03.md)。
-
-<h4>知识点速查：切片</h4><p><code>a[start:stop:step]</code> 从 start 开始，每次走 step，stop 不包含；<code>[::-1]</code> 常用于反转。</p>
-
-<h4>回到这道题</h4>
-
-切片终点 -1 不包含最后一个元素，结果少最后的 1。
-
-<h4>容易出错的地方</h4>
-
-<p>检查起点、终点和步长；终点不包含，下标从 0 开始。</p>
-
+`//` 表示整除。两个整数进行整除，结果仍为整数；`1 // 2` 的结果是整数 `0`，因此 `type(1//2)` 是 `int`，选择 A。
 </div>
 
 :::
@@ -1312,8 +807,6 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 ::::
 
 :::: question choice-5 | 2-5 单选题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 要把5加到列表lst的末尾，用的是___ 。
 
@@ -1325,6 +818,11 @@ print(a[::-1])   # [50, 40, 30, 20, 10]
 
 **D.** lst.addEnd(5)
 
+<div class="question-tags">
+<span class="question-tag">数据类型转换</span>
+<span class="question-tag">浮点数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1335,32 +833,7 @@ B。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：列表方法按“位置”还是“值”操作**
-
-`append(x)` 把 x 作为一个整体追加，`extend(items)` 把可迭代对象逐项追加，`insert(i,x)` 在位置 i 前插入。删除时，`remove(x)` 删除第一个值等于 x 的元素，不返回被删元素；`pop(i)` 按下标删除并返回元素，省略下标则处理最后一项。
-
-```python
-a = [3, 4, 3]
-a.remove(3)
-print(a)       # [4, 3]：只删首个 3
-print(a.pop()) # 3
-print(a)       # [4]
-```
-
-元素删除后，右边元素的下标会前移；跟踪程序时每一步都应写出新的列表。`append()`、`remove()`、`sort()` 等修改列表后返回 `None`，不能把它们的返回值再赋给列表变量。`pop()` 则特意返回被删元素，是这一组题里很容易混淆的差别。
-
-继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
-
-<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-append(5) 将 5 作为单个元素追加到列表末尾。
-
-<h4>容易出错的地方</h4>
-
-<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
-
+表达式中 `121` 是整数，`1.21` 是浮点数。整数与浮点数相加时，结果会转换为浮点数，因此 `a` 的类型是 `float`，选择 B。
 </div>
 
 :::
@@ -1371,9 +844,12 @@ append(5) 将 5 作为单个元素追加到列表末尾。
 
 :::: question blank-1 | 4-1 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 '23'*3的结果是_______。 _____ (答案不要加引号）
+
+<div class="question-tags">
+<span class="question-tag">运算符优先级</span>
+<span class="question-tag">布尔类型</span>
+</div>
 
 ::: answer
 
@@ -1385,24 +861,7 @@ append(5) 将 5 作为单个元素追加到列表末尾。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：序列重复与内部引用共享**
-
-字符串或列表乘整数表示重复，不是把内容解释成数值。`'23'*3` 为 `'232323'`，`[4,5]*3` 为 `[4,5,4,5,4,5]`，不会自动生成三个子列表。字符串原有的空格也会一起重复，所以 `'12 '*3` 在最后仍有一个空格。
-
-若元素本身是可变列表，重复操作复制的是引用：`rows=[[0]*2]*3` 中三行是同一个对象，执行 `rows[0][0]=1` 会让三行都改变。要创建独立的行，应写 `rows=[[0]*2 for _ in range(3)]`。同样，列表 `+` 只连接一层，`[1,2]+[[3]]` 得到 `[1,2,[3]]`，不会递归展开内部列表。
-
-继续阅读：[第3章：序列运算与嵌套引用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-字符串重复三次，并非数值乘法。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先计算整除：`5 // 3 = 1`。再注意 Python 中 `True` 等于整数 `1`，`False` 等于整数 `0`。所以表达式为 `10 + 1 - 1 + 0`，结果是 `10`。
 </div>
 
 :::
@@ -1411,9 +870,12 @@ append(5) 将 5 作为单个元素追加到列表末尾。
 
 :::: question blank-2 | 4-2 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 len('3//11//2018'.split('/'))的结果是_____。 _____
+
+<div class="question-tags">
+<span class="question-tag">乘方运算</span>
+<span class="question-tag">运算符结合方向</span>
+</div>
 
 ::: answer
 
@@ -1425,31 +887,7 @@ len('3//11//2018'.split('/'))的结果是_____。 _____
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：指定分隔符与默认拆分不同**
-
-`split('/')` 把每一个 `/` 都视为分界，连续分隔符之间会产生空字符串，首尾分隔符也会产生空项。因此 `'3//11//2018'.split('/')` 有 5 项，两个空字符串也各算一个列表元素。
-
-```python
-print('a,,b,'.split(','))  # ['a', '', 'b', '']
-print('  a   b  '.split()) # ['a', 'b']
-print(''.split(','))      # ['']
-print(''.split())         # []
-```
-
-不带参数的 `split()` 按连续空白拆分，合并空白并忽略两端空白，这与显式 `split(' ')` 也不同。选择方式取决于数据格式：普通空格分隔数值通常用 `split()`；CSV 式的空字段若有意义，就不能先合并分隔符。`len()` 数的是结果中的元素，而不是非空元素。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-指定 '/' 分隔时，连续分隔符产生空字符串，列表为 ['3','','11','','2018']。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+连续乘方从右向左结合，因此 `3**2**3` 等价于 `3**(2**3)`。先算 `2**3 = 8`，再算 `3**8 = 6561`。不要把它理解成 `(3**2)**3`。
 </div>
 
 :::
@@ -1458,9 +896,12 @@ print(''.split())         # []
 
 :::: question blank-3 | 4-3 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 lst=[3,4,5,6,5,4,3],执行lst.remove(3)后，lst[0]的值是：_。 _____
+
+<div class="question-tags">
+<span class="question-tag">round 函数</span>
+<span class="question-tag">浮点数</span>
+</div>
 
 ::: answer
 
@@ -1472,32 +913,7 @@ lst=[3,4,5,6,5,4,3],执行lst.remove(3)后，lst[0]的值是：_。 _____
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：列表方法按“位置”还是“值”操作**
-
-`append(x)` 把 x 作为一个整体追加，`extend(items)` 把可迭代对象逐项追加，`insert(i,x)` 在位置 i 前插入。删除时，`remove(x)` 删除第一个值等于 x 的元素，不返回被删元素；`pop(i)` 按下标删除并返回元素，省略下标则处理最后一项。
-
-```python
-a = [3, 4, 3]
-a.remove(3)
-print(a)       # [4, 3]：只删首个 3
-print(a.pop()) # 3
-print(a)       # [4]
-```
-
-元素删除后，右边元素的下标会前移；跟踪程序时每一步都应写出新的列表。`append()`、`remove()`、`sort()` 等修改列表后返回 `None`，不能把它们的返回值再赋给列表变量。`pop()` 则特意返回被删元素，是这一组题里很容易混淆的差别。
-
-继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
-
-<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-remove(3) 删除首个 3，原下标 1 的 4 成为新首元素。
-
-<h4>容易出错的地方</h4>
-
-<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
-
+先算乘方：`3**2 = 9`；再算除法：`17.0 / 9 ≈ 1.8888889`。最后 `round(..., 2)` 将结果保留到小数点后两位，得到 `1.89`。
 </div>
 
 :::
@@ -1506,9 +922,12 @@ remove(3) 删除首个 3，原下标 1 的 4 成为新首元素。
 
 :::: question blank-4 | 4-4 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 list(range(2,12,2))[:-2].pop()的结果是：_____。 _____
+
+<div class="question-tags">
+<span class="question-tag">逻辑运算</span>
+<span class="question-tag">短路求值</span>
+</div>
 
 ::: answer
 
@@ -1520,32 +939,7 @@ list(range(2,12,2))[:-2].pop()的结果是：_____。 _____
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：列表方法按“位置”还是“值”操作**
-
-`append(x)` 把 x 作为一个整体追加，`extend(items)` 把可迭代对象逐项追加，`insert(i,x)` 在位置 i 前插入。删除时，`remove(x)` 删除第一个值等于 x 的元素，不返回被删元素；`pop(i)` 按下标删除并返回元素，省略下标则处理最后一项。
-
-```python
-a = [3, 4, 3]
-a.remove(3)
-print(a)       # [4, 3]：只删首个 3
-print(a.pop()) # 3
-print(a)       # [4]
-```
-
-元素删除后，右边元素的下标会前移；跟踪程序时每一步都应写出新的列表。`append()`、`remove()`、`sort()` 等修改列表后返回 `None`，不能把它们的返回值再赋给列表变量。`pop()` 则特意返回被删元素，是这一组题里很容易混淆的差别。
-
-继续阅读：[第3章：列表修改与返回值](../topics/chapter-03.md)。
-
-<h4>知识点速查：列表方法</h4><table><thead><tr><th>方法</th><th>作用</th><th>返回值</th></tr></thead><tbody><tr><td><code>append(x)</code></td><td>追加一个元素</td><td>None</td></tr><tr><td><code>extend(xs)</code></td><td>逐项追加</td><td>None</td></tr><tr><td><code>remove(x)</code></td><td>删除第一个 x</td><td>None</td></tr><tr><td><code>pop(i)</code></td><td>删除并返回元素</td><td>元素</td></tr><tr><td><code>sort()</code></td><td>原地排序</td><td>None</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6。
-
-<h4>容易出错的地方</h4>
-
-<p>特别区分返回 None 的列表方法和会返回元素的 pop()。</p>
-
+先算比较：`2 < True` 等价于 `2 < 1`，结果为 `False`；`not False` 得到 `True`。左边 `0 and 1` 因为第一个操作数 0 为假，直接返回 0；再计算 `0 or True`，结果为 `True`。
 </div>
 
 :::
@@ -1554,9 +948,12 @@ range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6
 
 :::: question blank-5 | 4-5 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 要想得到[0,100]范围内的随机数，random.randint(0,n)里的n应该是：___。 _____
+
+<div class="question-tags">
+<span class="question-tag">int 函数</span>
+<span class="question-tag">进制转换</span>
+</div>
 
 ::: answer
 
@@ -1568,31 +965,7 @@ range 得到 [2,4,6,8,10]，切片去掉末尾两项，再 pop 返回末尾的 6
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：随机区间的端点**
-
-`random.random()` 返回满足 $0\le x<1$ 的随机浮点数；对非负值使用 `int()` 相当于向下取整，所以题目中的 `int(x*90)+10` 按区间分析得到 10～99。直接取整数时，`randint(10,99)` 包含两个端点，`randrange(10,100)` 不包含右端。
-
-```python
-import random
-n = random.randint(10, 99)
-items = [1, 2, 3]
-random.shuffle(items)  # 原地打乱，返回 None
-```
-
-区间题先写原始范围，再依次做乘法、取整和平移，不要只试几个随机样本来猜端点。随机运行未碰到某个边界，不代表边界不可能出现；`seed()` 用于帮助复现实验序列，也不改变这些函数约定的区间。
-
-继续阅读：[第3章：random 库](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-randint(a,b) 包含两个端点。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`int(文本, 进制)` 可以把指定进制的字符串转换为十进制整数。`int("20", 16)` 表示十六进制的 20，即 `2×16=32`；`int("101", 2)` 表示二进制的 101，即 `4+1=5`。`print()` 默认用一个空格分隔两个结果，所以输出 `32 5`。
 </div>
 
 :::
@@ -1601,9 +974,12 @@ randint(a,b) 包含两个端点。
 
 :::: question blank-6 | 4-6 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("{1}+{0}={2}".format(2,3,2+3))`的输出是 _____ (答案不要加引号）。
+
+<div class="question-tags">
+<span class="question-tag">hex 函数</span>
+<span class="question-tag">bin 函数</span>
+</div>
 
 ::: answer
 
@@ -1615,24 +991,7 @@ randint(a,b) 包含两个端点。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式串中的占位符怎样取值**
-
-`str.format()` 的位置参数编号从 0 开始，编号与占位符出现顺序可以不同。`'{1}+{0}={2}'.format(2,3,5)` 先得到三个参数 2、3、5，再按编号替换，输出 `3+2=5`。同一个参数也可以多次引用。
-
-命名占位符需要显式传参，例如 `'{first}-{second}={0}'.format(11,first=34,second=23)`。花括号外的减号与等号只是文本，不会再执行运算；花括号里的 `first` 也不会自动去局部变量中查找。f-string 则可直接写表达式，如 `f'{a}-{b}={a-b}'`。分清这两种机制，就不会把字符串里的算式误认为真正参与计算的代码。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-参数 0 为 2、参数 1 为 3、参数 2 为 5，按占位编号替换。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`hex(16)` 把整数 16 转换成带前缀的十六进制字符串 `0x10`；`bin(10)` 把整数 10 转换成二进制字符串 `0b1010`。两个函数返回的都是字符串，`print()` 会在它们之间自动加一个空格。
 </div>
 
 :::
@@ -1641,8 +1000,6 @@ randint(a,b) 包含两个端点。
 
 :::: question blank-7 | 4-7 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 ```python
 a=34
 b=23
@@ -1650,6 +1007,11 @@ print("{first}-{second}={0}".format(34-23,first=a,second=b))
 ```
 
 上面程序输出是 _____ (答案不要加引号）。
+
+<div class="question-tags">
+<span class="question-tag">逻辑运算</span>
+<span class="question-tag">运算符优先级</span>
+</div>
 
 ::: answer
 
@@ -1661,24 +1023,7 @@ print("{first}-{second}={0}".format(34-23,first=a,second=b))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式串中的占位符怎样取值**
-
-`str.format()` 的位置参数编号从 0 开始，编号与占位符出现顺序可以不同。`'{1}+{0}={2}'.format(2,3,5)` 先得到三个参数 2、3、5，再按编号替换，输出 `3+2=5`。同一个参数也可以多次引用。
-
-命名占位符需要显式传参，例如 `'{first}-{second}={0}'.format(11,first=34,second=23)`。花括号外的减号与等号只是文本，不会再执行运算；花括号里的 `first` 也不会自动去局部变量中查找。f-string 则可直接写表达式，如 `f'{a}-{b}={a-b}'`。分清这两种机制，就不会把字符串里的算式误认为真正参与计算的代码。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-first、second 分别取 34、23，位置参数 0 为差值 11。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+逻辑运算的优先级是 `not` 高于 `and`，`and` 高于 `or`。`not d` 为 `False`；`a >= 0` 为真，`a+c > b+3` 即 `9 > 8`，也为真。因此原式为 `False or (True and True)`，结果是 `True`。
 </div>
 
 :::
@@ -1687,9 +1032,12 @@ first、second 分别取 34、23，位置参数 0 为差值 11。
 
 :::: question blank-8 | 4-8 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("{:>08s}".format(bin(31)[2:]))`的输出是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">abs 函数</span>
+<span class="question-tag">复数模</span>
+</div>
 
 ::: answer
 
@@ -1701,31 +1049,7 @@ first、second 分别取 34、23，位置参数 0 为差值 11。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式规格由填充、对齐、宽度和类型组成**
-
-常见结构为 `[[填充字符]对齐方式][宽度][.精度][类型]`。`<` 左对齐、`>` 右对齐、`^` 居中；字符串默认左对齐，数值默认右对齐。宽度是最小宽度，不会截断过长内容。`d` 用于十进制整数，`s` 用于字符串，`.2f` 表示小数点后保留两位。
-
-```python
-print(f'|{"this":8s}|') # |this    |
-print(f'|{1234:8d}|')   # |    1234|
-print(f'{31:08b}')      # 00011111
-print(f'{"11":0>5s}')  # 00011
-```
-
-先算内容本身长度，再用字段宽度减去它，才知道补几个字符。动态宽度应显式写成 `f'{s:^{width}}'`，格式串里的普通字母不会自动读取同名变量。浮点格式化的宽度还包含符号和小数点，精度不等于总字符数。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-31 的二进制为 11111，去掉前缀后左侧补零至宽度 8。
-
-<h4>容易出错的地方</h4>
-
-<p>先确定实际数值，再检查宽度、对齐和精度。</p>
-
+`abs(-10.2)` 得到 `10.2`。复数的绝对值表示它的模：`abs(8-2j) = √(8²+(-2)²) = √68 ≈ 8.246211`，保留 3 位小数得到 `8.246`。`print()` 将两个结果用空格分开。
 </div>
 
 :::
@@ -1734,11 +1058,14 @@ print(f'{"11":0>5s}')  # 00011
 
 :::: question blank-9 | 4-9 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("programming".find("r",2))`的输出是 _____ 。
 
 。
+
+<div class="question-tags">
+<span class="question-tag">and 运算符</span>
+<span class="question-tag">or 运算符</span>
+</div>
 
 ::: answer
 
@@ -1750,31 +1077,7 @@ print(f'{"11":0>5s}')  # 00011
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：查存在、查位置与查全部匹配**
-
-只判断有无时使用 `x in seq`，结果为布尔值。字符串 `find()` 返回第一次匹配的起始下标，找不到返回 -1；字符串和列表的 `index()` 也查首次位置，但找不到会引发 `ValueError`。列表没有 `find()` 方法。
-
-```python
-s = 'programming'
-print(s.find('r'))      # 1
-print(s.find('r', 2))   # 4：从下标 2 开始找
-print('x' in s)         # False
-```
-
-不能写 `if s.find(x)` 判断存在：找到在下标 0 时是假值，没找到的 -1 反而是真值。应写 `if x in s` 或 `if s.find(x) != -1`。题目要求输出所有匹配位置时，需要遍历下标或重复搜索，而不是只调用一次查找；要求倒序位置时还需改变遍历方向。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-从下标 2 起查找 r，第一次遇到的是下标 4，跳过下标 1 的 r。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`and` 的优先级高于 `or`，所以先算 `y and z`，即 `False and False`，结果为 `False`。再算 `x or False`，即 `True or False`，最终结果为 `True`。
 </div>
 
 :::
@@ -1783,9 +1086,12 @@ print('x' in s)         # False
 
 :::: question blank-10 | 4-10 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("programming".find("x"))`的输出是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">比较运算</span>
+<span class="question-tag">短路求值</span>
+</div>
 
 ::: answer
 
@@ -1797,31 +1103,7 @@ print('x' in s)         # False
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：查存在、查位置与查全部匹配**
-
-只判断有无时使用 `x in seq`，结果为布尔值。字符串 `find()` 返回第一次匹配的起始下标，找不到返回 -1；字符串和列表的 `index()` 也查首次位置，但找不到会引发 `ValueError`。列表没有 `find()` 方法。
-
-```python
-s = 'programming'
-print(s.find('r'))      # 1
-print(s.find('r', 2))   # 4：从下标 2 开始找
-print('x' in s)         # False
-```
-
-不能写 `if s.find(x)` 判断存在：找到在下标 0 时是假值，没找到的 -1 反而是真值。应写 `if x in s` 或 `if s.find(x) != -1`。题目要求输出所有匹配位置时，需要遍历下标或重复搜索，而不是只调用一次查找；要求倒序位置时还需改变遍历方向。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-字符串中不存在 x，find 返回 -1。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先计算 `x >= y`，也就是 `0 >= True`。由于 `True` 的数值为 1，比较结果为 `False`。`and` 左侧已经为假，后面的字符串比较不会影响结果，整个表达式为 `False`。
 </div>
 
 :::
@@ -1830,9 +1112,12 @@ print('x' in s)         # False
 
 :::: question blank-11 | 4-11 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("a123".isdigit())`的输出是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">运算符优先级</span>
+<span class="question-tag">逻辑运算</span>
+</div>
 
 ::: answer
 
@@ -1844,32 +1129,7 @@ print('x' in s)         # False
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：取得方法与执行方法是两回事**
-
-`c.lower` 取得绑定到对象 `c` 上的方法对象，`c.lower()` 才真正调用它并返回小写字符串。打印方法对象会得到方法描述，不能当成转换结果。字符串不可变，因此 `lower()` 不会改变原对象，若要保存结果需写 `c=c.lower()`。
-
-```python
-c = 'AbC'
-result = c.lower()
-print(c)          # AbC：原值不变
-print(result)     # abc
-print(c.isalpha())# True
-```
-
-`isdigit()`、`isalpha()`、`isalnum()` 检查整个字符串是否非空且每个字符都满足相应类别；空串的这几种判断为假。它们按 Unicode 规则工作，不只接受 ASCII 字符。题目严格要求英文字母或十六进制字符时，应按明确范围判断，不能直接把“属于字母数字”当成“合法十六进制数码”。
-
-继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
-
-<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
-
-<h4>回到这道题</h4>
-
-a 不是数字，因此整个字符串不是全数字。
-
-<h4>容易出错的地方</h4>
-
-<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
-
+先算算术和比较：`16-25 > 78/2` 为 `-9 > 39`，结果为假。另一部分中，`"XYZ" != "xyz"` 为真；`10-6 > 18/2` 即 `4 > 9` 为假，取反后为真。于是右侧 `True and True` 为真，最终 `False or True` 得到 `True`。
 </div>
 
 :::
@@ -1878,9 +1138,12 @@ a 不是数字，因此整个字符串不是全数字。
 
 :::: question blank-12 | 4-12 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print("aABC".isalpha())`的输出是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">字符串拼接</span>
+<span class="question-tag">字符串字面量</span>
+</div>
 
 ::: answer
 
@@ -1892,32 +1155,7 @@ a 不是数字，因此整个字符串不是全数字。
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：取得方法与执行方法是两回事**
-
-`c.lower` 取得绑定到对象 `c` 上的方法对象，`c.lower()` 才真正调用它并返回小写字符串。打印方法对象会得到方法描述，不能当成转换结果。字符串不可变，因此 `lower()` 不会改变原对象，若要保存结果需写 `c=c.lower()`。
-
-```python
-c = 'AbC'
-result = c.lower()
-print(c)          # AbC：原值不变
-print(result)     # abc
-print(c.isalpha())# True
-```
-
-`isdigit()`、`isalpha()`、`isalnum()` 检查整个字符串是否非空且每个字符都满足相应类别；空串的这几种判断为假。它们按 Unicode 规则工作，不只接受 ASCII 字符。题目严格要求英文字母或十六进制字符时，应按明确范围判断，不能直接把“属于字母数字”当成“合法十六进制数码”。
-
-继续阅读：[第3章：字符串方法](../topics/chapter-03.md)。
-
-<h4>知识点速查：方法</h4><p><code>s.lower</code> 是方法对象，<code>s.lower()</code> 才是调用方法。</p>
-
-<h4>回到这道题</h4>
-
-aABC 的每个字符都是字母。
-
-<h4>容易出错的地方</h4>
-
-<p>注意点号后有没有括号；没有括号时通常只是取得方法。</p>
-
+Python 允许相邻的字符串字面量直接写在一起，编译时会自动拼接，中间不会额外添加空格。因此 `"hello" 'world'` 等价于 `"helloworld"`，输出 `helloworld`。
 </div>
 
 :::
@@ -1926,10 +1164,13 @@ aABC 的每个字符都是字母。
 
 :::: question blank-13 | 4-13 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 print("$\Box$$\Box$$\Box$xyz$\Box$$\Box$".strip(),"$\Box$$\Box$$\Box$xyz$\Box$$\Box$".rstrip(),  
 "$\Box$$\Box$$\Box$xyz$\Box$$\Box$".lstrip())的输出是 _____ 。（答案不要加引号，$\Box$表示空格）
+
+<div class="question-tags">
+<span class="question-tag">and 运算符</span>
+<span class="question-tag">or 运算符</span>
+</div>
 
 ::: answer
 
@@ -1941,24 +1182,7 @@ print("$\Box$$\Box$$\Box$xyz$\Box$$\Box$".strip(),"$\Box$$\Box$$\Box$xyz$\Box$$\
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：清理哪一端，保留哪些字符**
-
-`strip()` 清理两端空白，`lstrip()` 仅清理左端，`rstrip()` 仅清理右端；它们都返回新字符串，保留中间空格。默认空白还包括制表符、换行符，而 `lstrip(' ')` 明确只清理普通空格。题目要求保留尾部空格时，不能用 `strip()` 替代单侧处理。
-
-传入参数时，它表示“可被清理的字符集合”，不是一个固定前缀或后缀。例如 `'abbaXba'.strip('ab')` 得到 `'X'`，因为两端连续的 a、b 都被去掉。若只想删除一个完整前缀，可用 `removeprefix()`。输出多个清理结果时，别忘了 `print()` 默认还会在参数之间加一个空格，应把清理后的内容与输出分隔符分开计算。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-将题面 □ 还原为空格：strip 得 'xyz'，rstrip 得 '   xyz'，lstrip 得 'xyz  '；print 又在参数之间各加一个空格，末尾保留两个空格。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先算括号内的比较：`2 >= 2` 为 `True`，`2 < 2` 为 `False`，两者通过 `or` 得到 `True`。接着 `True and 2` 会返回右侧操作数 `2`。因此结果是整数 `2`，并非布尔值 `True`。
 </div>
 
 :::
@@ -1966,8 +1190,6 @@ print("$\Box$$\Box$$\Box$xyz$\Box$$\Box$".strip(),"$\Box$$\Box$$\Box$xyz$\Box$$\
 ::::
 
 :::: question blank-14 | 4-14 填空题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 ```python
 a=[1,2,3,4]
@@ -1981,6 +1203,11 @@ print(id(a)==id(d))
 
 上面程序的输出依次分别是： _____ , _____ , _____ 。
 
+<div class="question-tags">
+<span class="question-tag">and 运算符</span>
+<span class="question-tag">短路求值</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -1991,33 +1218,7 @@ print(id(a)==id(d))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：赋值、浅拷贝和深拷贝**
-
-`b=a` 只复制引用，两个名字指向同一个列表；`b=a[:]`、`b=a.copy()` 新建外层列表，但其中的元素仍指向原对象。浅拷贝后，给一个位置重新赋值通常只影响所在的外层列表，修改共享的内部列表则会被两边看到。
-
-```python
-a = [[1], 2]
-b = a.copy()
-b[0].append(3)
-print(a)          # [[1, 3], 2]：内部列表共享
-b[1] = 9
-print(a[1])       # 2：外层位置独立
-```
-
-需要递归复制内部可变对象时可使用 `copy.deepcopy()`。`==` 比较内容，`is` 比较身份，因此浅拷贝后可以同时满足 `a == b` 和 `a is not b`。判断一道题是否会“跟着改变”，关键是找到真正被修改的对象，而不是只看变量名是否不同。
-
-继续阅读：[第3章：赋值、浅拷贝与嵌套引用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-b=a 共享同一对象；copy() 和 [:] 都创建不同的外层列表对象。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`and` 从左向右检查操作数，遇到第一个假值就停止，并返回这个假值。这里 `3` 为真，继续检查 `0` 时发现它为假，因此直接返回整数 `0`，不会继续检查 `5`。
 </div>
 
 :::
@@ -2025,8 +1226,6 @@ b=a 共享同一对象；copy() 和 [:] 都创建不同的外层列表对象。
 ::::
 
 :::: question blank-15 | 4-15 填空题
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 列表加元组可以表示二维表。
 
@@ -2053,6 +1252,11 @@ for index in range(len(students)):  #按索引存取
     print(_____)   
 ```
 
+<div class="question-tags">
+<span class="question-tag">一元运算符</span>
+<span class="question-tag">负号运算</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2063,30 +1267,7 @@ for index in range(len(students)):  #按索引存取
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：遍历元素、遍历下标与拆包**
-
-`for row in students` 每次拿到一整行，`row[0]` 再访问其中第一个字段；`for number,name in students` 则要求每行恰好有两个元素，并直接拆包。二维访问 `students[i][j]` 是先选第 i 行，再选该行第 j 项，不是同时对一个平面下标取值。
-
-```python
-students = [(1001, '张三'), (1002, '李四')]
-for index, (number, name) in enumerate(students):
-    print(index, number, name)
-```
-
-只需要内容时直接遍历元素；还需要下标时使用 `enumerate()`；需要特定方向或步长时再遍历 `range()`。拆包不会自动转换类型，字符串拆包得到的仍是字符。也尽量避免用 `id`、`list` 等内置名称命名变量，防止遮蔽其功能。
-
-继续阅读：[第3章：计数、序列拆包与元组](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-第一种循环直接拆包行元组；第二种先取行，再取第 0 和第 1 列，逗号让 print 用默认空格分隔。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+连续两个负号表示连续执行两次一元取负：`--3` 等价于 `-(-3)`，结果为 `3`。它与自增运算无关，Python 中的 `--` 不是自增或递减运算符。
 </div>
 
 :::
@@ -2095,9 +1276,12 @@ for index, (number, name) in enumerate(students):
 
 :::: question blank-16 | 4-16 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 `print(sum((1,3,5,7,9))/len((1,3,5,7,9)))`的输出是 _____ 。
+
+<div class="question-tags">
+<span class="question-tag">一元运算符</span>
+<span class="question-tag">负号运算</span>
+</div>
 
 ::: answer
 
@@ -2109,24 +1293,7 @@ for index, (number, name) in enumerate(students):
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：计数、求和、平均值与最值累积**
-
-`len()` 数元素个数，`sum()` 累加数值，平均值是 `sum(values)/len(values)`。Python 3 的 `/` 返回普通除法结果，因此 25 除以 5 输出 `5.0`；换成 `//` 会改变含义，不能为了输出没有小数点就随意换运算符。空序列需要先处理，避免除以 0。
-
-逐项统计可维护一个累积量：求和从 0 开始；计数遇到匹配加 1；求非负长度最大值可从 0 开始，再令 `longest=max(longest,当前长度)`。每次循环结束后，这个变量都应该代表“已经处理过的所有数据”的统计结果。比较是否高于平均值时，也可比较 `x*人数 > 总和`，避免不必要的浮点除法。
-
-继续阅读：[第4章：循环、搜索和最值](../topics/chapter-04.md)。
-
-
-
-<h4>回到这道题</h4>
-
-sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+三个负号表示连续取负三次：`---3` 等价于 `-(-(-3))`。第一次得到 `-3`，第二次得到 `3`，第三次得到 `-3`。
 </div>
 
 :::
@@ -2135,8 +1302,6 @@ sum 为 25、len 为 5，Python 3 的 / 返回浮点数 5.0。
 
 :::: question blank-17 | 4-17 填空题
 
-<div class="section-label">题干 <span>QUESTION</span></div>
-
 下面程序的输出是 _____ 。
 
 ```python
@@ -2144,6 +1309,11 @@ t=1
 t,a=2,t+1
 print(a)
 ```
+
+<div class="question-tags">
+<span class="question-tag">整除运算</span>
+<span class="question-tag">浮点数</span>
+</div>
 
 ::: answer
 
@@ -2155,24 +1325,7 @@ print(a)
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：赋值、表达式与拆包顺序**
-
-普通 `=` 是赋值语句，不是比较运算 `==`，不能直接嵌入 `x=(y=z+1)+1` 这种表达式。若两个名字都要接收同一个结果，可写 `x=y=z+1`。`i*=3+5` 要先求出整个右侧，数值情形下相当于 `i=i*(3+5)`，不是 `i=i*3+5`。
-
-拆包赋值先求整个右侧，再从左到右赋给各目标。若旧 `t=1`，`t,a=2,t+1` 先得到右侧 `(2,2)`，所以 `a=2`；交换 `a,b=b,a` 也利用此规则。右侧必须可迭代且元素数量匹配：整数 34 不能直接拆成 3 和 4，字符串 `'3 4'` 则有 3 个字符，而不是两个数。
-
-继续阅读：[第2章：赋值与拆包](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-先计算右侧，此时旧 t 为 1，因此 t+1=2，然后再赋给 a。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先分别计算两部分：`32.2 // 6` 得到浮点数 `5.0`，`24 // 6` 得到整数 `4`。两者相减时结果仍是浮点数，因此结果为 `1.0`。
 </div>
 
 :::
@@ -2182,8 +1335,6 @@ print(a)
 <h2 id="programming" class="quiz-group">编程题<span>17 QUESTIONS</span></h2>
 
 :::: question programming-1 | 7-1 大于身高的平均值
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 中小学生每个学期都要体检，要量身高，因为身高可以反映孩子的生长状况。现在，一个班的身高已经量好了，请输出其中超过平均身高的那些身高。程序的输入为一行数据，其中以空格分隔，每个数据都是一个正整数。程序要输出那些超过输入的正整数的平均数的输入值，每个数后面有一个空格，输出的顺序和输入的相同。
 
@@ -2211,6 +1362,12 @@ print(a)
 143 174 164 
 ```
 
+<div class="question-tags">
+<span class="question-tag">map 函数</span>
+<span class="question-tag">sum 函数</span>
+<span class="question-tag">平均值</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2228,24 +1385,7 @@ print()
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：计数、求和、平均值与最值累积**
-
-`len()` 数元素个数，`sum()` 累加数值，平均值是 `sum(values)/len(values)`。Python 3 的 `/` 返回普通除法结果，因此 25 除以 5 输出 `5.0`；换成 `//` 会改变含义，不能为了输出没有小数点就随意换运算符。空序列需要先处理，避免除以 0。
-
-逐项统计可维护一个累积量：求和从 0 开始；计数遇到匹配加 1；求非负长度最大值可从 0 开始，再令 `longest=max(longest,当前长度)`。每次循环结束后，这个变量都应该代表“已经处理过的所有数据”的统计结果。比较是否高于平均值时，也可比较 `x*人数 > 总和`，避免不必要的浮点除法。
-
-继续阅读：[第4章：循环、搜索和最值](../topics/chapter-04.md)。
-
-
-
-<h4>回到这道题</h4>
-
-通过 height×人数 > 总和 比较是否高于平均值，避免浮点误差，保留原输入顺序及每个数后的空格。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先用 `input().split()` 将一行输入拆成多个字符串，再用 `map(int, ...)` 转成整数列表。`sum()` 求总身高，`len()` 求人数。判断某个身高是否超过平均值，可以直接比较 `height * 人数 > 总和`，避免先计算浮点平均值。循环按原顺序输出符合条件的身高，`end=' '` 让每个数字后面保留一个空格。
 </div>
 
 :::
@@ -2253,8 +1393,6 @@ print()
 ::::
 
 :::: question programming-2 | 7-2 输出字母在字符串中位置索引
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入一个字符串，再输入两个字符，求这两个字符在字符串中的索引。
 
@@ -2291,6 +1429,12 @@ s p
 0 p
 ```
 
+<div class="question-tags">
+<span class="question-tag">字符串索引</span>
+<span class="question-tag">range 函数</span>
+<span class="question-tag">倒序遍历</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2307,31 +1451,7 @@ for i in range(len(s) - 1, -1, -1):
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：查存在、查位置与查全部匹配**
-
-只判断有无时使用 `x in seq`，结果为布尔值。字符串 `find()` 返回第一次匹配的起始下标，找不到返回 -1；字符串和列表的 `index()` 也查首次位置，但找不到会引发 `ValueError`。列表没有 `find()` 方法。
-
-```python
-s = 'programming'
-print(s.find('r'))      # 1
-print(s.find('r', 2))   # 4：从下标 2 开始找
-print('x' in s)         # False
-```
-
-不能写 `if s.find(x)` 判断存在：找到在下标 0 时是假值，没找到的 -1 反而是真值。应写 `if x in s` 或 `if s.find(x) != -1`。题目要求输出所有匹配位置时，需要遍历下标或重复搜索，而不是只调用一次查找；要求倒序位置时还需改变遍历方向。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-从最大下标倒序检查，两种字符任意匹配即输出；即使两字符相同也不会重复输出。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`range(len(s)-1, -1, -1)` 从字符串最后一个下标开始，每次减 1，直到下标 0，因此可以从右向左检查每个字符。`s[i] == a or s[i] == b` 表示字符只要等于输入的两个目标字符之一就输出。`print(i, s[i])` 默认用空格分隔下标和字符。
 </div>
 
 :::
@@ -2339,8 +1459,6 @@ print('x' in s)         # False
 ::::
 
 :::: question programming-3 | 7-3 求整数的位数及各位数字之和
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 对于给定的正整数N，求它的位数及其各位数字之和。(提示：把整数转换成字符串，列表，用sum和len函数)
 
@@ -2368,6 +1486,12 @@ print('x' in s)         # False
 3 15
 ```
 
+<div class="question-tags">
+<span class="question-tag">str 函数</span>
+<span class="question-tag">len 函数</span>
+<span class="question-tag">sum 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2381,31 +1505,7 @@ print(len(s), sum(int(c) for c in s))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：文本形式与数值类型转换**
-
-`input()` 的结果永远先是字符串。`int('10')` 解析整数文本，`float('10.0')` 解析浮点文本，`str(10)` 则生成数值的字符串形式。`int('10.0')` 不会先自动转成浮点数，因此报 `ValueError`；`int(10.9)` 则接收数值并向零截断，得到 10。
-
-```python
-a = 3
-print('a' * 2)         # aa：引号里是字母，不是变量
-print(str(a) * 2)      # 33：先取变量值，再转字符串
-print(int('11', 2))    # 3：以二进制解析
-```
-
-要分清错误种类：传入不支持的对象类型通常是 `TypeError`，支持的类型中内容不合法通常是 `ValueError`。也不要用 `int(float(文本))` 盲目修补输入，它会丢掉小数部分；题意要求保留小数时应直接使用 `float()`。
-
-继续阅读：[第2章：内置转换函数](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-整数转成规范字符串后，用长度统计位数，逐字符转数字求和。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先用 `str()` 把整数转换成字符串，这样每一位数字就可以逐个访问。`len(s)` 得到字符串长度，也就是正整数的位数；`sum(int(c) for c in s)` 则把每个字符重新转成整数后求和。例如 `456` 的位数是 3，各位数字之和是 `4+5+6=15`。
 </div>
 
 :::
@@ -2413,8 +1513,6 @@ print(int('11', 2))    # 3：以二进制解析
 ::::
 
 :::: question programming-4 | 7-4 字符替换
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 本题要求编写程序，将输入字符串中的大写英文字母按以下对应规则替换，其他字符不变。(提示：转换表用元组实现）
 
@@ -2453,6 +1551,12 @@ This is a pen.
 Ghis is a pen.
 ```
 
+<div class="question-tags">
+<span class="question-tag">ord 函数</span>
+<span class="question-tag">元组</span>
+<span class="question-tag">join 方法</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2467,30 +1571,7 @@ print(''.join(table[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in s))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：筛选条件与保留内容应分开设计**
-
-字符串处理通常分三步：逐字符检查条件、保留需要的字符、用 `join()` 组成结果。用于判断的标准化形式不一定就是输出形式。例如不区分大小写地去重，可以用 `c.lower()` 判断是否见过，却把原字符 `c` 放进结果，这样能保留首次出现的大小写。
-
-```python
-text = 'A1-b2!'
-clean = ''.join(c.lower() for c in text if c.isalnum())
-print(clean)  # a1b2
-```
-
-先确认题目允许哪些字符：`isalnum()` 包括 Unicode 字母数字，十六进制则只能从 `0123456789abcdefABCDEF` 选择。还要明确空结果如何处理、是否保留空格、比较是否区分大小写。不要为简化代码而擅自删除题目没有要求忽略的字符。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-转换表按 A→Z、B→Y 的顺序保存，只替换大写英文字母，其余字符原样保留。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+转换表 `tuple('ZYX...A')` 按顺序保存 A 到 Z 的替换结果。对于大写字母 `c`，`ord(c)-ord('A')` 得到它在字母表中的位置：A 对应 0，B 对应 1，以此类推，再用这个下标从转换表取出替换字符。非大写字母保持原样，最后用 `''.join(...)` 把所有字符连接成字符串。
 </div>
 
 :::
@@ -2498,8 +1579,6 @@ print(clean)  # a1b2
 ::::
 
 :::: question programming-5 | 7-5 删除字符
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入一个字符串 str，再输入要删除字符 c(非空格字符），大小写不区分，将字符串 str 中出现的所有字符 c 删除。提示：去掉两端的空格。
 
@@ -2546,6 +1625,12 @@ result: B
 result: 7jdk*ASyu
 ```
 
+<div class="question-tags">
+<span class="question-tag">strip 方法</span>
+<span class="question-tag">lower 方法</span>
+<span class="question-tag">join 方法</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2561,30 +1646,7 @@ print('result:', result)
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：筛选条件与保留内容应分开设计**
-
-字符串处理通常分三步：逐字符检查条件、保留需要的字符、用 `join()` 组成结果。用于判断的标准化形式不一定就是输出形式。例如不区分大小写地去重，可以用 `c.lower()` 判断是否见过，却把原字符 `c` 放进结果，这样能保留首次出现的大小写。
-
-```python
-text = 'A1-b2!'
-clean = ''.join(c.lower() for c in text if c.isalnum())
-print(clean)  # a1b2
-```
-
-先确认题目允许哪些字符：`isalnum()` 包括 Unicode 字母数字，十六进制则只能从 `0123456789abcdefABCDEF` 选择。还要明确空结果如何处理、是否保留空格、比较是否区分大小写。不要为简化代码而擅自删除题目没有要求忽略的字符。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-按题意清理两端空格，用小写形式比较、原字符输出，保留字符串内部其他空格。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+第一行和第二行输入后先用 `strip()` 去掉两端空格。将待删除字符转成小写，再逐个检查原字符串：如果 `c.lower()` 不等于目标字符，就保留它。最后用 `''.join(...)` 连接保留的字符。这样比较时忽略大小写，输出时仍保留原字符的大小写。
 </div>
 
 :::
@@ -2592,8 +1654,6 @@ print(clean)  # a1b2
 ::::
 
 :::: question programming-6 | 7-6 输出10个不重复的英文字母
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 随机输入一个字符串，把最左边的10个不重复的英文字母（不区分大小写）挑选出来。  
 如没有10个英文字母，显示信息“not found”
@@ -2638,6 +1698,12 @@ This 156is a test example
 Thisaexmpl
 ```
 
+<div class="question-tags">
+<span class="question-tag">set 集合</span>
+<span class="question-tag">字符串去重</span>
+<span class="question-tag">break 语句</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2659,24 +1725,7 @@ print(result if len(result) == 10 else 'not found')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：存在性、出现次数与字符多重集合**
-
-“是否出现”用成员判断，“出现几次”需要计数，“字符和次数都一致”则需要比较多重集合。比如 `'aab'` 与 `'abb'` 的字符集合相同，但不是变位词，因为 a、b 的次数不同；排序后比较或 `collections.Counter` 才能保留次数信息。
-
-去重又是另一种任务：集合可以快速记录见过的字符，但直接转集合不能保留原输入顺序。需要保序时，遍历原序列，用集合判断是否首次出现，再追加到结果。统计两个字符串共有多少字符前，也要看题目保证哪一边不重复；遍历重复的一边可能把同一个字符多算。大小写、空格、标点是否参与比较，都必须由题意决定。
-
-继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
-
-
-
-<h4>回到这道题</h4>
-
-只接受英文字母，使用小写形式去重，保留首次出现的大小写与顺序，满 10 个立即停止。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`seen` 集合用来记录已经出现过的字母。遍历字符串时，先判断字符是否为英文字母，再用 `c.lower()` 统一大小写后检查是否出现过；第一次出现才加入集合和结果字符串。找到 10 个后用 `break` 提前结束循环。最后若结果长度不足 10，就输出 `not found`。
 </div>
 
 :::
@@ -2684,8 +1733,6 @@ print(result if len(result) == 10 else 'not found')
 ::::
 
 :::: question programming-7 | 7-7 逆序的三位数
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 程序每次读入一个正3位数，然后输出按位逆序的数字。注意：当输入的数字含有结尾的0时，输出不应带有前导的0。比如输入700，输出应该是7。
 
@@ -2711,6 +1758,11 @@ print(result if len(result) == 10 else 'not found')
 
 **鸣谢安阳师范学院软件学院李康康同学补充数据！**
 
+<div class="question-tags">
+<span class="question-tag">字符串切片</span>
+<span class="question-tag">int 类型转换</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2723,31 +1775,7 @@ print(int(input().strip()[::-1]))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：文本形式与数值类型转换**
-
-`input()` 的结果永远先是字符串。`int('10')` 解析整数文本，`float('10.0')` 解析浮点文本，`str(10)` 则生成数值的字符串形式。`int('10.0')` 不会先自动转成浮点数，因此报 `ValueError`；`int(10.9)` 则接收数值并向零截断，得到 10。
-
-```python
-a = 3
-print('a' * 2)         # aa：引号里是字母，不是变量
-print(str(a) * 2)      # 33：先取变量值，再转字符串
-print(int('11', 2))    # 3：以二进制解析
-```
-
-要分清错误种类：传入不支持的对象类型通常是 `TypeError`，支持的类型中内容不合法通常是 `ValueError`。也不要用 `int(float(文本))` 盲目修补输入，它会丢掉小数部分；题意要求保留小数时应直接使用 `float()`。
-
-继续阅读：[第2章：内置转换函数](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-反转文本后转整数，自动去掉逆序结果的前导零，例如 700→007→7。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`input()` 读入的三位数先作为字符串处理。`[::-1]` 将字符顺序反转，例如 `'700'` 变成 `'007'`。再用 `int()` 转成整数，前面的零会自动去掉，因此输出 `7`，而不是 `007`。
 </div>
 
 :::
@@ -2755,8 +1783,6 @@ print(int('11', 2))    # 3：以二进制解析
 ::::
 
 :::: question programming-8 | 7-8 判断两个字符串是否为变位词
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 如果一个字符串是 另一个字符串的重新排列组合，那么这两个字符串互为变位词。比如，”heart”与”earth”互为变位 词，”Mary”与”arMy”也互为变位词。
 
@@ -2819,6 +1845,12 @@ mocllew
 no
 ```
 
+<div class="question-tags">
+<span class="question-tag">sorted 函数</span>
+<span class="question-tag">字符串比较</span>
+<span class="question-tag">变位词</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2833,24 +1865,7 @@ print('yes' if sorted(a) == sorted(b) else 'no')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：存在性、出现次数与字符多重集合**
-
-“是否出现”用成员判断，“出现几次”需要计数，“字符和次数都一致”则需要比较多重集合。比如 `'aab'` 与 `'abb'` 的字符集合相同，但不是变位词，因为 a、b 的次数不同；排序后比较或 `collections.Counter` 才能保留次数信息。
-
-去重又是另一种任务：集合可以快速记录见过的字符，但直接转集合不能保留原输入顺序。需要保序时，遍历原序列，用集合判断是否首次出现，再追加到结果。统计两个字符串共有多少字符前，也要看题目保证哪一边不重复；遍历重复的一边可能把同一个字符多算。大小写、空格、标点是否参与比较，都必须由题意决定。
-
-继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
-
-
-
-<h4>回到这道题</h4>
-
-按样例 1 忽略大小写，排序后逐字符比较，保留数字、空格及字符重复次数；不能只比较集合。原始样例 3 中 Wellcom 与 mocllew 在忽略大小写后确为变位词，但给定输出为 no，与题意及样例 1 冲突；本解按题意输出 yes，保留原始样例并注明差异。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+变位词要求两个字符串包含完全相同的字符，并且每个字符出现的次数也相同。先用 `lower()` 忽略大小写，再用 `sorted()` 将字符排序；如果排序后的两个列表相等，就说明字符及其出现次数完全一致。注意不能只比较 `set()`，因为集合会丢失重复次数。题目样例 3 中 `Wellcom` 与 `mocllew` 实际上也是变位词，按题意应输出 `yes`，与原样例给出的 `no` 不一致。
 </div>
 
 :::
@@ -2858,8 +1873,6 @@ print('yes' if sorted(a) == sorted(b) else 'no')
 ::::
 
 :::: question programming-9 | 7-9 输入字符串，排序后输出最大字符及该字符在原字符串中的索引
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入字符串，排序后输出最大字符及该字符在原字符串中的索引。相同字符的索引取最大值。提示：用元组实现。
 
@@ -2887,6 +1900,12 @@ Hello Python
 y   7
 ```
 
+<div class="question-tags">
+<span class="question-tag">enumerate 函数</span>
+<span class="question-tag">max 函数</span>
+<span class="question-tag">元组比较</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2901,24 +1920,7 @@ print(f'{char}   {index}')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：排序的对象、顺序与返回值**
-
-`sorted(items)` 返回新的已排序列表，原对象不变；`a.sort()` 原地修改列表并返回 `None`。要降序使用 `reverse=True`。`max()` 只取最大元素，不返回排序后的完整序列，空序列且无默认值时还会报错。
-
-排序前先确定按什么比较：整数 `[2,10]` 排成 `[2,10]`，字符串 `['2','10']` 则排成 `['10','2']`。若题意是按数值大小，必须先转成数值再排序，最后再转回字符串用于输出。`random.shuffle(a)` 也原地修改列表并返回 `None`，但它是打乱，不是排序；不要写 `a=random.shuffle(a)`。
-
-继续阅读：[第3章：列表方法](../topics/chapter-03.md)与[第4章：搜索和排序](../topics/chapter-04.md)。
-
-<h4>知识点速查：排序</h4><p><code>sorted(a)</code> 返回新列表；<code>a.sort()</code> 修改原列表并返回 None；<code>reverse=True</code> 表示降序。</p>
-
-<h4>回到这道题</h4>
-
-元组先比较字符，再比较下标，因此重复最大字符时选最大下标；中间严格输出三个空格。题目按非空字符串处理。
-
-<h4>容易出错的地方</h4>
-
-<p>先确认按数字还是字符串排序，再确认升序还是降序，并检查返回值。</p>
-
+`enumerate(s)` 同时提供每个字符的下标和字符，生成 `(字符, 下标)` 元组。`max()` 比较元组时先比较第一个元素，也就是字符；字符相同时再比较下标，因此会选中最大字符最后一次出现的位置。最后用 f-string 输出字符、三个空格和下标。
 </div>
 
 :::
@@ -2926,8 +1928,6 @@ print(f'{char}   {index}')
 ::::
 
 :::: question programming-10 | 7-10 计算有n个字符串中最长的字符串长度
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 编写程序，用于计算有n(1&lt;n&lt;10)个字符串中最长的字符串的长度。前导空格不要计算在内！
 
@@ -2959,6 +1959,12 @@ green
 length=6
 ```
 
+<div class="question-tags">
+<span class="question-tag">lstrip 方法</span>
+<span class="question-tag">len 函数</span>
+<span class="question-tag">max 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -2975,24 +1981,7 @@ print(f'length={longest}')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：清理哪一端，保留哪些字符**
-
-`strip()` 清理两端空白，`lstrip()` 仅清理左端，`rstrip()` 仅清理右端；它们都返回新字符串，保留中间空格。默认空白还包括制表符、换行符，而 `lstrip(' ')` 明确只清理普通空格。题目要求保留尾部空格时，不能用 `strip()` 替代单侧处理。
-
-传入参数时，它表示“可被清理的字符集合”，不是一个固定前缀或后缀。例如 `'abbaXba'.strip('ab')` 得到 `'X'`，因为两端连续的 a、b 都被去掉。若只想删除一个完整前缀，可用 `removeprefix()`。输出多个清理结果时，别忘了 `print()` 默认还会在参数之间加一个空格，应把清理后的内容与输出分隔符分开计算。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-逐行读取，去掉左端普通空格，保留末尾空格，累计最大长度。输出前缀按样例为 length=。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先读取字符串，并用 `lstrip(' ')` 去掉开头的普通空格，再用 `len()` 计算长度。变量 `longest` 始终保存目前遇到的最大长度；每读入一行，就用 `max(longest, 当前长度)` 更新它。循环结束后输出最大长度。这里使用 `lstrip(' ')`，所以字符串内部和末尾的空格仍会计入长度。
 </div>
 
 :::
@@ -3000,8 +1989,6 @@ print(f'length={longest}')
 ::::
 
 :::: question programming-11 | 7-11 位1的个数
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入一个非负整数，求它变成二进制后1的个数（提示：用bin函数）。
 
@@ -3045,6 +2032,11 @@ print(f'length={longest}')
 0
 ```
 
+<div class="question-tags">
+<span class="question-tag">bin 函数</span>
+<span class="question-tag">count 方法</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3058,24 +2050,7 @@ print(bin(n).count('1'))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：按位运算与数位统计**
-
-先把整数对齐为二进制位，再逐位计算：`&` 仅在两位都为 1 时得 1，`|` 有一位为 1 就得 1，`^` 仅在两位不同时得 1。因此 `x^y` 中的 1 的个数，就是两个非负整数二进制表示的不同位数。`^` 不是乘方，乘方要写 `**`。
-
-负整数按符号扩展的补码语义处理，可以选足够宽的位数手算，但不能把最高位截掉后当成无符号数。取反满足 `~x == -x-1`，例如 `~9=-10`。统计二进制 1 的数量可用 `bin(n).count('1')`，而统计总位数时，0 和负数的符号、前缀需要另行分析。本节按课程范围说明保留，不代表新增考试要求。
-
-继续阅读：[第2章：位运算](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+`bin(n)` 将整数转换成二进制字符串，例如 `bin(37)` 得到 `'0b100101'`。其中 `0b` 是进制前缀，`count('1')` 统计字符串中字符 `1` 出现的次数，因此输出二进制表示中 1 的个数。输入为 0 时，`bin(0)` 为 `'0b0'`，统计结果也是 0。
 </div>
 
 :::
@@ -3083,8 +2058,6 @@ bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0�
 ::::
 
 :::: question programming-12 | 7-12 整数的二进制相加
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入两个整数，大小在`[0,63]`之间。求它们的二进制和，二进制用8位表示。
 
@@ -3116,6 +2089,12 @@ bin 得到二进制文本，统计 1 的出现次数，n=0 时也正确得到 0�
 00001100
 ```
 
+<div class="question-tags">
+<span class="question-tag">二进制格式化</span>
+<span class="question-tag">f-string</span>
+<span class="question-tag">格式宽度</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3133,31 +2112,7 @@ print(f'{a + b:08b}')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：格式规格由填充、对齐、宽度和类型组成**
-
-常见结构为 `[[填充字符]对齐方式][宽度][.精度][类型]`。`<` 左对齐、`>` 右对齐、`^` 居中；字符串默认左对齐，数值默认右对齐。宽度是最小宽度，不会截断过长内容。`d` 用于十进制整数，`s` 用于字符串，`.2f` 表示小数点后保留两位。
-
-```python
-print(f'|{"this":8s}|') # |this    |
-print(f'|{1234:8d}|')   # |    1234|
-print(f'{31:08b}')      # 00011111
-print(f'{"11":0>5s}')  # 00011
-```
-
-先算内容本身长度，再用字段宽度减去它，才知道补几个字符。动态宽度应显式写成 `f'{s:^{width}}'`，格式串里的普通字母不会自动读取同名变量。浮点格式化的宽度还包含符号和小数点，精度不等于总字符数。
-
-继续阅读：[第2章：格式化输出](../topics/chapter-02.md)。
-
-<h4>知识点速查：格式化输出</h4><table><thead><tr><th>写法</th><th>作用</th></tr></thead><tbody><tr><td><code>.2f</code></td><td>保留两位小数</td></tr><tr><td><code>:8d</code></td><td>整数最小宽度 8</td></tr><tr><td><code>:08b</code></td><td>二进制，宽度 8，不足补 0</td></tr><tr><td><code>:&lt;8</code></td><td>左对齐</td></tr><tr><td><code>:^8</code></td><td>居中</td></tr></tbody></table>
-
-<h4>回到这道题</h4>
-
-08b 表示二进制并补零到 8 位，先输出两操作数，再输出分隔线及和。
-
-<h4>容易出错的地方</h4>
-
-<p>先确定实际数值，再检查宽度、对齐和精度。</p>
-
+格式说明 `08b` 中，`b` 表示按二进制输出，`8` 表示最小宽度为 8，前面的 `0` 表示位数不足时在左侧补零。程序分别输出两个数的 8 位二进制形式，再输出分隔线，最后把两数相加并按相同格式输出。题目给定的数值范围保证和也能用 8 位表示。
 </div>
 
 :::
@@ -3165,8 +2120,6 @@ print(f'{"11":0>5s}')  # 00011
 ::::
 
 :::: question programming-13 | 7-13 汉明距离
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 两个整数间的汉明距离指的是这两个数对应二进制位不同的位置的数目。输入两个整数x,y, 0&lt;=x,y&lt;=$2^{31}$。输出x,y的汉明距离。
 
@@ -3194,6 +2147,12 @@ print(f'{"11":0>5s}')  # 00011
 2
 ```
 
+<div class="question-tags">
+<span class="question-tag">异或运算</span>
+<span class="question-tag">汉明距离</span>
+<span class="question-tag">bin 函数</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3207,24 +2166,7 @@ print(bin(x ^ y).count('1'))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：按位运算与数位统计**
-
-先把整数对齐为二进制位，再逐位计算：`&` 仅在两位都为 1 时得 1，`|` 有一位为 1 就得 1，`^` 仅在两位不同时得 1。因此 `x^y` 中的 1 的个数，就是两个非负整数二进制表示的不同位数。`^` 不是乘方，乘方要写 `**`。
-
-负整数按符号扩展的补码语义处理，可以选足够宽的位数手算，但不能把最高位截掉后当成无符号数。取反满足 `~x == -x-1`，例如 `~9=-10`。统计二进制 1 的数量可用 `bin(n).count('1')`，而统计总位数时，0 和负数的符号、前缀需要另行分析。本节按课程范围说明保留，不代表新增考试要求。
-
-继续阅读：[第2章：位运算](../topics/chapter-02.md)。
-
-
-
-<h4>回到这道题</h4>
-
-异或在不同二进制位上产生 1，统计这些 1 即为汉明距离。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+汉明距离就是两个数的二进制表示中，不同位置的位数。异或运算 `^` 在两个对应位不同时得到 1，相同时得到 0。因此先计算 `x ^ y`，再用 `bin(...).count('1')` 统计结果中 1 的个数，就是汉明距离。
 </div>
 
 :::
@@ -3232,8 +2174,6 @@ print(bin(x ^ y).count('1'))
 ::::
 
 :::: question programming-14 | 7-14 判断回文字符串
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 回文就是字符串中心对称，从左向右读和从右向左读的内容是一样的。  
 输入一个字符串，判断该字符串是否为回文，只考虑数字和字母字符，字母的大小写没有区别。
@@ -3262,6 +2202,12 @@ A man,a plan; cnalPanama
 yes
 ```
 
+<div class="question-tags">
+<span class="question-tag">isalnum 方法</span>
+<span class="question-tag">lower 方法</span>
+<span class="question-tag">字符串逆序</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3275,30 +2221,7 @@ print('yes' if s == s[::-1] else 'no')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：筛选条件与保留内容应分开设计**
-
-字符串处理通常分三步：逐字符检查条件、保留需要的字符、用 `join()` 组成结果。用于判断的标准化形式不一定就是输出形式。例如不区分大小写地去重，可以用 `c.lower()` 判断是否见过，却把原字符 `c` 放进结果，这样能保留首次出现的大小写。
-
-```python
-text = 'A1-b2!'
-clean = ''.join(c.lower() for c in text if c.isalnum())
-print(clean)  # a1b2
-```
-
-先确认题目允许哪些字符：`isalnum()` 包括 Unicode 字母数字，十六进制则只能从 `0123456789abcdefABCDEF` 选择。还要明确空结果如何处理、是否保留空格、比较是否区分大小写。不要为简化代码而擅自删除题目没有要求忽略的字符。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-只保留字母数字、统一小写，再比较自身与逆序字符串。isalnum 按 Unicode 字符规则判断。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先遍历输入字符串，只保留 `isalnum()` 判断为真的字母和数字，并用 `lower()` 统一成小写；这样标点、空格会被忽略，大小写也不影响比较。然后比较处理后的字符串 `s` 与 `s[::-1]`：两者相同就是回文，输出 `yes`，否则输出 `no`。
 </div>
 
 :::
@@ -3306,8 +2229,6 @@ print(clean)  # a1b2
 ::::
 
 :::: question programming-15 | 7-15 输入一行字符串，并将它转换成10进制数输出
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入一行字符串，去掉非16进制字符，并将它转换成10进制数输出。
 
@@ -3336,6 +2257,12 @@ a1B
 2587
 ```
 
+<div class="question-tags">
+<span class="question-tag">字符串筛选</span>
+<span class="question-tag">int 函数</span>
+<span class="question-tag">十六进制转换</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3351,30 +2278,7 @@ print(int(h, 16) if h else 0)
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：筛选条件与保留内容应分开设计**
-
-字符串处理通常分三步：逐字符检查条件、保留需要的字符、用 `join()` 组成结果。用于判断的标准化形式不一定就是输出形式。例如不区分大小写地去重，可以用 `c.lower()` 判断是否见过，却把原字符 `c` 放进结果，这样能保留首次出现的大小写。
-
-```python
-text = 'A1-b2!'
-clean = ''.join(c.lower() for c in text if c.isalnum())
-print(clean)  # a1b2
-```
-
-先确认题目允许哪些字符：`isalnum()` 包括 Unicode 字母数字，十六进制则只能从 `0123456789abcdefABCDEF` 选择。还要明确空结果如何处理、是否保留空格、比较是否区分大小写。不要为简化代码而擅自删除题目没有要求忽略的字符。
-
-继续阅读：[第3章：字符串使用](../topics/chapter-03.md)。
-
-
-
-<h4>回到这道题</h4>
-
-筛选合法十六进制字符，保留原大小写，再按基数 16 转整数。题面未规定完全无合法字符时的输出，此解约定输出空行和 0。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+合法的十六进制字符只有 `0-9`、`a-f` 和 `A-F`。程序遍历输入字符串，只保留这些字符，并用 `join()` 组成新的字符串 `h`。`int(h, 16)` 将十六进制字符串转换成十进制整数；如果没有筛选出任何字符，就按代码中的条件输出 0，避免对空字符串调用 `int()`。
 </div>
 
 :::
@@ -3382,8 +2286,6 @@ print(clean)  # a1b2
 ::::
 
 :::: question programming-16 | 7-16 统计满足特定条件的字符数
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 输入字符串A(没有重复字符），输入字符串B，求在字符串A中字符的个数，这些字符必须同时又在字符串B中。提示：用`in`运算符。
 
@@ -3413,6 +2315,12 @@ HELLO World!
 2
 ```
 
+<div class="question-tags">
+<span class="question-tag">in 运算符</span>
+<span class="question-tag">sum 函数</span>
+<span class="question-tag">字符串遍历</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3427,24 +2335,7 @@ print(sum(c in b for c in a))
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：存在性、出现次数与字符多重集合**
-
-“是否出现”用成员判断，“出现几次”需要计数，“字符和次数都一致”则需要比较多重集合。比如 `'aab'` 与 `'abb'` 的字符集合相同，但不是变位词，因为 a、b 的次数不同；排序后比较或 `collections.Counter` 才能保留次数信息。
-
-去重又是另一种任务：集合可以快速记录见过的字符，但直接转集合不能保留原输入顺序。需要保序时，遍历原序列，用集合判断是否首次出现，再追加到结果。统计两个字符串共有多少字符前，也要看题目保证哪一边不重复；遍历重复的一边可能把同一个字符多算。大小写、空格、标点是否参与比较，都必须由题意决定。
-
-继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
-
-
-
-<h4>回到这道题</h4>
-
-遍历不含重复字符的 A，逐个判断是否在 B 中，不统计 B 中的重复次数，比较区分大小写。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+遍历字符串 A 中的每个字符，判断它是否出现在字符串 B 中。`c in b` 的结果是 `True` 或 `False`，而 Python 中 `True` 可以按 1、`False` 按 0 参与求和，因此 `sum(c in b for c in a)` 就是在统计 A 中有多少个字符也出现在 B 中。题目说明 A 没有重复字符，所以不会重复计数。
 </div>
 
 :::
@@ -3452,8 +2343,6 @@ print(sum(c in b for c in a))
 ::::
 
 :::: question programming-17 | 7-17 查验身份证
-
-<div class="section-label">题干 <span>QUESTION</span></div>
 
 一个合法的身份证号码由17位地区、日期编号和顺序编号加1位校验码组成。校验码的计算规则如下：
 
@@ -3510,6 +2399,12 @@ All passed
 
 **鸣谢浙江工业大学之江学院石洗凡老师纠正数据**
 
+<div class="question-tags">
+<span class="question-tag">zip 函数</span>
+<span class="question-tag">any 函数</span>
+<span class="question-tag">身份证校验码</span>
+</div>
+
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
@@ -3534,24 +2429,7 @@ print('\n'.join(invalid) if invalid else 'All passed')
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-**从本题理解：存在性、出现次数与字符多重集合**
-
-“是否出现”用成员判断，“出现几次”需要计数，“字符和次数都一致”则需要比较多重集合。比如 `'aab'` 与 `'abb'` 的字符集合相同，但不是变位词，因为 a、b 的次数不同；排序后比较或 `collections.Counter` 才能保留次数信息。
-
-去重又是另一种任务：集合可以快速记录见过的字符，但直接转集合不能保留原输入顺序。需要保序时，遍历原序列，用集合判断是否首次出现，再追加到结果。统计两个字符串共有多少字符前，也要看题目保证哪一边不重复；遍历重复的一边可能把同一个字符多算。大小写、空格、标点是否参与比较，都必须由题意决定。
-
-继续阅读：[第5章：集合、字典与字符计数](../topics/chapter-05.md)。
-
-
-
-<h4>回到这道题</h4>
-
-先确认前 17 位均为数字，再计算加权和，对 11 取模并查表。按输入顺序保存错误号码，全部正确时输出 All passed。
-
-<h4>容易出错的地方</h4>
-
-<p>把题目中的每个操作拆开，先判断当前数据是什么类型，再跟踪下一步会得到什么。</p>
-
+先检查号码长度是否为 18，以及前 17 位是否全部为数字；不符合就直接记为错误号码。对合格号码，用 `zip(number[:17], weights)` 将每一位数字与对应权重配对，计算加权总和，再用 `total % 11` 得到索引，从 `codes` 中查出正确校验码。若计算出的校验码与最后一位不同，就输出该号码；全部通过时输出 `All passed`。
 </div>
 
 :::

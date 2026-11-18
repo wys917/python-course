@@ -29,6 +29,7 @@ export default defineConfig({
             }
           },
           _splitIntoSections(file, html) {
+            if (!html.trim()) return []
             const clean = (s: string) => s.replace(/<[^>]*>/g, ' ').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
             const questions = [...html.matchAll(/<Question question-id="([^"]+)" title="([^"]+)">([\s\S]*?)<\/Question>/g)]
             if (questions.length) return questions.map(m => ({ anchor: m[1], titles: [file.split('/').pop()?.replace('.md', '').toUpperCase() || '课程练习', clean(m[2])], text: clean(m[3]) }))

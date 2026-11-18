@@ -62,6 +62,25 @@ test('local search finds question text and navigates to quiz', async ({ page }) 
   await expect(page).toHaveURL(/(quiz-02|homework-03)/)
 })
 
+test('comments load on request with separate threads and stay off closed topics', async ({ page }) => {
+  const threads: string[] = []
+  await page.route('https://giscus.app/**', async route => {
+    threads.push(new URL(route.request().url()).searchParams.get('term') || '')
+    await route.fulfill({ contentType: 'text/html', body: '<p>评论区</p>' })
+  })
+  await page.goto('/assignments/homework-01.html')
+  const load = page.getByRole('button', { name: '加载评论' })
+  await expect(load).toBeVisible()
+  expect(threads).toEqual([])
+  await load.click()
+  await expect.poll(() => threads.slice()).toEqual(['assignments/homework-01.md'])
+  await page.locator('.desktop-nav').getByRole('link', { name: 'Final Review' }).click()
+  await load.click()
+  await expect.poll(() => threads.slice()).toEqual(['assignments/homework-01.md', 'final-review/index.md'])
+  await page.locator('.desktop-nav').getByRole('link', { name: 'Topics' }).click()
+  await expect(page.locator('#comments')).toHaveCount(0)
+})
+
 test('mobile navigation, question contents and layout fit viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/', { waitUntil: 'networkidle' })
@@ -80,7 +99,7 @@ test('mobile navigation, question contents and layout fit viewport', async ({ pa
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
 })
 
-test('new collections, chapter pages, local images and math render without errors', async ({ page }) => {
+test('collections and local images render while chapter links show only the closure notice', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', e => errors.push(e.message))
   for (const [url, count] of [['/assignments/homework-01.html',31],['/assignments/homework-02.html',63],['/assignments/homework-03.html',63],['/quizzes/quiz-01.html',42]] as const) {
@@ -95,20 +114,15 @@ test('new collections, chapter pages, local images and math render without error
   }
   for (let chapter = 1; chapter <= 8; chapter++) {
     await page.goto(`/topics/chapter-0${chapter}.html`, { waitUntil: 'networkidle' })
-    await expect(page.locator('h1')).toContainText(`第${chapter}章`)
-    expect(await page.locator('.topic-sidebar .topic-anchor').count()).toBeGreaterThan(2)
-    await expect(page.locator('.vp-doc .language-python').first()).toBeVisible()
+    await expect(page.locator('.page-heading')).toContainText('本模块暂未开放')
+    await expect(page.locator('.vp-doc')).toHaveText('你仍可前往课后作业或课堂小测进行练习。')
   }
-  await page.goto('/topics/chapter-01.html', { waitUntil: 'networkidle' })
-  expect(await page.locator('mjx-container svg').count()).toBeGreaterThan(0)
-  await page.screenshot({ path:'test-results/topic-desktop.png',fullPage:false })
   await page.setViewportSize({width:390,height:844})
   for (const url of ['/', '/topics/chapter-03.html','/assignments/homework-02.html']) {
     await page.goto(url, { waitUntil: 'networkidle' })
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
   }
-  await page.goto('/topics/chapter-03.html', { waitUntil: 'networkidle' })
-  await page.locator('.topic-mobile-nav summary').click()
-  await expect(page.locator('.topic-mobile-nav .topic-anchor').first()).toBeVisible()
+  await page.goto('/topics/', { waitUntil: 'networkidle' })
+  await expect(page.locator('.page-heading')).toContainText('本模块暂未开放')
   expect(errors).toEqual([])
 })
