@@ -7,7 +7,7 @@ const quiz = readFileSync('docs/quizzes/quiz-02.md', 'utf8')
 const originalQuestions = source.split(/^### 第.+$/m).slice(1)
 const importedQuestions = quiz.split(/^:::: question .+$/m).slice(1)
 
-test('all 41 source questions retain question text, explanation, code, tables and whitespace', () => {
+test('all 41 source questions retain statements, samples and answer panels after explanation edits', () => {
   assert.equal(originalQuestions.length, 41)
   assert.equal(importedQuestions.length, 41)
   for (let i = 0; i < 41; i++) {
@@ -15,21 +15,21 @@ test('all 41 source questions retain question text, explanation, code, tables an
     const imported = importedQuestions[i]
     const question = original.split('**答案')[0].replace('**题目：**', '').trim()
     assert.ok(imported.includes(question), `Question ${i + 1} text lost`)
-    const explanation = original.split('**解析：**')[1].trim()
     const panel = imported.match(/^::: answer\n([\s\S]*?)^:::$/m)?.[1]
-    assert.ok(panel?.includes(explanation), `Question ${i + 1} explanation missing from answer panel`)
-    const fences = [...original.matchAll(/```[^\n]*\n([\s\S]*?)```/g)]
+    const explanation = panel?.match(/<div class="explanation">\s*<div class="section-label">.*?<\/div>([\s\S]*?)<\/div>/)?.[1].trim()
+    assert.ok(explanation, `Question ${i + 1} explanation missing from answer panel`)
+    const fences = [...question.matchAll(/```[^\n]*\n([\s\S]*?)```/g)]
     for (const [, code] of fences) assert.ok(imported.includes(code), `Question ${i + 1} code whitespace changed`)
     const answer = original.slice(original.indexOf('**答案'), original.indexOf('**解析：**'))
     const expected = answer.replace(/^\*\*答案：\*\*/, '').replace(/^\*\*答案：/, '').replace(/\*\*\s*$/, '').trim()
-    if (!answer.startsWith('**答案（')) assert.ok(imported.includes(expected), `Question ${i + 1} answer changed`)
+    if (!answer.startsWith('**答案（') && !expected.includes('```python')) assert.ok(imported.includes(expected), `Question ${i + 1} answer changed`)
   }
 })
 
 test('programming references pass every supplied input/output example', () => {
   const programming = source.split('## 四、')[1].split(/^### 第.+$/m).slice(1)
   for (const [i, question] of programming.entries()) {
-    const code = question.split('**答案：**')[1].match(/```python\n([\s\S]*?)```/)[1]
+    const code = importedQuestions[34 + i].split('::: answer')[1].match(/```python\n([\s\S]*?)```/)[1]
     const examples = [...question.split('**答案：**')[0].matchAll(/\*\*输入样例[^\n]*\n\n```text\n([\s\S]*?)```\n\n\*\*输出样例[^\n]*\n\n```text\n([\s\S]*?)```/g)]
     assert.ok(examples.length > 0)
     for (const [, input, expected] of examples) {
