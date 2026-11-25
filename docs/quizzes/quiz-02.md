@@ -1424,16 +1424,14 @@ for i in range(m, n + 1):
 0.0010000111
 ```
 
-<div class="question-tags"><span class="question-tag">Fraction类</span> <span class="question-tag">二进制小数转换</span> <span class="question-tag">循环终止条件</span></div>
+<div class="question-tags"><span class="question-tag">乘2取整法</span> <span class="question-tag">二进制小数转换</span> <span class="question-tag">循环终止条件</span></div>
 
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
 
 ```python
-from fractions import Fraction
-
-x = Fraction(input().strip())
+x = float(input())
 bits = ''
 for _ in range(10):
     x *= 2
@@ -1451,7 +1449,9 @@ print('0.' + bits)
 
 十进制纯小数转二进制采用“乘 2 取整”：将余数乘 `2`，整数部分就是下一位二进制数，再留下小数部分继续。例如 `0.75×2=1.5` 取 `1`，`0.5×2=1` 再取 `1`，余数归零，得到 `0.11`。
 
-这里考查**小数进制转换、循环终止与精度**：余数为零就提前结束，否则最多取 `10` 位，直接截断而不四舍五入。`Fraction` 从输入字符串构造精确分数，避免先转换成 `float` 引入误差；例如十进制 `0.1` 的二进制是无限循环小数，不能总等余数归零才停止。
+`float(input())` 读入小数。每轮先执行 `x *= 2`，再用 `int(x)` 取出整数部分，把这一位接到字符串 `bits` 后面。`x -= bit` 去掉整数部分，留下小数部分供下一轮使用。
+
+小数部分为零时，用 `break` 提前结束；否则最多循环 `10` 次，只保留前 10 位，不四舍五入。例如十进制 `0.1` 转成二进制是无限循环小数，所以不能只等小数部分变为零才停止。最后在 `bits` 前加上 `0.` 输出。
 
 </div>
 
