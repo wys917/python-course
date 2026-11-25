@@ -10,12 +10,6 @@ questionGroups:
   - [编程题, programming, 14]
 ---
 
-<div class="editor-note">
-
-题目整理自所提供的 PTA 网页，参考答案按 Python 3 核对，未在 PTA 平台提交验证。原题编号重复时保留原编号，以页面题序区分。
-
-</div>
-
 <h2 id="judgment" class="quiz-group">判断题<span>16 QUESTIONS</span></h2>
 
 :::: question judgment-1 | 1-1 判断题
