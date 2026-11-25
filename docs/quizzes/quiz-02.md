@@ -1096,22 +1096,28 @@ print(a)
 3 15
 ```
 
-<div class="question-tags"><span class="question-tag">类型转换</span> <span class="question-tag">字符串遍历</span> <span class="question-tag">sum函数</span></div>
+<div class="question-tags"><span class="question-tag">类型转换</span> <span class="question-tag">字符串遍历</span> <span class="question-tag">累加求和</span></div>
 
 ::: answer
 
 <div class="answer-section-label">参考答案 <span>ANSWER</span></div>
 
 ```python
-s = str(int(input()))
-print(len(s), sum(int(c) for c in s))
+n = int(input())
+s = str(n)
+digit_sum = 0
+for c in s:
+    digit_sum += int(c)
+print(len(s), digit_sum)
 ```
 
 <div class="explanation">
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-先用 `str()` 把整数转换成字符串，这样每一位数字就可以逐个访问。`len(s)` 得到字符串长度，也就是正整数的位数；`sum(int(c) for c in s)` 则把每个字符重新转成整数后求和。例如 `456` 的位数是 3，各位数字之和是 `4+5+6=15`。
+先用 `str()` 把整数转换成字符串，这样每一位数字就可以用下标或遍历逐个访问。`len(s)` 得到字符串长度，也就是正整数的位数。
+
+统计各位数字之和时，用一个累加变量 `digit_sum` 从 0 开始，遍历字符串 `s` 中的每个字符 `c`，把它重新转换成整数 `int(c)` 后加到 `digit_sum` 上。例如 `456` 的位数是 3，依次累加 `4`、`5`、`6` 后得到各位数字之和 `15`。
 
 </div>
 
@@ -1261,16 +1267,24 @@ a1B
 
 ```python
 s = input()
-h = ''.join(c for c in s if c in '0123456789abcdefABCDEF')
+h = ''
+for c in s:
+    if c in '0123456789abcdefABCDEF':
+        h += c
 print(h)
-print(int(h, 16) if h else 0)
+if h:
+    print(int(h, 16))
+else:
+    print(0)
 ```
 
 <div class="explanation">
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-合法的十六进制字符只有 `0-9`、`a-f` 和 `A-F`。程序遍历输入字符串，只保留这些字符，并用 `join()` 组成新的字符串 `h`。`int(h, 16)` 将十六进制字符串转换成十进制整数；如果没有筛选出任何字符，就按代码中的条件输出 0，避免对空字符串调用 `int()`。
+合法的十六进制字符只有 `0-9`、`a-f` 和 `A-F`。程序遍历输入字符串 `s` 中的每个字符 `c`，用 `c in '0123456789abcdefABCDEF'` 判断它是否属于这个合法字符集合，是就拼接到字符串 `h` 的末尾，不是就跳过。
+
+筛选完成后，先输出 `h` 本身。再判断 `h` 是否为空：如果非空，就用 `int(h, 16)` 把它按十六进制转换成十进制整数并输出；如果 `h` 是空字符串（说明输入中没有任何合法的十六进制字符），直接输出 `0`，避免对空字符串调用 `int()` 导致报错。
 
 </div>
 
@@ -1372,8 +1386,12 @@ print(count)
 ```python
 m, n = map(int, input().split())
 for i in range(m, n + 1):
-    left = ''.join(str(j) for j in range(1, i + 1))
-    right = ''.join(str(j) for j in range(i - 1, 0, -1))
+    left = ''
+    for j in range(1, i + 1):
+        left += str(j)
+    right = ''
+    for j in range(i - 1, 0, -1):
+        right += str(j)
     print(' ' * (n - i) + left + right)
 ```
 
@@ -1381,9 +1399,15 @@ for i in range(m, n + 1):
 
 <div class="section-label">解析 <span>EXPLANATION</span></div>
 
-外层循环依次取峰值 `i=m～n`，并不是每行从数字 m 开始。每行前半段为 `1～i`，后半段为 `i-1～1`，两段连接后共有 `2i-1` 个数字，峰值只出现一次。
+外层循环依次取峰值 `i=m～n`，并不是每行从数字 m 开始。每行由三部分拼接而成：左侧的空格、递增的前半段、递减的后半段。
 
-这里考查**range 边界、字符串拼接与居中对齐**：最底行宽度为 `2n-1`，与当前行相差 `2(n-i)`，所以左侧补 `n-i` 个空格即可。反向部分使用 `range(i-1,0,-1)`；输出不额外补右侧空格，避免格式错误。
+**前半段**（递增到峰值）：用累加变量 `left` 从空字符串开始，让 `j` 从 `1` 递增到 `i`，每次把 `str(j)` 拼接到 `left` 后面，得到 `1～i` 顺序排列的字符串。
+
+**后半段**（从峰值递减）：同样用累加变量 `right` 从空字符串开始，让 `j` 从 `i-1` 递减到 `1`（`range(i-1, 0, -1)` 步长为 `-1`），依次拼接得到 `i-1～1` 倒序排列的字符串。
+
+前后两段连接后共有 `2i-1` 个数字，峰值 `i` 只在前半段末尾出现一次，不会重复。
+
+**左侧空格**：最底行（`i=n`）宽度是 `2n-1`，是所有行里最宽的，不需要补空格；其余每一行比最底行少 `2(n-i)` 个字符，所以在左侧补 `n-i` 个空格，让所有行看起来左右对称、居中对齐。
 
 </div>
 
