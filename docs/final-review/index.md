@@ -4,7 +4,11 @@ eyebrow: FINAL REVIEW
 description: 重点知识、典型题与易错题。
 ---
 
-<div class="editor-note"><strong>资料进度：</strong>还在准备中…… 😭</div>
+<div class="editor-note"><strong>资料进度：</strong>已收录往届期末上机编程题，其余资料还在准备中…… 😭</div>
+
+<div class="resource-list">
+<ResourceCard href="/final-review/past-exams.html" title="期末上机真题" subtitle="PAST EXAMS" icon="review" status="点击查看">16 题 · 往届期末上机编程题与解析</ResourceCard>
+</div>
 
 ## 联系我
 

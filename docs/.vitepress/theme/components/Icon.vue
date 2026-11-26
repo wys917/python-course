@@ -14,7 +14,8 @@ const paths: Record<string, string> = {
   check: 'm5 12 4 4L19 6',
   clock: 'M12 7v5l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
   code: 'm8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18',
-  search: 'm16 16 5 5m-3-11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z'
+  search: 'm16 16 5 5m-3-11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z',
+  bell: 'M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15L6 16Zm4 4a2 2 0 0 0 4 0'
 }
 </script>
 <template><svg :width="size || 20" :height="size || 20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="paths[name] || paths.code" /></svg></template>

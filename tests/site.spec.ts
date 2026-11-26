@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test'
 test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('update-notice-seen', '2026-11-26-homework04-past-exams')
+  })
   await page.goto('/', { waitUntil: 'networkidle' })
 })
 test('homepage, local navigation, color mode persistence and 404', async ({ page }) => {
@@ -45,7 +48,7 @@ test('all questions, answers hidden initially, animated toggles, code copy and a
   const code = programming.locator('.answer-content .language-python')
   await code.hover()
   await code.locator('button.copy').click()
-  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('sum(int(c) for c in s)')
+  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('digit_sum += int(c)')
   await page.screenshot({ path: 'test-results/quiz-desktop.png', fullPage: false })
   await page.reload()
   await expect(page.locator('.answer-toggle[aria-expanded="false"]')).toHaveCount(41)
@@ -102,7 +105,7 @@ test('mobile navigation, question contents and layout fit viewport', async ({ pa
 test('collections and local images render while chapter links show only the closure notice', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', e => errors.push(e.message))
-  for (const [url, count] of [['/assignments/homework-01.html',31],['/assignments/homework-02.html',63],['/assignments/homework-03.html',63],['/quizzes/quiz-01.html',42]] as const) {
+  for (const [url, count] of [['/assignments/homework-01.html',31],['/assignments/homework-02.html',63],['/assignments/homework-03.html',63],['/assignments/homework-04.html',48],['/quizzes/quiz-01.html',42]] as const) {
     await page.goto(url, { waitUntil: 'networkidle' })
     await expect(page.locator('.question-card')).toHaveCount(count)
     await expect(page.locator('.answer-toggle[aria-expanded="false"]')).toHaveCount(count)
@@ -125,4 +128,22 @@ test('collections and local images render while chapter links show only the clos
   await page.goto('/topics/', { waitUntil: 'networkidle' })
   await expect(page.locator('.page-heading')).toContainText('本模块暂未开放')
   expect(errors).toEqual([])
+})
+
+test('update notice shows on first visit and can be reopened with the bell', async ({ browser }) => {
+  const context = await browser.newContext()
+  const page = await context.newPage()
+  await page.goto('http://localhost:4173/', { waitUntil: 'networkidle' })
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeVisible()
+  await expect(dialog).toContainText('请重点关注期末编程题')
+  await dialog.getByRole('button', { name: '知道了' }).click()
+  await expect(dialog).toHaveCount(0)
+  await page.reload({ waitUntil: 'networkidle' })
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await page.getByRole('button', { name: '查看更新通知' }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await context.close()
 })
